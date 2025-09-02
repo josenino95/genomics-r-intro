@@ -257,7 +257,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="01-r-basics.html">2. R Basics</a>
+        <a href="02-data-prelude.html">2. Introduction to the example dataset and file type</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -269,7 +269,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="02-data-prelude.html">3. Introduction to the example dataset and file type</a>
+        <a href="06-data-visualization.html">3. Data Visualization with ggplot2</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -281,7 +281,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="03-basics-factors-dataframes.html">4. R Basics continued - factors and data frames</a>
+        <a href="01-r-basics.html">4. R Basics</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -293,7 +293,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="04-bioconductor-vcfr.html">5. Using packages from Bioconductor</a>
+        <a href="03-basics-factors-dataframes.html">5. R Basics continued - factors and data frames</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -317,7 +317,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="06-data-visualization.html">7. Data Visualization with ggplot2</a>
+        <a href="07-r-help.html">7. Getting help with R</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -329,7 +329,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="07-r-help.html">8. Getting help with R</a>
+        <a href="04-bioconductor-vcfr.html">8. Using packages from Bioconductor</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -402,6 +402,19 @@
 to manage the files and packages used in your analysis</li>
 <li>RStudio allows you to run R in an easy-to-use interface and makes it
 easy to find help</li>
+</ul></section><section id="02-data-prelude"><h2 class="section-heading"><a href="02-data-prelude.html">Introduction to the example dataset and file type</a></h2>
+<hr class="half-width">
+<ul>
+<li>The dataset comes from a real world experiment in E. coli.</li>
+<li>Publicly available FASTQ files can be downloaded from NCBI SRA.</li>
+<li>Several steps are taken outside of R/RStudio to create VCF files
+from FASTQ files.</li>
+<li>VCF files store variant calls in a special format.</li>
+</ul></section><section id="06-data-visualization"><h2 class="section-heading"><a href="06-data-visualization.html">Data Visualization with ggplot2</a></h2>
+<hr class="half-width">
+<ul>
+<li>ggplot2 is a powerful tool for high-quality plots</li>
+<li>ggplot2 provides a flexible and readable grammar to build plots</li>
 </ul></section><section id="01-r-basics"><h2 class="section-heading"><a href="01-r-basics.html">R Basics</a></h2>
 <hr class="half-width">
 <ul>
@@ -413,14 +426,6 @@ object type and how the mode of that type (e.g. numeric, character,
 logical, etc.) will determine how R will operate on that data.</li>
 <li>Working with vectors effectively prepares you for understanding how
 data are organized in R.</li>
-</ul></section><section id="02-data-prelude"><h2 class="section-heading"><a href="02-data-prelude.html">Introduction to the example dataset and file type</a></h2>
-<hr class="half-width">
-<ul>
-<li>The dataset comes from a real world experiment in E. coli.</li>
-<li>Publicly available FASTQ files can be downloaded from NCBI SRA.</li>
-<li>Several steps are taken outside of R/RStudio to create VCF files
-from FASTQ files.</li>
-<li>VCF files store variant calls in a special format.</li>
 </ul></section><section id="03-basics-factors-dataframes"><h2 class="section-heading"><a href="03-basics-factors-dataframes.html">R Basics continued - factors and data frames</a></h2>
 <hr class="half-width">
 <ul>
@@ -432,16 +437,6 @@ and R is great for this</li>
 <li>Base R has many useful functions for manipulating your data, but all
 of R’s capabilities are greatly enhanced by software packages developed
 by the community</li>
-</ul></section><section id="04-bioconductor-vcfr"><h2 class="section-heading"><a href="04-bioconductor-vcfr.html">Using packages from Bioconductor</a></h2>
-<hr class="half-width">
-<ul>
-<li>Bioconductor is an alternative package repository for bioinformatics
-packages.</li>
-<li>Installing packages from Bioconductor requires a new method, since
-it is not compatible with the <code>install.packages()</code> function
-used for CRAN.</li>
-<li>Check Bioconductor to see if there is a package relevant to your
-analysis before writing code yourself.</li>
 </ul></section><section id="05-dplyr"><h2 class="section-heading"><a href="05-dplyr.html">Data Wrangling and Analyses with Tidyverse</a></h2>
 <hr class="half-width">
 <ul>
@@ -453,11 +448,6 @@ frame.</li>
 <li>Use <code>mutate()</code> to create new variables.</li>
 <li>Use <code>group_by()</code> and <code>summarize()</code> to work
 with subsets of data.</li>
-</ul></section><section id="06-data-visualization"><h2 class="section-heading"><a href="06-data-visualization.html">Data Visualization with ggplot2</a></h2>
-<hr class="half-width">
-<ul>
-<li>ggplot2 is a powerful tool for high-quality plots</li>
-<li>ggplot2 provides a flexible and readable grammar to build plots</li>
 </ul></section><section id="07-r-help"><h2 class="section-heading"><a href="07-r-help.html">Getting help with R</a></h2>
 <hr class="half-width">
 <ul>
@@ -465,6 +455,16 @@ with subsets of data.</li>
 several way to get help</li>
 <li>Using R will mean searching for online help, and there are tips and
 resources on how to search effectively</li>
+</ul></section><section id="04-bioconductor-vcfr"><h2 class="section-heading"><a href="04-bioconductor-vcfr.html">Using packages from Bioconductor</a></h2>
+<hr class="half-width">
+<ul>
+<li>Bioconductor is an alternative package repository for bioinformatics
+packages.</li>
+<li>Installing packages from Bioconductor requires a new method, since
+it is not compatible with the <code>install.packages()</code> function
+used for CRAN.</li>
+<li>Check Bioconductor to see if there is a package relevant to your
+analysis before writing code yourself.</li>
 </ul></section>
 </div>
     </main>

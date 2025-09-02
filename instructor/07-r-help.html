@@ -118,11 +118,11 @@
   Intro to R and RStudio for Genomics
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 96%" class="percentage">
-    96%
+<aside class="col-md-12 lesson-progress"><div style="width: 93%" class="percentage">
+    93%
   </div>
   <div class="progress data">
-    <div class="progress-bar data" role="progressbar" style="width: 96%" aria-valuenow="96" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar data" role="progressbar" style="width: 93%" aria-valuenow="93" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -215,7 +215,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="01-r-basics.html">2. R Basics</a>
+        <a href="02-data-prelude.html">2. Introduction to the example dataset and file type</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -224,7 +224,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="02-data-prelude.html">3. Introduction to the example dataset and file type</a>
+        <a href="06-data-visualization.html">3. Data Visualization with ggplot2</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -233,7 +233,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="03-basics-factors-dataframes.html">4. R Basics continued - factors and data frames</a>
+        <a href="01-r-basics.html">4. R Basics</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -242,7 +242,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="04-bioconductor-vcfr.html">5. Using packages from Bioconductor</a>
+        <a href="03-basics-factors-dataframes.html">5. R Basics continued - factors and data frames</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -257,22 +257,13 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
-<div class="accordion accordion-flush" id="accordionFlush8">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading8">
-        <a href="06-data-visualization.html">7. Data Visualization with ggplot2</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        8. Getting help with R
+        7. Getting help with R
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -285,6 +276,15 @@
 <li><a href="#final-faqs-on-r">Final FAQs on R</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="04-bioconductor-vcfr.html">8. Using packages from Bioconductor</a>
+    </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -331,17 +331,17 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/06-data-visualization.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="../instructor/05-dplyr.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="../instructor/04-bioconductor-vcfr.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="../instructor/06-data-visualization.html" rel="prev">
+        <a class="chapter-link" href="../instructor/05-dplyr.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Data Visualization
+          Previous: Data Wrangling and
         </a>
-        <a class="chapter-link float-end" href="../instructor/index.html" rel="next">
-          Home
+        <a class="chapter-link float-end" href="../instructor/04-bioconductor-vcfr.html" rel="next">
+          Next: Using packages from...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -546,17 +546,17 @@ resources on how to search effectively</li>
 </div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/06-data-visualization.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="../instructor/05-dplyr.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="../instructor/04-bioconductor-vcfr.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="../instructor/06-data-visualization.html" rel="prev">
+        <a class="chapter-link" href="../instructor/05-dplyr.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Data Visualization
+          Previous: Data Wrangling and
         </a>
-        <a class="chapter-link float-end" href="../instructor/index.html" rel="next">
-          Home
+        <a class="chapter-link float-end" href="../instructor/04-bioconductor-vcfr.html" rel="next">
+          Next: Using packages from...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>

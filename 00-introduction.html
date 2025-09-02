@@ -216,11 +216,10 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#getting-ready-to-use-r-for-the-first-time">Getting ready to use R for the first time</a></li>
-<li><a href="#a-brief-history-of-r">A Brief History of R</a></li>
+        <ul><li><a href="#a-brief-history-of-r">A Brief History of R</a></li>
 <li><a href="#advantages-of-using-r">Advantages of using R</a></li>
-<li><a href="#introducing-rstudio-server">Introducing RStudio Server</a></li>
-<li><a href="#log-on-to-rstudio-server">Log on to RStudio Server</a></li>
+<li><a href="#introducing-rstudio">Introducing RStudio</a></li>
+<li><a href="#open-rstudio">Open RStudio</a></li>
 <li><a href="#create-an-rstudio-project">Create an RStudio project</a></li>
 <li><a href="#creating-your-first-r-script">Creating your first R script</a></li>
 <li><a href="#overview-and-customization-of-the-rstudio-layout">Overview and customization of the RStudio layout</a></li>
@@ -237,7 +236,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="01-r-basics.html">2. R Basics</a>
+        <a href="02-data-prelude.html">2. Introduction to the example dataset and file type</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -246,7 +245,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="02-data-prelude.html">3. Introduction to the example dataset and file type</a>
+        <a href="06-data-visualization.html">3. Data Visualization with ggplot2</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -255,7 +254,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="03-basics-factors-dataframes.html">4. R Basics continued - factors and data frames</a>
+        <a href="01-r-basics.html">4. R Basics</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -264,7 +263,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="04-bioconductor-vcfr.html">5. Using packages from Bioconductor</a>
+        <a href="03-basics-factors-dataframes.html">5. R Basics continued - factors and data frames</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -282,7 +281,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="06-data-visualization.html">7. Data Visualization with ggplot2</a>
+        <a href="07-r-help.html">7. Getting help with R</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -291,7 +290,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="07-r-help.html">8. Getting help with R</a>
+        <a href="04-bioconductor-vcfr.html">8. Using packages from Bioconductor</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -340,7 +339,7 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="01-r-basics.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="02-data-prelude.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -348,14 +347,14 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Home
         </a>
-        <a class="chapter-link float-end" href="01-r-basics.html" rel="next">
-          Next: R Basics...
+        <a class="chapter-link float-end" href="02-data-prelude.html" rel="next">
+          Next: Introduction to the...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introducing R and RStudio IDE</h1>
-        <p>Last updated on 2025-08-26 |
+        <p>Last updated on 2025-09-02 |
 
         <a href="https://github.com/datacarpentry/genomics-r-intro/edit/main/episodes/00-introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -401,28 +400,7 @@ and <code>args()</code>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="getting-ready-to-use-r-for-the-first-time">Getting ready to use R for the first time<a class="anchor" aria-label="anchor" href="#getting-ready-to-use-r-for-the-first-time"></a></h2>
-<hr class="half-width"><p>In this lesson we will take you through the very first things you
-need to get R working.</p>
-<div id="tip-this-lesson-works-best-on-the-cloud" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="tip-this-lesson-works-best-on-the-cloud" class="callout-inner">
-<h3 class="callout-title">Tip: This lesson works best on the cloud</h3>
-<div class="callout-content">
-<p>Remember, these lessons assume we are using the pre-configured
-virtual machine instances provided to you at a genomics workshop. Much
-of this work could be done on your laptop, but we use instances to
-simplify workshop setup requirements, and to get you familiar with using
-the cloud (a common requirement for working with big data). Visit the <a href="https://datacarpentry.org/genomics-workshop/index.html#setup" class="external-link">Genomics
-Workshop setup page</a> for details on getting this instance running on
-your own, or for the info you need to do this on your own computer.</p>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="a-brief-history-of-r">A Brief History of R<a class="anchor" aria-label="anchor" href="#a-brief-history-of-r"></a></h2>
+<section><h2 class="section-heading" id="a-brief-history-of-r">A Brief History of R<a class="anchor" aria-label="anchor" href="#a-brief-history-of-r"></a></h2>
 <hr class="half-width"><p><a href="https://en.wikipedia.org/wiki/R_(programming_language)" class="external-link">The
 programming language R</a> has been around since 1995, and was created
 by Ross Ihaka and Robert Gentleman at the University of Auckland, New
@@ -433,6 +411,9 @@ deck</a> by Ross Ihaka for more info on the subject.</p>
 <hr class="half-width"><p>At more than 20 years old, R is fairly mature and <a href="https://www.tiobe.com/tiobe-index/r/" class="external-link">growing in popularity</a>.
 However, programming isn’t a popularity contest. Here are key advantages
 of analyzing data in R:</p>
+<!--
+ADD: To the list of not FOSS, software Hind told me about
+-->
 <ul><li>
 <strong>R is <a href="https://en.wikipedia.org/wiki/Open-source_software" class="external-link">open
 source</a></strong>. This means R is free - an advantage if you are at
@@ -468,58 +449,16 @@ use, or where the size of the data set created issues?</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="introducing-rstudio-server">Introducing RStudio Server<a class="anchor" aria-label="anchor" href="#introducing-rstudio-server"></a></h2>
+</section><section><h2 class="section-heading" id="introducing-rstudio">Introducing RStudio<a class="anchor" aria-label="anchor" href="#introducing-rstudio"></a></h2>
 <hr class="half-width"><p>In these lessons, we will be making use of a software called <a href="https://www.rstudio.com/products/RStudio/" class="external-link">RStudio</a>, an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment" class="external-link">Integrated
 Development Environment (IDE)</a>. RStudio, like most IDEs, provides a
 graphical interface to R, making it more user-friendly, and providing
 dozens of useful features. We will introduce additional benefits of
-using RStudio as you cover the lessons. In this case, we are
-specifically using <a href="https://www.rstudio.com/products/RStudio/#Server" class="external-link">RStudio
-Server</a>, a version of RStudio that can be accessed in your web
-browser. RStudio Server has the same features of the Desktop version of
-RStudio you could download as standalone software.</p>
-</section><section><h2 class="section-heading" id="log-on-to-rstudio-server">Log on to RStudio Server<a class="anchor" aria-label="anchor" href="#log-on-to-rstudio-server"></a></h2>
-<hr class="half-width"><p>Open a web browser and enter the URL you used to log in at the
-terminal (provided by your instructors), followed by <code>:8787</code>.
-For example, if your URL was ec2.12.2.45.678.compute-1.amazonaws.com,
-you should enter:</p>
-<pre><code>http://ec2.12.2.45.678.compute-1.amazonaws.com:8787</code></pre>
-<div id="warning-browser-and-vpn-usage" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="warning-browser-and-vpn-usage" class="callout-inner">
-<h3 class="callout-title">Warning: Browser and VPN usage</h3>
-<div class="callout-content">
-<p>The AWS link may not work for some browsers (e.g. Microsoft Edge).
-For those browsers, you may need to copy the link and paste it into your
-browser instead of clicking the link in the spreadsheet. Also, if you
-are using a VPN, you may need to disconnect in order to reach the
-server.</p>
-</div>
-</div>
-</div>
-<div id="tip-make-sure-there-are-no-spaces-before-or-after-your-url." class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="tip-make-sure-there-are-no-spaces-before-or-after-your-url." class="callout-inner">
-<h3 class="callout-title">Tip: Make sure there are no spaces before or
-after your URL.</h3>
-<div class="callout-content">
-<p>If your URL has spaces, your web browser may interpret it as a search
-query.</p>
-</div>
-</div>
-</div>
-<p>You should now be looking at a page that will allow you to login to
-the RStudio server:</p>
-<figure><img src="fig/rstudio_login_screen.png" alt="rstudio default session" style="width: 1000px;" class="figure mx-auto d-block"></figure><p>Enter your user credentials and click <kbd>Sign In</kbd>. The
-credentials for the genomics Data Carpentry instances will be provided
-by your instructors.</p>
-<p>You should now see the RStudio interface:</p>
+using RStudio as you cover the lessons.</p>
+</section><section><h2 class="section-heading" id="open-rstudio">Open RStudio<a class="anchor" aria-label="anchor" href="#open-rstudio"></a></h2>
+<hr class="half-width"><!--
+ADD: Better wording and intro to open RStudio. Keep the same image
+--><p>You should now see the RStudio interface:</p>
 <figure><img src="fig/rstudio_session_default.png" alt="rstudio default session" style="width:1000px;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="create-an-rstudio-project">Create an RStudio project<a class="anchor" aria-label="anchor" href="#create-an-rstudio-project"></a></h2>
 <hr class="half-width"><p>One of the first benefits we will take advantage of in RStudio is
 something called an <strong>RStudio Project</strong>. An RStudio project
@@ -638,21 +577,7 @@ you will see what packages are actively loaded, or you can attach
 installed packages. “Help” will display help files for R functions and
 packages. “Viewer” will allow you to view local web content (e.g. HTML
 outputs).</li>
-</ul><div id="tip-uploads-and-downloads-in-the-cloud" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="tip-uploads-and-downloads-in-the-cloud" class="callout-inner">
-<h3 class="callout-title">Tip: Uploads and downloads in the cloud</h3>
-<div class="callout-content">
-<p>In the “Files” tab you can select a file and download it from your
-cloud instance (click the “more” button) to your local computer. Uploads
-are also possible.</p>
-</div>
-</div>
-</div>
-<p>All of the panes in RStudio have configuration options. For example,
+</ul><p>All of the panes in RStudio have configuration options. For example,
 you can minimize/maximize a pane, or by moving your mouse in the space
 between panes you can resize as needed. The most important customization
 options for pane layout are in the <kbd>View</kbd> menu. Other options
@@ -681,7 +606,7 @@ can get to work using some commands. We will write, execute, and save
 the commands we learn in our <strong>genomics_r_basics.R</strong> script
 that is loaded in the Source pane. First, lets see what directory we are
 in. To do so, type the following command into the script:</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -705,7 +630,7 @@ command. Entering a <code>#</code> before any line in an R script turns
 that line into a comment, which R will not try to interpret as code.
 Edit your script to include a comment on the purpose of commands you are
 learning, e.g.:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -730,7 +655,7 @@ in the Console pane?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>You will get the same output you did as when you ran
 <code>getwd()</code> from the source. You can run any command in the
@@ -745,7 +670,7 @@ script, instead of entering commands one-by-one.</p>
 <code>"/home/dcuser/R_data"</code>. What if you weren’t? You can set
 your home directory using the <code>setwd()</code> command. Enter this
 command in your script, but <em>don’t run</em> this yet.</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -760,7 +685,7 @@ the <kbd>Tab</kbd> key, to take advantage of RStudio’s
 Tab-autocompletion method, to select <code>home</code>,
 <code>dcuser</code>, and <code>dc_genomics_r</code> directory. The path
 in your script should look like this:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -824,7 +749,7 @@ about your assumed purpose.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ul><li>
 <code>dir()</code> # Lists files in the working directory</li>
@@ -850,7 +775,7 @@ note that functions are case sensitive!</li>
 </ul><p>An argument may be a specific input for your function and/or may
 modify the function’s behavior. For example the function
 <code>round()</code> will round a number with a decimal:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -867,7 +792,7 @@ modify the function’s behavior. For example the function
 <code>round()</code> can do this, but you may first need to read the
 help to find out how. To see the help (In R sometimes also called a
 “vignette”) enter a <code>?</code> in front of the function name:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -879,7 +804,7 @@ files. Checking the “Usage” or “Examples” headings is often a good place
 to look first. If you look under “Arguments,” we also see what arguments
 we can pass to this function to modify its behavior. You can also see a
 function’s argument using the <code>args()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -898,7 +823,7 @@ set. Since <code>x</code> is not set, <code>round()</code> requires we
 provide it, in contrast to <code>digits</code> where R will use the
 default value 0 unless you explicitly provide a different value. We can
 explicitly set the digits parameter when we call the function:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -913,7 +838,7 @@ explicitly set the digits parameter when we call the function:</p>
 function arguments separated by commas, R assumes that they are in the
 order you saw when we used <code>args()</code>. In the case below that
 means that <code>x</code> is 3.14159 and digits is 2.</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -927,7 +852,7 @@ means that <code>x</code> is 3.14159 and digits is 2.</p>
 <p>Finally, what if you are using <code>?</code> to get help for a
 function in a package not installed on your system, such as when you are
 running a script which has dependencies.</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -970,7 +895,7 @@ helpful to include “R” in your search query.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>While your search results may return several tests, we list a few you
 might find:</p>
@@ -1016,7 +941,7 @@ easy to find help</li>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="01-r-basics.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="02-data-prelude.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -1024,8 +949,8 @@ easy to find help</li>
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Home
         </a>
-        <a class="chapter-link float-end" href="01-r-basics.html" rel="next">
-          Next: R Basics...
+        <a class="chapter-link float-end" href="02-data-prelude.html" rel="next">
+          Next: Introduction to the...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -1071,7 +996,7 @@ easy to find help</li>
   "url": "https://datacarpentry.github.io/genomics-r-intro/00-introduction.html",
   "identifier": "https://datacarpentry.github.io/genomics-r-intro/00-introduction.html",
   "dateCreated": "2018-03-12",
-  "dateModified": "2025-08-26",
+  "dateModified": "2025-09-02",
   "datePublished": "2025-09-02"
 }
 
