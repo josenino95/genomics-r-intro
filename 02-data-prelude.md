@@ -62,6 +62,10 @@ Five steps are taken to transform FASTQ files to variant calls contained in VCF 
 
 ## How variant calls are stored in VCF files
 
+<!--
+ADD: Modify tables and info for the actual data we will use. As it has more columns than what it says here
+-->
+
 VCF files contain variants that were called against a reference genome. These files are slightly more complicated than regular tables you can open using programs like Excel and contain two sections: header and records.
 
 Below you will see the header (which describes the format), the time and date the file was created, the version of bcftools that was used, the command line parameters used, and some additional information:
@@ -161,6 +165,11 @@ This episode was adapted from the Data Carpentry Genomic lessons:
 
 - [Project organization and management for Genomics](https://datacarpentry.org/organization-genomics/data/)
 - [Data wrangling and processing for genomics](https://datacarpentry.org/wrangling-genomics/04-variant_calling/index.html)
+
+
+<!--
+ADD: Idea. In dplyr, create a column that identifies if INDEL is addition, substitution
+-->
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

@@ -58,24 +58,24 @@ contact: 'team@carpentries.org'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes: 
+episodes:
 - 00-introduction.Rmd
-- 01-r-basics.Rmd
 - 02-data-prelude.Rmd
-- 03-basics-factors-dataframes.Rmd
-- 04-bioconductor-vcfr.Rmd
-- 05-dplyr.Rmd
 - 06-data-visualization.Rmd
+- 01-r-basics.Rmd
+- 03-basics-factors-dataframes.Rmd
+- 05-dplyr.Rmd
 - 07-r-help.Rmd
+- 04-bioconductor-vcfr.Rmd
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 
 # Customisation ---------------------------------------------
 #

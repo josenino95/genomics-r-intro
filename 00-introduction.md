@@ -27,26 +27,6 @@ source: Rmd
 
 
 
-## Getting ready to use R for the first time
-
-In this lesson we will take you through the very first things you need to get
-R working.
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Tip: This lesson works best on the cloud
-
-Remember, these lessons assume we are using the pre-configured virtual machine
-instances provided to you at a genomics workshop. Much of this work could be
-done on your laptop, but we use instances to simplify workshop setup
-requirements, and to get you familiar with using the cloud (a common
-requirement for working with big data).
-Visit the [Genomics Workshop setup page](https://datacarpentry.org/genomics-workshop/index.html#setup)
-for details on getting this instance running on your own, or for the info you
-need to do this on your own computer.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## A Brief History of R
 
@@ -60,6 +40,10 @@ by Ross Ihaka for more info on the subject.
 
 At more than 20 years old, R is fairly mature and [growing in popularity](https://www.tiobe.com/tiobe-index/r/). However, programming isn't a popularity contest. Here are key advantages of
 analyzing data in R:
+
+<!--
+ADD: To the list of not FOSS, software Hind told me about
+-->
 
 - **R is [open source](https://en.wikipedia.org/wiki/Open-source_software)**.
   This means R is free - an advantage if you are at an institution where you
@@ -89,52 +73,19 @@ size of the data set created issues?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Introducing RStudio Server
+## Introducing RStudio
 
 In these lessons, we will be making use of a software called [RStudio](https://www.rstudio.com/products/RStudio/),
 an [Integrated Development Environment (IDE)](https://en.wikipedia.org/wiki/Integrated_development_environment).
 RStudio, like most IDEs, provides a graphical interface to R, making it more
 user-friendly, and providing dozens of useful features. We will introduce
-additional benefits of using RStudio as you cover the lessons. In this case,
-we are specifically using [RStudio Server](https://www.rstudio.com/products/RStudio/#Server),
-a version of RStudio that can be accessed in your web browser. RStudio Server
-has the same features of the Desktop version of RStudio you could download as
-standalone software.
+additional benefits of using RStudio as you cover the lessons.
 
-## Log on to RStudio Server
+## Open RStudio
 
-Open a web browser and enter the URL you used to log in at the terminal
-(provided by your instructors), followed by
-`:8787`. For example, if your URL was ec2.12.2.45.678.compute-1.amazonaws.com, you should enter:
-
-```
-http://ec2.12.2.45.678.compute-1.amazonaws.com:8787
-```
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Warning: Browser and VPN usage
-
-The AWS link may not work for some browsers (e.g. Microsoft Edge). For those browsers, you may need to copy the link and paste it into your browser instead of clicking the link in the spreadsheet. Also, if you are using a VPN, you may need to disconnect in order to reach the server.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Tip: Make sure there are no spaces before or after your URL.
-
-If your URL has spaces, your web browser may interpret it as a search query.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-You should now be looking at a page that will allow you to login to the RStudio
-server:
-
-<img src="fig/rstudio_login_screen.png" alt="rstudio default session" style="width: 1000px;"/>
-
-Enter your user credentials and click <kbd>Sign In</kbd>. The credentials for
-the genomics Data Carpentry instances will be provided by your instructors.
+<!--
+ADD: Better wording and intro to open RStudio. Keep the same image
+-->
 
 You should now see the RStudio interface:
 
@@ -242,17 +193,6 @@ environment:
   loaded, or you can attach installed packages. "Help" will display help files
   for R functions and packages. "Viewer" will allow you to view local web
   content (e.g. HTML outputs).
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Tip: Uploads and downloads in the cloud
-
-In the "Files" tab you can select a file and download it from your cloud
-instance (click the "more" button) to your local computer.
-Uploads are also possible.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 All of the panes in RStudio have configuration options. For example, you can
 minimize/maximize a pane, or by moving your mouse in the space between
