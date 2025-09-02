@@ -52,7 +52,7 @@ The idea of **mapping** is crucial in **ggplot**. One familiar example is to *ma
 
 **Tip:** when having doubts about whether a variable is [continuous or discrete](https://en.wikipedia.org/wiki/Continuous_or_discrete_variable), a quick way to check is to use the [`summary()`](https://www.geeksforgeeks.org/get-summary-of-results-produced-by-functions-in-r-programming-summary-function/) function. Continuous variables have descriptive statistics but not the discrete variables.
 
-## Installing `tidyverse`
+## Installing and loading `ggplot`
 
 First, we need to install the `ggplot2` package.
 
@@ -66,25 +66,16 @@ Now, let's load the `ggplot2` package:
 library(ggplot2)
 ```
 
-We will also use some of the other tidyverse packages we used in the last episode, so we need to load them as well.
-
-```{r load-other-pkgs}
-library(readr)
-library(dplyr)
-```
-
-As we can see from above output **`ggplot2`** has been already loaded along with other packages as part of the **`tidyverse`** framework.
-
 ## Loading the dataset
 
 ```{r load-the-dataset, echo=TRUE, eval=TRUE}
 variants <- read.csv("https://raw.githubusercontent.com/datacarpentry/genomics-r-intro/main/episodes/data/combined_tidy_vcf.csv")
 ```
 
-Explore the *structure* (types of columns and number of rows) of the dataset using [dplyr](https://dplyr.tidyverse.org/index.html)'s [`glimpse()`](https://dplyr.tidyverse.org/reference/glimpse.html) (for more info, see the [Data Wrangling and Analyses with Tidyverse](https://datacarpentry.org/genomics-r-intro/05-dplyr/) episode)
+Explore the *structure* (types of columns and number of rows) of the dataset using the `str()` function.
 
 ```{r glimpse-at-the-data}
-glimpse(variants) # Show a snapshot of the rows and columns
+str(variants) # Show the structure of the data
 ```
 
 Alternatively, we can display the first a few rows (vertically) of the table using [`head()`](https://www.geeksforgeeks.org/get-the-first-parts-of-a-data-set-in-r-programming-head-function/):
@@ -93,11 +84,22 @@ Alternatively, we can display the first a few rows (vertically) of the table usi
 head(variants)
 ```
 
+We can also see view our data in a nicely formatted window using the `View()` function, which opens a new tab in our Source pane.
+This will have the same result as clicking the name of our dataset in the Environment pane.
+
+```{r view-of-the-data}
+View(variants)
+```
+
 **`ggplot2`** functions like data in the **long** format, i.e., a column for every dimension (variable), and a row for every observation. Well-structured data will save you time when making figures with **`ggplot2`**
 
 **`ggplot2`** graphics are built step-by-step by adding new elements. Adding layers in this fashion allows for extensive flexibility and customization of plots, and more equally important the readability of the code.
 
 To build a ggplot, we will use the following basic template that can be used for different types of plots:
+
+<!--
+ADD: Somewhere add explanation on how to create a new column with the number of characters in the REF and ALT columns
+-->
 
 ```{r, eval=FALSE}
 ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
