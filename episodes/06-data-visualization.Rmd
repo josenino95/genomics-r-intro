@@ -27,16 +27,19 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-```{r, include=FALSE}
-```
+::::::::::::::::::::::::::::::::::::::::::  prereq
+
+## Reminder
+
+At this point you should be coding along in the "**genomics\_r\_plotting.R**"
+script we created in the last episode. Writing your commands in the script
+(and commenting it) will make it easier to record what you did and why.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(printr)
-```
-
-```{r, echo=FALSE, eval=TRUE, purl=FALSE}
-## silently read in CSV file
-variants <- read.csv("https://raw.githubusercontent.com/datacarpentry/genomics-r-intro/main/episodes/data/combined_tidy_vcf.csv")
 ```
 
 ## Introduction to **`ggplot2`**
@@ -54,29 +57,51 @@ The idea of **mapping** is crucial in **ggplot**. One familiar example is to *ma
 
 ## Installing and loading `ggplot`
 
-First, we need to install the `ggplot2` package.
-
-```{r install-ggplot2, echo=TRUE, eval=FALSE}
-install.packages("ggplot2")
-```
-
-Now, let's load the `ggplot2` package:
+In your "**genomics\_r\"**genomics\_r\_basics.R**".R**" script type the following code to load the `ggplot2` package.
 
 ```{r load-ggplot2}
 library(ggplot2)
 ```
 
+Next, run this line of code in your script. You can run a line of code
+by hitting the <KBD>Run</KBD> button that is just above the first line of your
+script in the header of the Source pane or you can use the appropriate shortcut:
+
+- Windows execution shortcut: <KBD>Ctrl</KBD>\+<KBD>Enter</KBD>
+- Mac execution shortcut: <KBD>Cmd(⌘)</KBD>\+<KBD>Enter</KBD>
+
+What do you see as an output in the Console?
+Do you see an error that reads *Error in library(ggplot2) : there is no package called ‘ggplot2’*?
+If so, this means you don't have this external third-party library installed.
+We'll talk later about external libraries, but for now we'll just focus on having it installed to use it.
+
+If you got the error, type the following code in the Console to install the `ggplot2` package.
+
+```{r install-ggplot2, echo=TRUE, eval=FALSE}
+install.packages("ggplot2")
+```
+
 ## Loading the dataset
 
 ```{r load-the-dataset, echo=TRUE, eval=TRUE}
-variants <- read.csv("https://raw.githubusercontent.com/datacarpentry/genomics-r-intro/main/episodes/data/combined_tidy_vcf.csv")
+variants <- read.csv("https://tinyurl.com/r-sddrc-data")
 ```
+
+One of the first things you should notice is that in the Environment window,
+you have the `variants` object, listed as 801 obs. (observations/rows)
+of 29 variables (columns). Double-clicking on the name of the object will open
+a view of the data in a new tab.
+
+![RStudio data frame view](fig/rstudio_dataframeview.png){alt='Where to find the data frame View option'}
 
 Explore the *structure* (types of columns and number of rows) of the dataset using the `str()` function.
 
 ```{r glimpse-at-the-data}
 str(variants) # Show the structure of the data
 ```
+
+To run multiple lines of code, you can highlight all the line you wish to run
+and then hit <KBD>Run</KBD> or use the shortcut key combo listed above.
 
 Alternatively, we can display the first a few rows (vertically) of the table using [`head()`](https://www.geeksforgeeks.org/get-the-first-parts-of-a-data-set-in-r-programming-head-function/):
 
@@ -99,6 +124,8 @@ To build a ggplot, we will use the following basic template that can be used for
 
 <!--
 ADD: Somewhere add explanation on how to create a new column with the number of characters in the REF and ALT columns
+Vignettes
+ADD: Idea. In dplyr, create a column that identifies if INDEL is addition, substitution
 -->
 
 ```{r, eval=FALSE}
@@ -115,7 +142,7 @@ ggplot(data = variants)
 - define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x and y positions or characteristics such as size, shape, color, etc.
 
 ```{r, eval=FALSE, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = DP))
+ggplot(data = variants, aes(x = DP, y = QUAL))
 ```
 
 - add 'geoms' – graphical representations of the data in the plot (points,
@@ -128,7 +155,7 @@ ggplot(data = variants, aes(x = POS, y = DP))
 To add a geom to the plot use the `+` operator. Because we have two continuous variables, let's use [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html) (i.e., a scatter plot) first:
 
 ```{r first-ggplot, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = DP)) +
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
   geom_point()
 ```
 
@@ -136,7 +163,7 @@ The `+` in the **`ggplot2`** package is particularly useful because it allows yo
 
 ```{r, eval=FALSE, purl=FALSE}
 # Assign plot to a variable
-coverage_plot <- ggplot(data = variants, aes(x = POS, y = DP))
+coverage_plot <- ggplot(data = variants, aes(x = DP, y = QUAL))
 
 # Draw the plot
 coverage_plot +
@@ -164,14 +191,14 @@ coverage_plot
 Building plots with **`ggplot2`** is typically an iterative process. We start by defining the dataset we'll use, lay out the axes, and choose a geom:
 
 ```{r create-ggplot-object, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = DP)) +
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
   geom_point()
 ```
 
 Then, we start modifying this plot to extract more information from it. For instance, we can add transparency (`alpha`) to avoid over-plotting:
 
 ```{r adding-transparency, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = DP)) +
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
   geom_point(alpha = 0.5)
 ```
 
@@ -179,47 +206,40 @@ We can also add colors for all the points:
 
 ```{r adding-colors, purl=FALSE}
 
-ggplot(data = variants, aes(x = POS, y = DP)) +
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
   geom_point(alpha = 0.5, color = "blue")
 ```
 
 Or to color each species in the plot differently, you could use a vector as an input to the argument **color**. **`ggplot2`** will provide a different color corresponding to different values in the vector. Here is an example where we color with **`sample_id`**:
 
 ```{r color-by-sample-1, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
+ggplot(data = variants, aes(x = DP, y = QUAL, color = sample_id)) +
   geom_point(alpha = 0.5)
-```
-
-Notice that we can change the geom layer and colors will be still determined by **`sample_id`**
-
-```{r color-by-sample-2, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
-  geom_line(alpha = 0.5)
 ```
 
 To make our plot more readable, we can add axis labels:
 
 ```{r add-axis-labels, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
+ggplot(data = variants, aes(x = DP, y = QUAL, color = sample_id)) +
   geom_point(alpha = 0.5) +
-  labs(x = "Base Pair Position",
-       y = "Read Depth (DP)")
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score")
 ```
 
 To add a *main* title to the plot, we use [the title argument for the `labs()` function](https://ggplot2.tidyverse.org/reference/labs.html):
 
 ```{r add-main-title, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
+ggplot(data = variants, aes(x = DP, y = QUAL, color = sample_id)) +
   geom_point(alpha = 0.5) +
-  labs(x = "Base Pair Position",
-       y = "Read Depth (DP)",
-       title = "Read Depth vs. Position")
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score",
+       title = "Read Depth vs. Quality Score")
 ```
 
 Now the figure is complete and ready to be exported and saved to a file. This can be achieved easily using [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html), which can write, by default, the most recent generated figure into different formats (e.g., `jpeg`, `png`, `pdf`) according to the file extension. So, for example, to create a pdf version of the above figure with a dimension of $6\times4$ inches:
 
 ```{r save-to-file, purl=FALSE}
-ggsave("depth.pdf", width = 6, height = 4)
+ggsave("depth_quality.pdf", width = 6, height = 4)
 ```
 
 If we check the *current working directory*, there should be a newly created file called `depth.pdf` with the above plot.
@@ -250,12 +270,12 @@ relevant axis labels.
 To further customize the plot, we can change the default font format:
 
 ```{r change-font-family, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
+ggplot(data = variants, aes(x = DP, y = QUAL, color = sample_id)) +
   geom_point(alpha = 0.5) +
-  labs(x = "Base Pair Position",
-       y = "Read Depth (DP)",
-       title = "Read Depth vs. Position") +
-  theme(text = element_text(family = "Bookman"))
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score",
+       title = "Read Depth vs. Quality Score") +
+  theme(text = element_text(family = "mono"))
 ```
 
 ## Faceting
@@ -263,30 +283,33 @@ ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
 **`ggplot2`** has a special technique called *faceting* that allows the user to split one plot into multiple plots (panels) based on a factor (variable) included in the dataset. We will use it to split our mapping quality plot into three panels, one for each sample.
 
 ```{r first-facet, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) +
- geom_point() +
- labs(x = "Base Pair Position",
-      y = "Mapping Quality (MQ)") +
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
+  geom_point(alpha = 0.5) +
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score",
+       title = "Read Depth vs. Quality Score") +
  facet_grid(~ sample_id)
 ```
 
 This looks okay, but it would be easier to read if the plot facets were stacked vertically rather than horizontally. The `facet_grid` geometry allows you to explicitly specify how you want your plots to be arranged via formula notation (`rows ~ columns`; the dot (`.`) indicates every other variable in the data i.e., no faceting on that side of the formula).
 
 ```{r second-facet, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) +
- geom_point() +
- labs(x = "Base Pair Position",
-      y = "Mapping Quality (MQ)") +
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
+  geom_point(alpha = 0.5) +
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score",
+       title = "Read Depth vs. Quality Score") +
  facet_grid(sample_id ~ .)
 ```
 
 Usually plots with white background look more readable when printed.  We can set the background to white using the function [`theme_bw()`](https://ggplot2.tidyverse.org/reference/ggtheme.html). Additionally, you can remove the grid:
 
 ```{r facet-plot-white-bg, purl=FALSE}
-ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) +
-  geom_point() +
-  labs(x = "Base Pair Position",
-       y = "Mapping Quality (MQ)") +
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
+  geom_point(alpha = 0.5) +
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score",
+       title = "Read Depth vs. Quality Score") +
   facet_grid(sample_id ~ .) +
   theme_bw() +
   theme(panel.grid = element_blank())
@@ -297,7 +320,7 @@ ggplot(data = variants, aes(x = POS, y = MQ, color = sample_id)) +
 ## Challenge
 
 Use what you just learned to create a scatter plot of PHRED scaled quality (`QUAL`) over
-position (`POS`) with the samples showing in different colors. Make sure to give your plot
+position (`POS`) with the samples showing in different facets. Make sure to give your plot
 relevant axis labels.
 
 :::::::::::::::  solution
@@ -330,8 +353,8 @@ ggplot(data = variants, aes(x = INDEL, fill = sample_id)) +
 
 ## Challenge
 
-Since we already have the sample\_id labels on the individual plot facets, we don't need the
-legend. Use the help file for `geom_bar` and any other online resources you want to use to
+1) From the previus plot, we realize we don't need the legend since we already have the sample\_id labels on the individual plot facets.
+Use the help file for `geom_bar` and any other online resources you want to use to
 remove the legend from the plot.
 
 :::::::::::::::  solution
@@ -350,7 +373,7 @@ ggplot(data = variants, aes(x = INDEL, color = sample_id)) +
 
 ## Density
 
-We can create density plots using the [`geom_density`](https://ggplot2.tidyverse.org/reference/geom_density.html) geom that shows the distribution of of a variable in the dataset. Let's plot the distribution of `DP`
+We can create density plots using the [`geom_density`](https://ggplot2.tidyverse.org/reference/geom_density.html) geom that shows the distribution of of a variable in the dataset. Let's plot the distribution of `QUAL`
 
 ```{r density, purl=FALSE}
 ggplot(data = variants, aes(x = DP)) +
@@ -363,15 +386,15 @@ This plot tells us that the most of frequent `DP` (read depth) for the variants 
 
 ## Challenge
 
-Use [`geom_density`](https://ggplot2.tidyverse.org/reference/geom_density.html) to plot the distribution of `DP` with a different fill for each sample. Use a white background for the plot.
+Use [`geom_density`](https://ggplot2.tidyverse.org/reference/geom_density.html) to plot the distribution of `QUAL` with a different fill for each sample. Use a white background for the plot.
 
 :::::::::::::::  solution
 
 ## Solution
 
 ```{r density-challenge, purl=FALSE}
-ggplot(data = variants, aes(x = DP, fill = sample_id)) +
-   geom_density(alpha = 0.5) +
+ggplot(data = variants, aes(x = QUAL, fill = sample_id)) +
+   geom_density(alpha = 0.3) +
    theme_bw()
 ```
 
