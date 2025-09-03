@@ -21,7 +21,49 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::  callout
 
+## Tip: Packages in R -- what are they and why do we use them?
+
+Packages are simply collections of functions and/or data that can be used to extend the
+capabilities of R beyond the core functionality that comes with it by default. The default set of functions and packages that come 'in the box' when you install R for the first time on a given computer are called 'base R'. However, one of the major benefits of using an open source programming language is that there are thousands of useful R packages freely available that span all types of statistical analysis, data visualization,
+and more. The main place that these additional R packages are made available is from a website called the Comprehensive R Archive Network ([CRAN](https://cran.r-project.org/)).  When you use the built-in R function `install.packages()`,
+it will look on CRAN for the package and install it on your computer. So, for example, to install packages such as `dplyr` and `ggplot2`
+(which you'll do in the next few lessons), you would use the following command:
+
+
+``` r
+# install a package from CRAN
+install.packages("ggplot2")
+```
+
+``` output
+The following package(s) will be installed:
+- ggplot2 [3.5.2]
+These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
+
+# Installing packages --------------------------------------------------------
+- Installing ggplot2 ...                        OK [linked from cache]
+Successfully installed 1 package in 5.1 milliseconds.
+```
+
+``` r
+install.packages("dplyr")
+```
+
+``` output
+The following package(s) will be installed:
+- dplyr [1.1.4]
+These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
+
+# Installing packages --------------------------------------------------------
+- Installing dplyr ...                          OK [linked from cache]
+Successfully installed 1 package in 4.1 milliseconds.
+```
+
+These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Bracket subsetting is handy, but it can be cumbersome and difficult to read, especially for complicated operations.
 
@@ -108,6 +150,18 @@ The Tidyverse's `readr` package provides its own unique way of loading .csv file
 Now let's load our vcf .csv file using `read_csv()`:
 
 
+``` output
+Rows: 801 Columns: 29
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (7): sample_id, CHROM, REF, ALT, DP4, Indiv, gt_GT_alleles
+dbl (16): POS, QUAL, IDV, IMF, DP, VDB, RPB, MQB, BQB, MQSB, SGB, MQ0F, AC, ...
+num  (1): gt_PL
+lgl  (5): ID, FILTER, INDEL, ICB, HOB
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
 
 ### Taking a quick look at data frames
 
@@ -842,7 +896,8 @@ variants %>%
 
 ## Challenge
 
-- How many mutations are INDELs?
+- Count how many mutations are INDELS vs substitutions (aka not indels). 
+*Hint: INDELS is TRUE/FALSE column in the data.*
 
 :::::::::::::::  solution
 
@@ -967,6 +1022,8 @@ variants_wide %>%
 2 CP000819.1 SRR2584866    10.6
 3 CP000819.1 SRR2589044     9.3
 ```
+
+
 
 ### Resources
 

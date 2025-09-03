@@ -30,8 +30,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 ## Working with spreadsheets (tabular data)
 
 A substantial amount of the data we work with in genomics will be tabular data,
@@ -176,25 +174,6 @@ variants <- read.csv("/home/dcuser/r_data/combined_tidy_vcf.csv")
 
 
 
-One of the first things you should notice is that in the Environment window,
-you have the `variants` object, listed as 801 obs. (observations/rows)
-of 29 variables (columns). Double-clicking on the name of the object will open
-a view of the data in a new tab.
-
-![RStudio data frame view](fig/rstudio_dataframeview.png)
-
-We can also quickly query the dimensions of the variable using `dim()`. You'll see that the first number `801` shows the number of rows, then `29` the number of columns
-
-
-``` r
-## get summary statistics on a data frame
-
-dim(variants)
-```
-
-``` output
-[1] 801  29
-```
 
 ## Summarizing, subsetting, and determining the structure of a data frame.
 
@@ -627,7 +606,7 @@ possible SNP we could generate a plot:
 plot(factor_snps)
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
+<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
 This isn't a particularly pretty example of a plot but it works. We'll be
 learning much more about creating nice, publication-quality graphics later in
@@ -664,55 +643,11 @@ Now we see our plot has be reordered:
 plot(ordered_factor_snps)
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
+<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
 Factors come in handy in many places when using R. Even using more
 sophisticated plotting packages such as ggplot2 will sometimes require you
 to understand how to manipulate factors.
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Tip: Packages in R -- what are they and why do we use them?
-
-Packages are simply collections of functions and/or data that can be used to extend the
-capabilities of R beyond the core functionality that comes with it by default. The default set of functions and packages that come 'in the box' when you install R for the first time on a given computer are called 'base R'. However, one of the major benefits of using an open source programming language is that there are thousands of useful R packages freely available that span all types of statistical analysis, data visualization,
-and more. The main place that these additional R packages are made available is from a website called the Comprehensive R Archive Network ([CRAN](https://cran.r-project.org/)).  When you use the built-in R function `install.packages()`,
-it will look on CRAN for the package and install it on your computer. So, for example, to install packages such as `dplyr` and `ggplot2`
-(which you'll do in the next few lessons), you would use the following command:
-
-
-``` r
-# install a package from CRAN
-install.packages("ggplot2")
-```
-
-``` output
-The following package(s) will be installed:
-- ggplot2 [3.5.2]
-These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
-
-# Installing packages --------------------------------------------------------
-- Installing ggplot2 ...                        OK [linked from cache]
-Successfully installed 1 package in 5.6 milliseconds.
-```
-
-``` r
-install.packages("dplyr")
-```
-
-``` output
-The following package(s) will be installed:
-- dplyr [1.1.4]
-These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
-
-# Installing packages --------------------------------------------------------
-- Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 4.6 milliseconds.
-```
-
-These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson).
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Subsetting data frames
 
@@ -1460,12 +1395,12 @@ First, in the RStudio menu go to **File**, select **Import Dataset**, and
 choose **From Excel...** (notice there are several other options you can
 explore).
 
-![RStudio import menu](fig/rstudio_import_menu.png)
+![RStudio import menu](fig/rstudio_import_menu.png){alt='Menu on where to find the Excel import feature'}
 
 Next, under **File/Url:** click the <KBD>Browse</KBD> button and navigate to the **Ecoli\_metadata.xlsx** file located at `/home/dcuser/dc_sample_data/R`.
 You should now see a preview of the data to be imported:
 
-![RStudio import screen](fig/rstudio_import_screen.png)
+![RStudio import screen](fig/rstudio_import_screen.png){alt='Import screen of Excel file in RStudio showing a data preview and the code used for import'}
 
 Notice that you have the option to change the data type of each variable by
 clicking arrow (drop-down menu) next to each column title. Under **Import

@@ -8,7 +8,7 @@ source: Rmd
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Be able to create the most common R objects including vectors
-- Understand that vectors have modes, which correspond to the type of data they contain
+- Understand that vectors have types, which correspond to the type of data they contain
 - Be able to use arithmetic operators on R objects
 - Be able to retrieve (subset), name, or replace, values from a vector
 - Be able to use logical operators in a subsetting operation
@@ -17,83 +17,13 @@ source: Rmd
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- What will these lessons not cover?
 - What are the basic features of the R language?
 - What are the most common objects in R?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## "The fantastic world of R awaits you" OR "Nobody wants to learn how to use R"
-
-Before we begin this lesson, we want you to be clear on the goal of the workshop
-and these lessons. We believe that every learner can **achieve competency
-with R**. You have reached competency when you find that you are able to
-**use R to handle common analysis challenges in a reasonable amount of time**
-(which includes time needed to look at learning materials, search for answers
-online, and ask colleagues for help). As you spend more time using R (there is
-no substitute for regular use and practice) you will find yourself gaining
-competency and even expertise. The more familiar you get, the more
-complex the analyses you will be able to carry out, with less frustration, and
-in less time - the fantastic world of R awaits you!
-
-## What these lessons will not teach you
-
-Nobody wants to learn how to use R. People want to learn how to use R to analyze
-their own research questions! Ok, maybe some folks learn R for R's sake, but
-these lessons assume that you want to start analyzing genomic data as soon as
-possible. Given this, there are many valuable pieces of information about R
-that we simply won't have time to cover. Hopefully, we will clear the hurdle of
-giving you just enough knowledge to be dangerous, which can be a high bar
-in R! We suggest you look into the additional learning materials in the tip box
-below.
-
-**Here are some R skills we will *not* cover in these lessons**
-
-- How to create and work with R matrices
-- How to create and work with loops and conditional statements, and the "apply"
-  family of functions (which are super useful, read [this blog post to learn more about these functions](https://www.r-bloggers.com/r-tutorial-on-the-apply-family-of-functions/))
-- How to do basic string manipulations (e.g. finding patterns in text using grep, replacing text)
-- How to plot using the default R graphic tools (we *will* cover plot creation, but will do so using the popular plotting package `ggplot2`)
-- How to use advanced R statistical functions
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Tip: Where to learn more
-
-The following are good resources for learning more about R. Some of them
-can be quite technical, but if you are a regular R user you may ultimately
-need this technical knowledge.
-
-- [R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf):
-  By Emmanuel Paradis and a great starting point
-- [The R Manuals](https://cran.r-project.org/manuals.html): Maintained by the
-  R project
-- [R contributed documentation](https://cran.r-project.org/other-docs.html):
-  Also linked to the R project; importantly there are materials available in
-  several languages
-- [R for Data Science](https://r4ds.had.co.nz/): A wonderful collection by
-  noted R educators and developers Garrett Grolemund and Hadley Wickham
-- [Practical Data Science for Stats](https://peerj.com/collections/50-practicaldatascistats/):
-  Not exclusively about R usage, but a nice collection of pre-prints on data science
-  and applications for R
-- [Programming in R Software Carpentry lesson](https://software-carpentry.org/lessons/):
-  There are several Software Carpentry lessons in R to choose from
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Creating objects in R
-
-::::::::::::::::::::::::::::::::::::::::::  prereq
-
-## Reminder
-
-At this point you should be coding along in the "**genomics\_r\_basics.R**"
-script we created in the last episode. Writing your commands in the script
-(and commenting it) will make it easier to record what you did and why.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 What might be called a variable in many languages is called an **object**
 in R.
@@ -104,7 +34,8 @@ in R.
 - a value (e.g. '1')
 - the assignment operator ('\<-')
 
-In your script, "**genomics\_r\_basics.R**", using the R assignment operator '\<-',
+Create a new script, "**genomics\_r\_basics.R**".
+Using the R assignment operator '\<-',
 assign '1' to the object 'first_value' as shown. Remember to leave a comment in the line
 above (using the '#') to explain what you are doing:
 
@@ -115,21 +46,10 @@ above (using the '#') to explain what you are doing:
 first_value <- 1
 ```
 
-Next, run this line of code in your script. You can run a line of code
-by hitting the <KBD>Run</KBD> button that is just above the first line of your
-script in the header of the Source pane or you can use the appropriate shortcut:
-
-- Windows execution shortcut: <KBD>Ctrl</KBD>\+<KBD>Enter</KBD>
-- Mac execution shortcut: <KBD>Cmd(⌘)</KBD>\+<KBD>Enter</KBD>
-
-To run multiple lines of code, you can highlight all the line you wish to run
-and then hit <KBD>Run</KBD> or use the shortcut key combo listed above.
-
 In the RStudio 'Console' you should see:
 
 ```output
 first_value <- 1
->
 ```
 
 The 'Console' will display lines of code run from a script and any outputs or
@@ -240,7 +160,7 @@ but R is "not sure"
 about how to assign the name to "human\_ chr\_number" when the object name we
 want is "human\_chr\_number".
 
-![RStudio script warning](fig/rstudio_script_warning.png)
+![RStudio script warning](fig/rstudio_script_warning.png){alt='Warning which shows with a red x where RStudio identifies a possible syntax error'}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -275,24 +195,24 @@ longer exists.
 Error: object 'gene_name' not found
 ```
 
-## Understanding object data types (classes and modes)
+## Understanding object data types (classes and types)
 
 In R, **every object has several properties**:
 
-- **Length**: How many distinct values are held in that object
-- **Mode**: What is the classification (type) of that object.
+- **Length**: How many values are held in that object
+- **Type**: What is the classification (type) of that object.
 - **Class**: A property assigned to an object that determines how a function
   will operate on it.
 
-We will get to the "length" property later in the lesson. The **"mode" property**
+We will get to the "length" property later in the lesson. The **"type" property**
 **corresponds to the type of data an object represents** and the **"class" property determines how functions will work with that object.**
 
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Tip: Classess vs. modes
+## Tip: Classess vs. types
 
-The difference between modes and classes is a bit **confusing** and the subject of
+The difference between types and classes is a bit **confusing** and the subject of
 several [online discussions](https://stackoverflow.com/questions/35445112/what-is-the-difference-between-mode-and-class-in-r).
 Often, these terms are used interchangeably. Do you really need to know
 the difference?
@@ -302,7 +222,7 @@ of how R works and how to write usable code. However, you might not come across
 a situation where the difference is crucial while you are taking your first steps
 in learning R. However, the overarching concept—**that objects in R have these properties and that you can use functions to check or change them**—is very important!
 
-In this lesson we will mostly stick to **mode** but we will throw in a few
+In this lesson we will mostly stick to **typeof** but we will throw in a few
 examples of the `class()` and `typeof()` so you can see some examples of where
 it may make a difference.
 
@@ -310,15 +230,15 @@ it may make a difference.
 
 
 
-The most common modes you will encounter in R are:
+The common types you will encounter in R are:
 
-| Mode (abbreviation) | Type of data                                                                                                                                                                                                                                |
+| Type (abbreviation) | Type of data                                                                                                                                                                                                                                |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Numeric (num)       | Numbers such floating point/decimals (1.0, 0.5, 3.14), there are also more specific numeric types (dbl - Double, int - Integer). These differences are not relevant for most beginners and pertain to how these values are stored in memory |
 | Character (chr)     | A sequence of letters/numbers in single '' or double " " quotes                                                                                                                                                                             |
 | Logical             | Boolean values - TRUE or FALSE                                                                                                                                                                                                              |
 
-There are a few other modes (i.e. "complex", "raw" etc.) but these
+There are a few other types (i.e. "complex", "raw" etc.) but these
 are the three we will work with in this lesson.
 
 Data types are familiar in many programming languages, but also in natural
@@ -335,10 +255,10 @@ working with R objects.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Exercise: Create objects and check their modes
+## Exercise: Create objects and check their types
 
-Create the following objects in R, then use the `mode()` function to verify
-their modes. Try to guess what the mode will be before you look at the solution
+Create the following objects in R, then use the `typeof()` function to verify
+their types. Try to guess what the type will be before you look at the solution
 
 1. `chromosome_name <- 'chr02'`
 2. `od_600_value <- 0.47`
@@ -355,7 +275,7 @@ their modes. Try to guess what the mode will be before you look at the solution
 
 
 ``` r
-mode(chromosome_name)
+typeof(chromosome_name)
 ```
 
 ``` output
@@ -363,15 +283,15 @@ mode(chromosome_name)
 ```
 
 ``` r
-mode(od_600_value)
+typeof(od_600_value)
 ```
 
 ``` output
-[1] "numeric"
+[1] "double"
 ```
 
 ``` r
-mode(chr_position)
+typeof(chr_position)
 ```
 
 ``` output
@@ -379,7 +299,7 @@ mode(chr_position)
 ```
 
 ``` r
-mode(spock)
+typeof(spock)
 ```
 
 ``` output
@@ -388,7 +308,7 @@ mode(spock)
 
 
 ``` r
-mode(pilot)
+typeof(pilot)
 ```
 
 ``` error
@@ -460,27 +380,17 @@ Error: object 'pilot' not found
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Notice that in the two challenges, `mode()` and `class()` return the same results. This time...
+Notice that in the two challenges, `typeof()` and `class()` return the same results. This time...
 
 Notice from the solution that even if a series of numbers is given as a value
-R will consider them to be in the "character" mode if they are enclosed as
+R will consider them to be in the "character" type if they are enclosed as
 single or double quotes. Also, notice that you cannot take a string of alphanumeric
 characters (e.g. Earhart) and assign as a value for an object. In this case,
 R looks for an object named `Earhart` but since there is no object, no assignment can
-be made. If `Earhart` did exist, then the mode of `pilot` would be whatever
-the mode of `Earhart` was originally. If we want to create an object
+be made. If `Earhart` did exist, then the type of `pilot` would be whatever
+the type of `Earhart` was originally. If we want to create an object
 called `pilot` that was the **name** "Earhart", we need to enclose
 `Earhart` in quotation marks.
-
-
-``` r
-pilot <- "Earhart"
-mode(pilot)
-```
-
-``` output
-[1] "character"
-```
 
 
 ``` r
@@ -494,8 +404,8 @@ typeof(pilot)
 
 ## Mathematical and functional operations on objects
 
-Once an object exists (which by definition also means it has a mode), R can
-appropriately manipulate that object. For example, objects of the numeric modes
+Once an object exists (which by definition also means it has a type), R can
+appropriately manipulate that object. For example, objects of the numeric types
 can be added, multiplied, divided, etc. R provides several mathematical
 (arithmetic) operators including:
 
@@ -587,15 +497,15 @@ multiple values, separate each value with a comma:
 snp_genes <- c("OXTR", "ACTN3", "AR", "OPRM1")
 ```
 
-Vectors always have a **mode** and a **length**.
-You can check these with the `mode()` and `length()` functions respectively.
+Vectors always have a **type** and a **length**.
+You can check these with the `typeof()` and `length()` functions respectively.
 Another useful function that gives both of these pieces of information is the
 `str()` (structure) function.
 
 
 ``` r
-# Check the mode, length, and structure of 'snp_genes'
-mode(snp_genes)
+# Check the type, length, and structure of 'snp_genes'
+typeof(snp_genes)
 ```
 
 ``` output
@@ -765,10 +675,11 @@ snp_genes
 Answer the following questions to test your knowledge of vectors
 
 Which of the following are true of vectors in R?
-A) All vectors have a mode **or** a length  
-B) All vectors have a mode **and** a length  
+
+A) All vectors have a type **or** a length  
+B) All vectors have a type **and** a length  
 C) Vectors may have different lengths  
-D) Items within a vector may be of different modes  
+D) Items within a vector may be of different types  
 E) You can use the `c()` to add one or more items to an existing vector  
 F) You can use the `c()` to add a vector to an existing vector
 
@@ -779,8 +690,8 @@ F) You can use the `c()` to add a vector to an existing vector
 A) False - Vectors have both of these properties  
 B) True  
 C) True  
-D) False - Vectors have only one mode (e.g. numeric, character); all items in  
-a vector must be of this mode.
+D) False - Vectors have only one type (e.g. numeric, character); all items in  
+a vector must be of this type.
 E) True  
 F) True  
 
@@ -956,7 +867,8 @@ return `TRUE FALSE FALSE` since the value `1` is only in the first position of t
 
 ## Review Exercise 1
 
-What data modes are the following vectors?
+What data types are the following vectors?
+
 a. `snps`  
 b. `snp_chromosomes`  
 c. `snp_positions`
@@ -967,7 +879,7 @@ c. `snp_positions`
 
 
 ``` r
-mode(snps)
+typeof(snps)
 ```
 
 ``` output
@@ -975,7 +887,7 @@ mode(snps)
 ```
 
 ``` r
-mode(snp_chromosomes)
+typeof(snp_chromosomes)
 ```
 
 ``` output
@@ -983,11 +895,11 @@ mode(snp_chromosomes)
 ```
 
 ``` r
-mode(snp_positions)
+typeof(snp_positions)
 ```
 
 ``` output
-[1] "numeric"
+[1] "double"
 ```
 
 :::::::::::::::::::::::::
@@ -999,6 +911,7 @@ mode(snp_positions)
 ## Review Exercise 2
 
 Add the following values to the specified vectors:
+
 a. To the `snps` vector add: "rs662799"  
 b. To the `snp_chromosomes` vector add: 11  
 c. To the `snp_positions` vector add: 	116792991
@@ -1131,7 +1044,7 @@ typeof(combined)
 Lists are quite useful in R, but we won't be using them in the genomics lessons.
 That said, you may come across lists in the way that some bioinformatics
 programs may store and/or return data to you. One of the key attributes of a
-list is that, unlike a vector, a list may contain data of more than one mode.
+list is that, unlike a vector, a list may contain data of more than one type.
 Learn more about creating and using lists using this [nice
 tutorial](https://r4ds.had.co.nz/vectors.html#lists). In this one example, we will create
 a named list and show you how to retrieve items from the list.
@@ -1191,7 +1104,7 @@ snp_data$position[1]
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Effectively using R is a journey of months or years. Still, you don't have to be an expert to use R and you can start using and analyzing your data with about a day's worth of training.
-- It is important to understand how data are organized by R in a given object type and how the mode of that type (e.g. numeric, character, logical, etc.) will determine how R will operate on that data.
+- It is important to understand how data are organized by R in a given object type and how the type of that type (e.g. numeric, character, logical, etc.) will determine how R will operate on that data.
 - Working with vectors effectively prepares you for understanding how data are organized in R.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

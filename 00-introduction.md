@@ -1,6 +1,6 @@
 ---
 title: Introducing R and RStudio IDE
-teaching: 30
+teaching: 40
 exercises: 15
 source: Rmd
 ---
@@ -41,14 +41,10 @@ by Ross Ihaka for more info on the subject.
 At more than 20 years old, R is fairly mature and [growing in popularity](https://www.tiobe.com/tiobe-index/r/). However, programming isn't a popularity contest. Here are key advantages of
 analyzing data in R:
 
-<!--
-ADD: To the list of not FOSS, software Hind told me about
--->
-
 - **R is [open source](https://en.wikipedia.org/wiki/Open-source_software)**.
   This means R is free - an advantage if you are at an institution where you
-  have to pay for your own MATLAB or SAS license. Open source, is important to
-  your colleagues in parts of the world where expensive software in
+  have to pay for your own MATLAB, SAS, STATA or PRISM license. Open source, is important to
+  your colleagues in parts of the world where expensive software is
   inaccessible. It also means that R is actively developed by a community (see
   [r-project.org](https://www.r-project.org/)),
   and there are regular updates.
@@ -73,6 +69,67 @@ size of the data set created issues?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+## "The fantastic world of R awaits you" OR "Nobody wants to learn how to use R"
+
+Before we begin this lesson, we want you to be clear on the goal of the workshop
+and these lessons. We believe that every learner can **achieve competency
+with R**. You have reached competency when you find that you are able to
+**use R to handle common analysis challenges in a reasonable amount of time**
+(which includes time needed to look at learning materials, search for answers
+online, and ask colleagues for help). As you spend more time using R (there is
+no substitute for regular use and practice) you will find yourself gaining
+competency and even expertise. The more familiar you get, the more
+complex the analyses you will be able to carry out, with less frustration, and
+in less time - the fantastic world of R awaits you!
+
+## What these lessons will not teach you
+
+Nobody wants to learn how to use R. People want to learn how to use R to analyze
+their own research questions! Ok, maybe some folks learn R for R's sake, but
+these lessons assume that you want to start analyzing genomic data as soon as
+possible. Given this, there are many valuable pieces of information about R
+that we simply won't have time to cover. Hopefully, we will clear the hurdle of
+giving you just enough knowledge to be dangerous, which can be a high bar
+in R! We suggest you look into the additional learning materials in the tip box
+below.
+
+**Here are some R skills we will *not* cover in these lessons**
+
+- How to create and work with R matrices
+- How to create and work with loops and conditional statements, and the "apply"
+  family of functions (which are super useful, read [this blog post to learn more about these functions](https://www.r-bloggers.com/r-tutorial-on-the-apply-family-of-functions/))
+- How to do basic string manipulations (e.g. finding patterns in text using grep, replacing text)
+- How to plot using the default R graphic tools (we *will* cover plot creation, but will do so using the popular plotting package `ggplot2`)
+- How to use advanced R statistical functions
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Tip: Where to learn more
+
+The following are good resources for learning more about R. Some of them
+can be quite technical, but if you are a regular R user you may ultimately
+need this technical knowledge.
+
+- [R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf):
+  By Emmanuel Paradis and a great starting point
+- [The R Manuals](https://cran.r-project.org/manuals.html): Maintained by the
+  R project
+- [R contributed documentation](https://cran.r-project.org/other-docs.html):
+  Also linked to the R project; importantly there are materials available in
+  several languages
+- [R for Data Science](https://r4ds.had.co.nz/): A wonderful collection by
+  noted R educators and developers Garrett Grolemund and Hadley Wickham
+- [Practical Data Science for Stats](https://peerj.com/collections/50-practicaldatascistats/):
+  Not exclusively about R usage, but a nice collection of pre-prints on data science
+  and applications for R
+- [Programming in R Software Carpentry lesson](https://software-carpentry.org/lessons/):
+  There are several Software Carpentry lessons in R to choose from
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
 ## Introducing RStudio
 
 In these lessons, we will be making use of a software called [RStudio](https://www.rstudio.com/products/RStudio/),
@@ -81,13 +138,7 @@ RStudio, like most IDEs, provides a graphical interface to R, making it more
 user-friendly, and providing dozens of useful features. We will introduce
 additional benefits of using RStudio as you cover the lessons.
 
-## Open RStudio
-
-<!--
-ADD: Better wording and intro to open RStudio. Keep the same image
--->
-
-You should now see the RStudio interface:
+This is how the RStudio interface looks like:
 
 <img src="fig/rstudio_session_default.png" alt="rstudio default session" style="width:1000px;"/>
 
@@ -152,7 +203,7 @@ Click the <kbd>File</kbd> menu and select <kbd>New File</kbd> and then
 <kbd>R Script</kbd>. Before we go any further, save your script by clicking the
 save/disk icon that is in the bar above the first line in the script editor, or
 click the <kbd>File</kbd> menu and select <kbd>save</kbd>. In the "Save File"
-window that opens, name your file **"genomics\_r\_basics"**. The new script
+window that opens, name your file **"genomics\_r\_plotting"**. The new script
 **genomics\_r\_basics.R** should appear under "files" in the output pane. By
 convention, R scripts end with the file extension **.R**.
 

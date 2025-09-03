@@ -62,10 +62,6 @@ Five steps are taken to transform FASTQ files to variant calls contained in VCF 
 
 ## How variant calls are stored in VCF files
 
-<!--
-ADD: Modify tables and info for the actual data we will use. As it has more columns than what it says here
--->
-
 VCF files contain variants that were called against a reference genome. These files are slightly more complicated than regular tables you can open using programs like Excel and contain two sections: header and records.
 
 Below you will see the header (which describes the format), the time and date the file was created, the version of bcftools that was used, the command line parameters used, and some additional information:
@@ -119,36 +115,46 @@ CP000819.1      62118   .       A       G       225     .       DP=19;VDB=0.4149
 CP000819.1      64042   .       G       A       225     .       DP=18;VDB=0.451328;SGB=-0.689466;MQSB=1;MQ0F=0;AC=1;AN=1;DP4=0,0,7,9;MQ=60      GT:PL
 ```
 
-The first few columns represent the information we have about a predicted variation.
+We won't be using the VCF files themselves, but instead a clean and tidy version already stored in a CSV file.
+If you are interested, here is the [R script](https://figshare.com/articles/dataset/Data_Carpentry_Genomics_beta_2_0/7726454?file=14632898) that transformed the input VCF files into the CSV output.
 
-| column         | info                                                                                                                                                                                                                                                                                                                                    | 
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CHROM          | contig location where the variation occurs                                                                                                                                                                                                                                                                                              | 
-| POS            | position within the contig where the variation occurs                                                                                                                                                                                                                                                                                   | 
-| ID             | a `.` until we add annotation information                                                                                                                                                                                                                                                                                                                                      | 
-| REF            | reference genotype (forward strand)                                                                                                                                                                                                                                                                                                     | 
-| ALT            | sample genotype (forward strand)                                                                                                                                                                                                                                                                                                        | 
-| QUAL           | Phred-scaled probability that the observed variant exists at this site (higher is better)                                                                                                                                                                                                                                               | 
-| FILTER         | a `.` if no quality filters have been applied, PASS if a filter is passed, or the name of the filters this variant failed                                                                                                                                                                                                                                                                                                                                      | 
+You CSV file we will be using is called "combined_tidy_vcf.csv", and you can [download it here](https://figshare.com/ndownloader/files/14632895).
+It has 801 rows and 29 columns.
+Each of the rows is a single, specific genetic mutation found in the bacteria's DNA.
+Next we will present what each of the columns represent:
 
-In an ideal world, the information in the `QUAL` column would be all we needed to filter out bad variant calls.
-However, in reality we need to filter on multiple other metrics.
+| Variable | Description |
+| :--- | :--- |
+| **sample_id** | The identifier for the specific bacterial sample. |
+| **CHROM** | contig location where the mutation/variation is located. |
+| **POS** | The exact position within the contig where the mutation/variation occurs. |
+| **ID** | A unique identifier for the mutation if it is known (e.g., from a database). |
+| **REF** | The original, **REF**erence DNA letter(s) at that position (forward strand). |
+| **ALT** | The new, **ALT**ernate (mutated) DNA letter(s) (forward strand). |
+| **QUAL** | The main **QUAL**ity score indicating confidence in the mutation call. In detail, Phred-scaled probability that the observed variant exists at this site (higher is better) |
+| **FILTER** | The status of quality-control filters (e.g., `PASS`). |
+| **INDEL** | A flag indicating if the mutation is an **IN**sertion or **DEL**etion (`TRUE`/`FALSE`). |
+| **IDV** | Maximum number of reads supporting an **I**n**d**el **V**ariant. |
+| **IMF** | Maximum **f**raction of reads supporting an **i**ndel. |
+| **DP** | Total read **D**e**p**th; the total number of times the position was sequenced. |
+| **VDB** | A statistical score testing for **V**ariant **D**istance **B**ias. |
+| **RPB** | A statistical score testing for **R**ead **P**osition **B**ias. |
+| **MQB** | A statistical score testing for **M**apping **Q**uality **B**ias. |
+| **BQB** | A statistical score testing for **B**ase **Q**uality **B**ias. |
+| **MQSB** | A statistical score testing for **M**apping **Q**uality vs. **S**trand **B**ias. |
+| **SGB** | A **S**egregation-**B**ased metric used for variant quality. |
+| **MQ0F** | The **f**raction of reads with a **M**apping **Q**uality of **0** (i.e., aligned poorly). |
+| **ICB** | A statistical score for **I**nbreeding **C**oefficient **B**ias. |
+| **HOB** | A statistical score for **B**ias in the number of **HO**mozygotes. |
+| **AC** | **A**llele **C**ount; the number of reads showing the mutated allele. |
+| **AN** | **A**llele **N**umber; the total number of alleles considered. |
+| **DP4** | A four-part breakdown of read depth for reference and alternate alleles. |
+| **MQ** | The average **M**apping **Q**uality across all reads at the site. |
+| **Indiv** | An identifier for the **indiv**idual sample (often the same as `sample_id`). |
+| **gt_PL** | **P**hred-scaled **L**ikelihoods for the possible genotypes. |
+| **gt_GT** | The final **G**eno**t**ype call for the sample (e.g., `0` for original, `1` for mutated). |
+| **gt_GT_alleles** | The human-readable genotype, showing the actual DNA **alleles**. |
 
-The last two columns contain the genotypes and can be tricky to decode.
-
-| column         | info                                                                                                                                                                                                                                                                                                                                    | 
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| FORMAT         | lists in order the metrics presented in the final column                                                                                                                                                                                                                                                                                | 
-| results        | lists the values associated with those metrics in order                                                                                                                                                                                                                                                                                 | 
-
-For our file, the metrics presented are GT:PL:GQ.
-
-| metric         | definition                                                                                                                                                                                                                                                                                                                              | 
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AD, DP         | the depth per allele by sample and coverage                                                                                                                                                                                                                                                                                             | 
-| GT             | the genotype for the sample at this loci. For a diploid organism, the GT field indicates the two alleles carried by the sample, encoded by a 0 for the REF allele, 1 for the first ALT allele, 2 for the second ALT allele, etc. A 0/0 means homozygous reference, 0/1 is heterozygous, and 1/1 is homozygous for the alternate allele. | 
-| PL             | the likelihoods of the given genotypes                                                                                                                                                                                                                                                                                                  | 
-| GQ             | the Phred-scaled confidence for the genotype                                                                                                                                                                                                                                                                                            | 
 
 For more information on VCF files visit The Broad Institute's [VCF guide](https://gatk.broadinstitute.org/hc/en-us/articles/360035531692-VCF-Variant-Call-Format).
 
@@ -166,10 +172,6 @@ This episode was adapted from the Data Carpentry Genomic lessons:
 - [Project organization and management for Genomics](https://datacarpentry.org/organization-genomics/data/)
 - [Data wrangling and processing for genomics](https://datacarpentry.org/wrangling-genomics/04-variant_calling/index.html)
 
-
-<!--
-ADD: Idea. In dplyr, create a column that identifies if INDEL is addition, substitution
--->
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
