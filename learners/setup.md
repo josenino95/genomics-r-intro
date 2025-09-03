@@ -2,21 +2,12 @@
 title: Setup
 ---
 
-This lesson is an additional lesson to [the genomics workshop](https://datacarpentry.org/genomics-workshop/). Below, is a detailed setup instructions for the main workshop which can also be found on [the main setup page](https://datacarpentry.org/genomics-workshop/setup.html). If you are only here for the Intro to R and RStudio for Genomics lesson, and do not wish to work on the cloud, you can go for option B below where you will only need to [download the data files](https://figshare.com/articles/Data_Carpentry_Genomics_beta_2_0/7726454) to your local working directory where you will create the r-project in.
-
-## R Genomics workshop setup directions
-
-For general setup for the genomics lessons, see that page of [the genomics workshop](https://datacarpentry.org/genomics-workshop/).
-
-
+This lesson is an additional lesson to [the genomics workshop](https://datacarpentry.org/genomics-workshop/). If you are only here for the Intro to R and RStudio for Genomics lesson you can go for option B below where you will only need to [download the data files](https://figshare.com/articles/Data_Carpentry_Genomics_beta_2_0/7726454) to your local working directory where you will create the r-project in.
 
 
 ## Installing R
 
-This workshop is designed to be run on pre-imaged Amazon Web Services (AWS)
-instances. With the exception of a spreadsheet program, all of the software and data used in the workshop are hosted on an Amazon. However, it is beneficial to understand how to install both R and RStudio locally (on your own machine).
-
-Typically we suggest you install R for your operating instructions from Comprehensive R Archive Network (CRAN) at [this page](https://cran.r-project.org/).  
+Typically we suggest you install R for your operating system. Instructions from Comprehensive R Archive Network (CRAN) at [this page](https://cran.r-project.org/).  
 
 
 ::::::::::::::::  spoiler
