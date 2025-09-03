@@ -118,11 +118,11 @@
   Intro to R and RStudio for Genomics
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 11%" class="percentage">
-    11%
+<aside class="col-md-12 lesson-progress"><div style="width: 13%" class="percentage">
+    13%
   </div>
   <div class="progress data">
-    <div class="progress-bar data" role="progressbar" style="width: 11%" aria-valuenow="11" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar data" role="progressbar" style="width: 13%" aria-valuenow="13" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -348,7 +348,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction to the example dataset and file type</h1>
-        <p>Last updated on 2025-09-02 |
+        <p>Last updated on 2025-09-03 |
 
         <a href="https://github.com/datacarpentry/genomics-r-intro/edit/main/episodes/02-data-prelude.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -470,9 +470,7 @@ bioinformatics tools that are used:</p>
 <center>
 <img src="fig/variant_calling_workflow.png" alt="variant calling workflow. Sequence reads (FASTQ files), Quality control (FASTQ files), Alignment to Genome (SAM/BAM files), Alignment cleanup (BAM file ready for variant calling), Variant Calling (VCF file)" style="width: 250px;" class="figure"></center>
 </section><section><h2 class="section-heading" id="how-variant-calls-are-stored-in-vcf-files">How variant calls are stored in VCF files<a class="anchor" aria-label="anchor" href="#how-variant-calls-are-stored-in-vcf-files"></a></h2>
-<hr class="half-width"><!--
-ADD: Modify tables and info for the actual data we will use. As it has more columns than what it says here
---><p>VCF files contain variants that were called against a reference
+<hr class="half-width"><p>VCF files contain variants that were called against a reference
 genome. These files are slightly more complicated than regular tables
 you can open using programs like Excel and contain two sections: header
 and records.</p>
@@ -521,52 +519,113 @@ CP000819.1      45277   .       A       G       225     .       DP=15;VDB=0.4709
 CP000819.1      56613   .       C       G       183     .       DP=12;VDB=0.879703;SGB=-0.676189;MQSB=1;MQ0F=0;AC=1;AN=1;DP4=0,0,8,3;MQ=60      GT:PL
 CP000819.1      62118   .       A       G       225     .       DP=19;VDB=0.414981;SGB=-0.691153;MQSB=0.906029;MQ0F=0;AC=1;AN=1;DP4=0,0,8,10;MQ=59
 CP000819.1      64042   .       G       A       225     .       DP=18;VDB=0.451328;SGB=-0.689466;MQSB=1;MQ0F=0;AC=1;AN=1;DP4=0,0,7,9;MQ=60      GT:PL</code></pre>
-<p>The first few columns represent the information we have about a
-predicted variation.</p>
-<table class="table"><colgroup><col width="4%"><col width="95%"></colgroup><thead><tr class="header"><th>column</th>
-<th>info</th>
-</tr></thead><tbody><tr class="odd"><td>CHROM</td>
-<td>contig location where the variation occurs</td>
-</tr><tr class="even"><td>POS</td>
-<td>position within the contig where the variation occurs</td>
-</tr><tr class="odd"><td>ID</td>
-<td>a <code>.</code> until we add annotation information</td>
-</tr><tr class="even"><td>REF</td>
-<td>reference genotype (forward strand)</td>
-</tr><tr class="odd"><td>ALT</td>
-<td>sample genotype (forward strand)</td>
-</tr><tr class="even"><td>QUAL</td>
-<td>Phred-scaled probability that the observed variant exists at this
-site (higher is better)</td>
-</tr><tr class="odd"><td>FILTER</td>
-<td>a <code>.</code> if no quality filters have been applied, PASS if a
-filter is passed, or the name of the filters this variant failed</td>
-</tr></tbody></table><p>In an ideal world, the information in the <code>QUAL</code> column
-would be all we needed to filter out bad variant calls. However, in
-reality we need to filter on multiple other metrics.</p>
-<p>The last two columns contain the genotypes and can be tricky to
-decode.</p>
-<table class="table"><colgroup><col width="4%"><col width="95%"></colgroup><thead><tr class="header"><th>column</th>
-<th>info</th>
-</tr></thead><tbody><tr class="odd"><td>FORMAT</td>
-<td>lists in order the metrics presented in the final column</td>
-</tr><tr class="even"><td>results</td>
-<td>lists the values associated with those metrics in order</td>
-</tr></tbody></table><p>For our file, the metrics presented are GT:PL:GQ.</p>
-<table class="table"><colgroup><col width="4%"><col width="95%"></colgroup><thead><tr class="header"><th>metric</th>
-<th>definition</th>
-</tr></thead><tbody><tr class="odd"><td>AD, DP</td>
-<td>the depth per allele by sample and coverage</td>
-</tr><tr class="even"><td>GT</td>
-<td>the genotype for the sample at this loci. For a diploid organism,
-the GT field indicates the two alleles carried by the sample, encoded by
-a 0 for the REF allele, 1 for the first ALT allele, 2 for the second ALT
-allele, etc. A 0/0 means homozygous reference, 0/1 is heterozygous, and
-1/1 is homozygous for the alternate allele.</td>
-</tr><tr class="odd"><td>PL</td>
-<td>the likelihoods of the given genotypes</td>
-</tr><tr class="even"><td>GQ</td>
-<td>the Phred-scaled confidence for the genotype</td>
+<p>We won’t be using the VCF files themselves, but instead a clean and
+tidy version already stored in a CSV file. If you are interested, here
+is the <a href="https://figshare.com/articles/dataset/Data_Carpentry_Genomics_beta_2_0/7726454?file=14632898" class="external-link">R
+script</a> that transformed the input VCF files into the CSV output.</p>
+<p>You CSV file we will be using is called “combined_tidy_vcf.csv”, and
+you can <a href="https://figshare.com/ndownloader/files/14632895" class="external-link">download it
+here</a>. It has 801 rows and 29 columns. Each of the rows is a single,
+specific genetic mutation found in the bacteria’s DNA. Next we will
+present what each of the columns represent:</p>
+<table class="table"><colgroup><col width="50%"><col width="50%"></colgroup><thead><tr class="header"><th align="left">Variable</th>
+<th align="left">Description</th>
+</tr></thead><tbody><tr class="odd"><td align="left"><strong>sample_id</strong></td>
+<td align="left">The identifier for the specific bacterial sample.</td>
+</tr><tr class="even"><td align="left"><strong>CHROM</strong></td>
+<td align="left">contig location where the mutation/variation is
+located.</td>
+</tr><tr class="odd"><td align="left"><strong>POS</strong></td>
+<td align="left">The exact position within the contig where the
+mutation/variation occurs.</td>
+</tr><tr class="even"><td align="left"><strong>ID</strong></td>
+<td align="left">A unique identifier for the mutation if it is known
+(e.g., from a database).</td>
+</tr><tr class="odd"><td align="left"><strong>REF</strong></td>
+<td align="left">The original, <strong>REF</strong>erence DNA letter(s)
+at that position (forward strand).</td>
+</tr><tr class="even"><td align="left"><strong>ALT</strong></td>
+<td align="left">The new, <strong>ALT</strong>ernate (mutated) DNA
+letter(s) (forward strand).</td>
+</tr><tr class="odd"><td align="left"><strong>QUAL</strong></td>
+<td align="left">The main <strong>QUAL</strong>ity score indicating
+confidence in the mutation call. In detail, Phred-scaled probability
+that the observed variant exists at this site (higher is better)</td>
+</tr><tr class="even"><td align="left"><strong>FILTER</strong></td>
+<td align="left">The status of quality-control filters (e.g.,
+<code>PASS</code>).</td>
+</tr><tr class="odd"><td align="left"><strong>INDEL</strong></td>
+<td align="left">A flag indicating if the mutation is an
+<strong>IN</strong>sertion or <strong>DEL</strong>etion
+(<code>TRUE</code>/<code>FALSE</code>).</td>
+</tr><tr class="even"><td align="left"><strong>IDV</strong></td>
+<td align="left">Maximum number of reads supporting an
+<strong>I</strong>n<strong>d</strong>el <strong>V</strong>ariant.</td>
+</tr><tr class="odd"><td align="left"><strong>IMF</strong></td>
+<td align="left">Maximum <strong>f</strong>raction of reads supporting
+an <strong>i</strong>ndel.</td>
+</tr><tr class="even"><td align="left"><strong>DP</strong></td>
+<td align="left">Total read <strong>D</strong>e<strong>p</strong>th; the
+total number of times the position was sequenced.</td>
+</tr><tr class="odd"><td align="left"><strong>VDB</strong></td>
+<td align="left">A statistical score testing for
+<strong>V</strong>ariant <strong>D</strong>istance
+<strong>B</strong>ias.</td>
+</tr><tr class="even"><td align="left"><strong>RPB</strong></td>
+<td align="left">A statistical score testing for <strong>R</strong>ead
+<strong>P</strong>osition <strong>B</strong>ias.</td>
+</tr><tr class="odd"><td align="left"><strong>MQB</strong></td>
+<td align="left">A statistical score testing for
+<strong>M</strong>apping <strong>Q</strong>uality
+<strong>B</strong>ias.</td>
+</tr><tr class="even"><td align="left"><strong>BQB</strong></td>
+<td align="left">A statistical score testing for <strong>B</strong>ase
+<strong>Q</strong>uality <strong>B</strong>ias.</td>
+</tr><tr class="odd"><td align="left"><strong>MQSB</strong></td>
+<td align="left">A statistical score testing for
+<strong>M</strong>apping <strong>Q</strong>uality
+vs. <strong>S</strong>trand <strong>B</strong>ias.</td>
+</tr><tr class="even"><td align="left"><strong>SGB</strong></td>
+<td align="left">A <strong>S</strong>egregation-<strong>B</strong>ased
+metric used for variant quality.</td>
+</tr><tr class="odd"><td align="left"><strong>MQ0F</strong></td>
+<td align="left">The <strong>f</strong>raction of reads with a
+<strong>M</strong>apping <strong>Q</strong>uality of <strong>0</strong>
+(i.e., aligned poorly).</td>
+</tr><tr class="even"><td align="left"><strong>ICB</strong></td>
+<td align="left">A statistical score for <strong>I</strong>nbreeding
+<strong>C</strong>oefficient <strong>B</strong>ias.</td>
+</tr><tr class="odd"><td align="left"><strong>HOB</strong></td>
+<td align="left">A statistical score for <strong>B</strong>ias in the
+number of <strong>HO</strong>mozygotes.</td>
+</tr><tr class="even"><td align="left"><strong>AC</strong></td>
+<td align="left">
+<strong>A</strong>llele <strong>C</strong>ount; the
+number of reads showing the mutated allele.</td>
+</tr><tr class="odd"><td align="left"><strong>AN</strong></td>
+<td align="left">
+<strong>A</strong>llele <strong>N</strong>umber; the
+total number of alleles considered.</td>
+</tr><tr class="even"><td align="left"><strong>DP4</strong></td>
+<td align="left">A four-part breakdown of read depth for reference and
+alternate alleles.</td>
+</tr><tr class="odd"><td align="left"><strong>MQ</strong></td>
+<td align="left">The average <strong>M</strong>apping
+<strong>Q</strong>uality across all reads at the site.</td>
+</tr><tr class="even"><td align="left"><strong>Indiv</strong></td>
+<td align="left">An identifier for the <strong>indiv</strong>idual
+sample (often the same as <code>sample_id</code>).</td>
+</tr><tr class="odd"><td align="left"><strong>gt_PL</strong></td>
+<td align="left">
+<strong>P</strong>hred-scaled
+<strong>L</strong>ikelihoods for the possible genotypes.</td>
+</tr><tr class="even"><td align="left"><strong>gt_GT</strong></td>
+<td align="left">The final <strong>G</strong>eno<strong>t</strong>ype
+call for the sample (e.g., <code>0</code> for original, <code>1</code>
+for mutated).</td>
+</tr><tr class="odd"><td align="left"><strong>gt_GT_alleles</strong></td>
+<td align="left">The human-readable genotype, showing the actual DNA
+<strong>alleles</strong>.</td>
 </tr></tbody></table><p>For more information on VCF files visit The Broad Institute’s <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035531692-VCF-Variant-Call-Format" class="external-link">VCF
 guide</a>.</p>
 </section><section><h2 class="section-heading" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -582,9 +641,7 @@ Data on EMBL-EBI ENA: <a href="https://www.ebi.ac.uk/ena/data/view/PRJNA295606" 
 organization and management for Genomics</a></li>
 <li><a href="https://datacarpentry.org/wrangling-genomics/04-variant_calling/index.html" class="external-link">Data
 wrangling and processing for genomics</a></li>
-</ul><!--
-ADD: Idea. In dplyr, create a column that identifies if INDEL is addition, substitution
---><div id="keypoints1" class="callout keypoints">
+</ul><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -657,8 +714,8 @@ from FASTQ files.</li>
   "url": "https://datacarpentry.github.io/genomics-r-intro/02-data-prelude.html",
   "identifier": "https://datacarpentry.github.io/genomics-r-intro/02-data-prelude.html",
   "dateCreated": "2018-03-12",
-  "dateModified": "2025-09-02",
-  "datePublished": "2025-09-02"
+  "dateModified": "2025-09-03",
+  "datePublished": "2025-09-03"
 }
 
   </script><script>

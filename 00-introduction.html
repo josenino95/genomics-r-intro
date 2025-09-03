@@ -218,8 +218,10 @@
       <div class="accordion-body">
         <ul><li><a href="#a-brief-history-of-r">A Brief History of R</a></li>
 <li><a href="#advantages-of-using-r">Advantages of using R</a></li>
+<li><a href="#the-fantastic-world-of-r-awaits-you-or-nobody-wants-to-learn-how-to-use-r">“The fantastic world of R awaits you” OR “Nobody wants to learn how
+to use R”</a></li>
+<li><a href="#what-these-lessons-will-not-teach-you">What these lessons will not teach you</a></li>
 <li><a href="#introducing-rstudio">Introducing RStudio</a></li>
-<li><a href="#open-rstudio">Open RStudio</a></li>
 <li><a href="#create-an-rstudio-project">Create an RStudio project</a></li>
 <li><a href="#creating-your-first-r-script">Creating your first R script</a></li>
 <li><a href="#overview-and-customization-of-the-rstudio-layout">Overview and customization of the RStudio layout</a></li>
@@ -354,7 +356,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introducing R and RStudio IDE</h1>
-        <p>Last updated on 2025-09-02 |
+        <p>Last updated on 2025-09-03 |
 
         <a href="https://github.com/datacarpentry/genomics-r-intro/edit/main/episodes/00-introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -411,16 +413,13 @@ deck</a> by Ross Ihaka for more info on the subject.</p>
 <hr class="half-width"><p>At more than 20 years old, R is fairly mature and <a href="https://www.tiobe.com/tiobe-index/r/" class="external-link">growing in popularity</a>.
 However, programming isn’t a popularity contest. Here are key advantages
 of analyzing data in R:</p>
-<!--
-ADD: To the list of not FOSS, software Hind told me about
--->
 <ul><li>
 <strong>R is <a href="https://en.wikipedia.org/wiki/Open-source_software" class="external-link">open
 source</a></strong>. This means R is free - an advantage if you are at
-an institution where you have to pay for your own MATLAB or SAS license.
-Open source, is important to your colleagues in parts of the world where
-expensive software in inaccessible. It also means that R is actively
-developed by a community (see <a href="https://www.r-project.org/" class="external-link">r-project.org</a>), and there are
+an institution where you have to pay for your own MATLAB, SAS, STATA or
+PRISM license. Open source, is important to your colleagues in parts of
+the world where expensive software is inaccessible. It also means that R
+is actively developed by a community (see <a href="https://www.r-project.org/" class="external-link">r-project.org</a>), and there are
 regular updates.</li>
 <li>
 <strong>R is widely used</strong>. Ok, maybe programming is a
@@ -449,16 +448,84 @@ use, or where the size of the data set created issues?</p>
 </div>
 </div>
 </div>
+</section><section><h2 class="section-heading" id="the-fantastic-world-of-r-awaits-you-or-nobody-wants-to-learn-how-to-use-r">“The fantastic world of R awaits you” OR “Nobody wants to learn how
+to use R”<a class="anchor" aria-label="anchor" href="#the-fantastic-world-of-r-awaits-you-or-nobody-wants-to-learn-how-to-use-r"></a></h2>
+<hr class="half-width"><p>Before we begin this lesson, we want you to be clear on the goal of
+the workshop and these lessons. We believe that every learner can
+<strong>achieve competency with R</strong>. You have reached competency
+when you find that you are able to <strong>use R to handle common
+analysis challenges in a reasonable amount of time</strong> (which
+includes time needed to look at learning materials, search for answers
+online, and ask colleagues for help). As you spend more time using R
+(there is no substitute for regular use and practice) you will find
+yourself gaining competency and even expertise. The more familiar you
+get, the more complex the analyses you will be able to carry out, with
+less frustration, and in less time - the fantastic world of R awaits
+you!</p>
+</section><section><h2 class="section-heading" id="what-these-lessons-will-not-teach-you">What these lessons will not teach you<a class="anchor" aria-label="anchor" href="#what-these-lessons-will-not-teach-you"></a></h2>
+<hr class="half-width"><p>Nobody wants to learn how to use R. People want to learn how to use R
+to analyze their own research questions! Ok, maybe some folks learn R
+for R’s sake, but these lessons assume that you want to start analyzing
+genomic data as soon as possible. Given this, there are many valuable
+pieces of information about R that we simply won’t have time to cover.
+Hopefully, we will clear the hurdle of giving you just enough knowledge
+to be dangerous, which can be a high bar in R! We suggest you look into
+the additional learning materials in the tip box below.</p>
+<p><strong>Here are some R skills we will <em>not</em> cover in these
+lessons</strong></p>
+<ul><li>How to create and work with R matrices</li>
+<li>How to create and work with loops and conditional statements, and
+the “apply” family of functions (which are super useful, read <a href="https://www.r-bloggers.com/r-tutorial-on-the-apply-family-of-functions/" class="external-link">this
+blog post to learn more about these functions</a>)</li>
+<li>How to do basic string manipulations (e.g. finding patterns in text
+using grep, replacing text)</li>
+<li>How to plot using the default R graphic tools (we <em>will</em>
+cover plot creation, but will do so using the popular plotting package
+<code>ggplot2</code>)</li>
+<li>How to use advanced R statistical functions</li>
+</ul><div id="tip-where-to-learn-more" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="tip-where-to-learn-more" class="callout-inner">
+<h3 class="callout-title">Tip: Where to learn more</h3>
+<div class="callout-content">
+<p>The following are good resources for learning more about R. Some of
+them can be quite technical, but if you are a regular R user you may
+ultimately need this technical knowledge.</p>
+<ul><li>
+<a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf" class="external-link">R
+for Beginners</a>: By Emmanuel Paradis and a great starting point</li>
+<li>
+<a href="https://cran.r-project.org/manuals.html" class="external-link">The R Manuals</a>:
+Maintained by the R project</li>
+<li>
+<a href="https://cran.r-project.org/other-docs.html" class="external-link">R contributed
+documentation</a>: Also linked to the R project; importantly there are
+materials available in several languages</li>
+<li>
+<a href="https://r4ds.had.co.nz/" class="external-link">R for Data Science</a>: A
+wonderful collection by noted R educators and developers Garrett
+Grolemund and Hadley Wickham</li>
+<li>
+<a href="https://peerj.com/collections/50-practicaldatascistats/" class="external-link">Practical
+Data Science for Stats</a>: Not exclusively about R usage, but a nice
+collection of pre-prints on data science and applications for R</li>
+<li>
+<a href="https://software-carpentry.org/lessons/" class="external-link">Programming in R
+Software Carpentry lesson</a>: There are several Software Carpentry
+lessons in R to choose from</li>
+</ul></div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="introducing-rstudio">Introducing RStudio<a class="anchor" aria-label="anchor" href="#introducing-rstudio"></a></h2>
 <hr class="half-width"><p>In these lessons, we will be making use of a software called <a href="https://www.rstudio.com/products/RStudio/" class="external-link">RStudio</a>, an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment" class="external-link">Integrated
 Development Environment (IDE)</a>. RStudio, like most IDEs, provides a
 graphical interface to R, making it more user-friendly, and providing
 dozens of useful features. We will introduce additional benefits of
 using RStudio as you cover the lessons.</p>
-</section><section><h2 class="section-heading" id="open-rstudio">Open RStudio<a class="anchor" aria-label="anchor" href="#open-rstudio"></a></h2>
-<hr class="half-width"><!--
-ADD: Better wording and intro to open RStudio. Keep the same image
---><p>You should now see the RStudio interface:</p>
+<p>This is how the RStudio interface looks like:</p>
 <figure><img src="fig/rstudio_session_default.png" alt="rstudio default session" style="width:1000px;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="create-an-rstudio-project">Create an RStudio project<a class="anchor" aria-label="anchor" href="#create-an-rstudio-project"></a></h2>
 <hr class="half-width"><p>One of the first benefits we will take advantage of in RStudio is
 something called an <strong>RStudio Project</strong>. An RStudio project
@@ -528,7 +595,7 @@ then <kbd>R Script</kbd>. Before we go any further, save your script by
 clicking the save/disk icon that is in the bar above the first line in
 the script editor, or click the <kbd>File</kbd> menu and select
 <kbd>save</kbd>. In the “Save File” window that opens, name your file
-<strong>“genomics_r_basics”</strong>. The new script
+<strong>“genomics_r_plotting”</strong>. The new script
 <strong>genomics_r_basics.R</strong> should appear under “files” in the
 output pane. By convention, R scripts end with the file extension
 <strong>.R</strong>.</p>
@@ -996,8 +1063,8 @@ easy to find help</li>
   "url": "https://datacarpentry.github.io/genomics-r-intro/00-introduction.html",
   "identifier": "https://datacarpentry.github.io/genomics-r-intro/00-introduction.html",
   "dateCreated": "2018-03-12",
-  "dateModified": "2025-09-02",
-  "datePublished": "2025-09-02"
+  "dateModified": "2025-09-03",
+  "datePublished": "2025-09-03"
 }
 
   </script><script>
