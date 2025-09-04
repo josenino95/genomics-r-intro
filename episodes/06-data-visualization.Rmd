@@ -83,8 +83,13 @@ install.packages("ggplot2")
 
 ## Loading the dataset
 
-```{r load-the-dataset, echo=TRUE, eval=TRUE}
+
+```{r load-the-dataset, echo=TRUE, eval=FALSE}
 variants <- read.csv("https://tinyurl.com/r-sddrc-data")
+```
+
+```{r load-the-dataset-real, echo=FALSE, eval=TRUE}
+variants <- read.csv("data/combined_tidy_vcf.csv")
 ```
 
 One of the first things you should notice is that in the Environment window,
