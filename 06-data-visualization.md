@@ -84,19 +84,12 @@ install.packages("ggplot2")
 ## Loading the dataset
 
 
+
 ``` r
 variants <- read.csv("https://tinyurl.com/r-sddrc-data")
 ```
 
-``` warning
-Warning in file(file, "rt"): cannot open URL
-'https://figshare.com/ndownloader/files/14632895': HTTP status was '403
-Forbidden'
-```
 
-``` error
-Error in file(file, "rt"): cannot open the connection to 'https://tinyurl.com/r-sddrc-data'
-```
 
 One of the first things you should notice is that in the Environment window,
 you have the `variants` object, listed as 801 obs. (observations/rows)
@@ -112,8 +105,37 @@ Explore the *structure* (types of columns and number of rows) of the dataset usi
 str(variants) # Show the structure of the data
 ```
 
-``` error
-Error: object 'variants' not found
+``` output
+'data.frame':	801 obs. of  29 variables:
+ $ sample_id    : chr  "SRR2584863" "SRR2584863" "SRR2584863" "SRR2584863" ...
+ $ CHROM        : chr  "CP000819.1" "CP000819.1" "CP000819.1" "CP000819.1" ...
+ $ POS          : int  9972 263235 281923 433359 473901 648692 1331794 1733343 2103887 2333538 ...
+ $ ID           : logi  NA NA NA NA NA NA ...
+ $ REF          : chr  "T" "G" "G" "CTTTTTTT" ...
+ $ ALT          : chr  "G" "T" "T" "CTTTTTTTT" ...
+ $ QUAL         : num  91 85 217 64 228 210 178 225 56 167 ...
+ $ FILTER       : logi  NA NA NA NA NA NA ...
+ $ INDEL        : logi  FALSE FALSE FALSE TRUE TRUE FALSE ...
+ $ IDV          : int  NA NA NA 12 9 NA NA NA 2 7 ...
+ $ IMF          : num  NA NA NA 1 0.9 ...
+ $ DP           : int  4 6 10 12 10 10 8 11 3 7 ...
+ $ VDB          : num  0.0257 0.0961 0.7741 0.4777 0.6595 ...
+ $ RPB          : num  NA 1 NA NA NA NA NA NA NA NA ...
+ $ MQB          : num  NA 1 NA NA NA NA NA NA NA NA ...
+ $ BQB          : num  NA 1 NA NA NA NA NA NA NA NA ...
+ $ MQSB         : num  NA NA 0.975 1 0.916 ...
+ $ SGB          : num  -0.556 -0.591 -0.662 -0.676 -0.662 ...
+ $ MQ0F         : num  0 0.167 0 0 0 ...
+ $ ICB          : logi  NA NA NA NA NA NA ...
+ $ HOB          : logi  NA NA NA NA NA NA ...
+ $ AC           : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ AN           : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ DP4          : chr  "0,0,0,4" "0,1,0,5" "0,0,4,5" "0,1,3,8" ...
+ $ MQ           : int  60 33 60 60 60 60 60 60 60 60 ...
+ $ Indiv        : chr  "/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam" "/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam" "/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam" "/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam" ...
+ $ gt_PL        : chr  "121,0" "112,0" "247,0" "91,0" ...
+ $ gt_GT        : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ gt_GT_alleles: chr  "G" "T" "T" "CTTTTTTTT" ...
 ```
 
 To run multiple lines of code, you can highlight all the line you wish to run
@@ -126,9 +148,16 @@ Alternatively, we can display the first a few rows (vertically) of the table usi
 head(variants)
 ```
 
-``` error
-Error: object 'variants' not found
-```
+
+
+|sample_id  |CHROM      |    POS|ID |REF      |ALT       | QUAL|FILTER |INDEL | IDV| IMF| DP|       VDB| RPB| MQB| BQB|     MQSB|       SGB|     MQ0F|ICB |HOB | AC| AN|DP4     | MQ|Indiv                                                              |gt_PL | gt_GT|gt_GT_alleles |
+|:----------|:----------|------:|:--|:--------|:---------|----:|:------|:-----|---:|---:|--:|---------:|---:|---:|---:|--------:|---------:|--------:|:---|:---|--:|--:|:-------|--:|:------------------------------------------------------------------|:-----|-----:|:-------------|
+|SRR2584863 |CP000819.1 |   9972|NA |T        |G         |   91|NA     |FALSE |  NA|  NA|  4| 0.0257451|  NA|  NA|  NA|       NA| -0.556411| 0.000000|NA  |NA  |  1|  1|0,0,0,4 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |121,0 |     1|G             |
+|SRR2584863 |CP000819.1 | 263235|NA |G        |T         |   85|NA     |FALSE |  NA|  NA|  6| 0.0961330|   1|   1|   1|       NA| -0.590765| 0.166667|NA  |NA  |  1|  1|0,1,0,5 | 33|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |112,0 |     1|T             |
+|SRR2584863 |CP000819.1 | 281923|NA |G        |T         |  217|NA     |FALSE |  NA|  NA| 10| 0.7740830|  NA|  NA|  NA| 0.974597| -0.662043| 0.000000|NA  |NA  |  1|  1|0,0,4,5 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |247,0 |     1|T             |
+|SRR2584863 |CP000819.1 | 433359|NA |CTTTTTTT |CTTTTTTTT |   64|NA     |TRUE  |  12| 1.0| 12| 0.4777040|  NA|  NA|  NA| 1.000000| -0.676189| 0.000000|NA  |NA  |  1|  1|0,1,3,8 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |91,0  |     1|CTTTTTTTT     |
+|SRR2584863 |CP000819.1 | 473901|NA |CCGC     |CCGCGC    |  228|NA     |TRUE  |   9| 0.9| 10| 0.6595050|  NA|  NA|  NA| 0.916482| -0.662043| 0.000000|NA  |NA  |  1|  1|1,0,2,7 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |255,0 |     1|CCGCGC        |
+|SRR2584863 |CP000819.1 | 648692|NA |C        |T         |  210|NA     |FALSE |  NA|  NA| 10| 0.2680140|  NA|  NA|  NA| 0.916482| -0.670168| 0.000000|NA  |NA  |  1|  1|0,0,7,3 | 60|/home/dcuser/dc_workshop/results/bam/SRR2584863.aligned.sorted.bam |240,0 |     1|T             |
 
 We can also see view our data in a nicely formatted window using the `View()` function, which opens a new tab in our Source pane.
 This will have the same result as clicking the name of our dataset in the Environment pane.
@@ -138,8 +167,12 @@ This will have the same result as clicking the name of our dataset in the Enviro
 View(variants)
 ```
 
+``` warning
+Warning in View(variants): unable to open display
+```
+
 ``` error
-Error: object 'variants' not found
+Error in .External2(C_dataviewer, x, title): unable to start data viewer
 ```
 
 **`ggplot2`** functions like data in the **long** format, i.e., a column for every dimension (variable), and a row for every observation. Well-structured data will save you time when making figures with **`ggplot2`**
@@ -189,9 +222,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL)) +
   geom_point()
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-first-ggplot-1.png" style="display: block; margin: auto;" />
 
 The `+` in the **`ggplot2`** package is particularly useful because it allows you to modify existing `ggplot` objects. This means you can easily set up plot templates and conveniently explore different types of plots, so the above plot can also be generated with code like this:
 
@@ -232,9 +263,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL)) +
   geom_point()
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-create-ggplot-object-1.png" style="display: block; margin: auto;" />
 
 Then, we start modifying this plot to extract more information from it. For instance, we can add transparency (`alpha`) to avoid over-plotting:
 
@@ -244,9 +273,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL)) +
   geom_point(alpha = 0.5)
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-adding-transparency-1.png" style="display: block; margin: auto;" />
 
 We can also add colors for all the points:
 
@@ -256,9 +283,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL)) +
   geom_point(alpha = 0.5, color = "blue")
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-adding-colors-1.png" style="display: block; margin: auto;" />
 
 Or to color each species in the plot differently, you could use a vector as an input to the argument **color**. **`ggplot2`** will provide a different color corresponding to different values in the vector. Here is an example where we color with **`sample_id`**:
 
@@ -268,9 +293,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL, color = sample_id)) +
   geom_point(alpha = 0.5)
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-color-by-sample-1-1.png" style="display: block; margin: auto;" />
 
 To make our plot more readable, we can add axis labels:
 
@@ -282,9 +305,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL, color = sample_id)) +
        y = "Quality Score")
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-add-axis-labels-1.png" style="display: block; margin: auto;" />
 
 To add a *main* title to the plot, we use [the title argument for the `labs()` function](https://ggplot2.tidyverse.org/reference/labs.html):
 
@@ -297,9 +318,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL, color = sample_id)) +
        title = "Read Depth vs. Quality Score")
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-add-main-title-1.png" style="display: block; margin: auto;" />
 
 Now the figure is complete and ready to be exported and saved to a file. This can be achieved easily using [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html), which can write, by default, the most recent generated figure into different formats (e.g., `jpeg`, `png`, `pdf`) according to the file extension. So, for example, to create a pdf version of the above figure with a dimension of $6\times4$ inches:
 
@@ -330,9 +349,7 @@ relevant axis labels.
        y = "Mapping Quality (MQ)")
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-scatter-challenge-1.png" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
@@ -350,9 +367,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL, color = sample_id)) +
   theme(text = element_text(family = "mono"))
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-change-font-family-1.png" style="display: block; margin: auto;" />
 
 ## Faceting
 
@@ -368,9 +383,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL)) +
  facet_grid(~ sample_id)
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-first-facet-1.png" style="display: block; margin: auto;" />
 
 This looks okay, but it would be easier to read if the plot facets were stacked vertically rather than horizontally. The `facet_grid` geometry allows you to explicitly specify how you want your plots to be arranged via formula notation (`rows ~ columns`; the dot (`.`) indicates every other variable in the data i.e., no faceting on that side of the formula).
 
@@ -384,9 +397,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL)) +
  facet_grid(sample_id ~ .)
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-second-facet-1.png" style="display: block; margin: auto;" />
 
 Usually plots with white background look more readable when printed.  We can set the background to white using the function [`theme_bw()`](https://ggplot2.tidyverse.org/reference/ggtheme.html). Additionally, you can remove the grid:
 
@@ -402,9 +413,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL)) +
   theme(panel.grid = element_blank())
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-facet-plot-white-bg-1.png" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -427,9 +436,7 @@ relevant axis labels.
   facet_grid(sample_id ~ .)
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-scatter-challenge-2-1.png" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
@@ -446,9 +453,7 @@ ggplot(data = variants, aes(x = INDEL, fill = sample_id)) +
   facet_grid(sample_id ~ .)
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-barplot-1.png" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -469,9 +474,7 @@ ggplot(data = variants, aes(x = INDEL, color = sample_id)) +
    facet_grid(sample_id ~ .)
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-barplot-challenge-1.png" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
@@ -487,9 +490,7 @@ ggplot(data = variants, aes(x = DP)) +
   geom_density()
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-density-1.png" style="display: block; margin: auto;" />
 
 This plot tells us that the most of frequent `DP` (read depth) for the variants is about 10 reads.
 
@@ -510,9 +511,7 @@ ggplot(data = variants, aes(x = QUAL, fill = sample_id)) +
    theme_bw()
 ```
 
-``` error
-Error: object 'variants' not found
-```
+<img src="fig/06-data-visualization-rendered-density-challenge-1.png" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
