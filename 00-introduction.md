@@ -204,7 +204,7 @@ Click the <kbd>File</kbd> menu and select <kbd>New File</kbd> and then
 save/disk icon that is in the bar above the first line in the script editor, or
 click the <kbd>File</kbd> menu and select <kbd>save</kbd>. In the "Save File"
 window that opens, name your file **"genomics\_r\_plotting"**. The new script
-**genomics\_r\_basics.R** should appear under "files" in the output pane. By
+**genomics\_r\_plotting.R** should appear under "files" in the output pane. By
 convention, R scripts end with the file extension **.R**.
 
 
@@ -269,7 +269,7 @@ running an R Script at the terminal see this [Software Carpentry lesson](https:/
 
 Now that we have covered the more aesthetic aspects of RStudio, we can get to
 work using some commands. We will write, execute, and save the commands we
-learn in our **genomics\_r\_basics.R** script that is loaded in the Source pane.
+learn in our **genomics\_r\_plotting.R** script that is loaded in the Source pane.
 First, lets see what directory we are in. To do so, type the following command
 into the script:
 
