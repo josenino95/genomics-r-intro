@@ -11,8 +11,8 @@ source: Rmd
 - Be able to load a tabular dataset using base R functions
 - Be able to determine the structure of a data frame including its dimensions and the datatypes of variables
 - Be able to subset/retrieve values from a data frame
-- Understand how R may coerce data into different modes
-- Be able to change the mode of an object
+- Understand how R may coerce data into different types
+- Be able to change the type of an object
 - Understand that R uses factors to store and manipulate categorical data
 - Be able to manipulate a factor, including subsetting and reordering
 - Be able to apply an arithmetic function to a data frame
@@ -139,6 +139,11 @@ have time to cover. Look here to get familiar with functions you use
 frequently, you may be surprised at what you find they can do.
 
 
+::::::::::::::::::
+
+::::::::::::::::::::::::::::::::
+
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Tip: Why does ?read.csv open the documentations to read.table?
@@ -153,10 +158,6 @@ but case you run into an unconventional separator you are now equipped with the 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Now, let's read in the file `combined_tidy_vcf.csv` which will be located in
 `/home/dcuser/r_data/`. Call this data `variants`. The
@@ -173,7 +174,7 @@ variants <- read.csv("/home/dcuser/r_data/combined_tidy_vcf.csv")
 
 ```{r, echo=FALSE, eval=TRUE, purl=FALSE}
 ## silently read in CSV file from FigShare
-
+library("ggplot2")
 variants <- read.csv("https://ndownloader.figshare.com/files/14632895")
 ```
 
@@ -233,39 +234,39 @@ Ok, that's a lot up unpack! Some things to notice.
   store whole numbers (i.e. no decimal points ).
 
 
-  :::::::::::::::::::::::::::::::::::::::  challenge
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-  ## Exercise: Revisiting modes and classes
+## Exercise: Revisiting types and classes
 
-  Remember when we said mode and class are sometimes different? If you do, here
-  is a chance to check. What happens when you try the following?
+Remember when we said type and class are sometimes different? If you do, here
+is a chance to check. What happens when you try the following?
 
-  1. `mode(variants)`
-  2. `class(variants)`
+1. `typeof(variants)`
+2. `class(variants)`
 
-  :::::::::::::::  solution
+:::::::::::::::  solution
 
-  ## Solution
-
-
-
-  ```{r, purl=FALSE}
-  mode(variants)
-  ```
+## Solution
 
 
 
-  ```{r, purl=FALSE}
-  class(variants)
-  ```
+```{r, purl=FALSE}
+typeof(variants)
+```
 
-  This result makes sense because `mode()` (which deals with how an object is stored)
-  tells us that `variants` is treated as a **list** in R. A data frame is in some sense a "fancy" list.
-  However, data frames do have some specific properties beyond that of a basic list, so they have their own
-  class (**data.frame**), which is important for functions (and programmers) to know.
-  :::::::::::::::::::::::::
 
-  ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+```{r, purl=FALSE}
+class(variants)
+```
+
+This result makes sense because `typeof()` (which deals with how an object is stored)
+tells us that `variants` is treated as a **list** in R. A data frame is in some sense a "fancy" list.
+However, data frames do have some specific properties beyond that of a basic list, so they have their own
+class (**data.frame**), which is important for functions (and programmers) to know.
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ## Introducing Factors
@@ -284,7 +285,7 @@ to access or extract a column by its name in data frames (or to extract objects 
 ```{r, purl=FALSE}
 ## extract the "ALT" column to a new object
 
-alt_alleles <- subset$ALT
+alt_alleles <- variants$ALT
 ```
 
 Let's look at the first few items in our factor using `head()`:
@@ -296,41 +297,73 @@ head(alt_alleles)
 There are 801 alleles (one for each row). To simplify, lets look at just the
 single-nucleotide alleles (SNPs). 
 
+```{r, purl=FALSE}
+head(alt_alleles)
+```
+
 Let's review some of the vector indexing skills from the last episode that can help:
 
-```{r, purl=FALSE}
-# This will find all matching alleles with the single nucleotide "A" and provide a TRUE/FASE vector
-alt_alleles == "A"
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-# Then, we wrap them into an index to pull all the positions that match this. 
-alt_alleles[alt_alleles == "A"]
+## Exercise: Subsetting our vector of alleles
 
-# If we repeat this for each nucleotide A, T, G, and C, and connect them using `c()`,
-# we can index all the single nucleotide changes.
-snps <- c(alt_alleles[alt_alleles == "A"],
-  alt_alleles[alt_alleles=="T"],
-  alt_alleles[alt_alleles=="G"],
-  alt_alleles[alt_alleles=="C"])
+Use logical subsetting to create a new object, called "snps", which only has single-nucleotide alleles (SNPs) (i.e. with only one letter).
+
+*Hint: Use the `nchar()` function to count the number of letters.*
+*Hint: Remember logical subsetting - object[logical_subset]*
+
+:::::::::::::::  solution
+
+## Solution
+
+Step-by-step. We can get the number of letters in each allele with
+
+```{r, echo = TRUE, eval = FALSE}
+nchar(alt_alleles)
+```
+```{r, echo = FALSE, eval = TRUE}
+nchar(alt_alleles)[1:10]
 ```
 
-This leaves us with a vector of the 701 alternative alleles which were single
-nucleotides. Right now, they are being treated a characters, but we could treat
+Now we can start our subsetting with a logical operator that identifies the values that are equal to 1
+
+```{r, echo = TRUE, eval = FALSE}
+nchar(alt_alleles) == 1
+```
+
+```{r, echo = FALSE, eval = TRUE}
+nchar(alt_alleles)[1:10] == 1
+```
+
+With this vector of logical values, we can subset the values of `alt_alleles` where the condition is TRUE
+
+```{r, echo = TRUE, eval = FALSE}
+alt_alleles[nchar(alt_alleles) == 1]
+```
+
+```{r, echo = FALSE, eval = TRUE}
+alt_alleles[nchar(alt_alleles)[1:10] == 1]
+```
+
+Finally, assign it to the desired variable.
+
+```{r}
+snps <- alt_alleles[nchar(alt_alleles) == 1]
+```
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+This leaves us with a vector of the 481 alternative alleles which were single
+nucleotides. Right now, they are being treated as characters, but we could treat
 them as categories of SNP. Doing this will enable some nice features. For
-example, we can try to generate a plot of this character vector as it is right
-now:
+example, we can try to see a summary of values from our vector.
 
-```{r, purl=FALSE, fig.show="hide"}
-plot(snps)
-```
 
-Whoops! Though the `plot()` function will do its best to give us a quick plot,
-it is unable to do so here. Let's use `str()` to see why this might be:
+Whoops! Not very informative, right?
 
-```{r, purl=FALSE}
-str(snps)
-```
-
-R may not know how to plot a character vector! One way to fix this it to tell R to treat the SNPs
+A better way to represent these values is treat the SNPs
 as categories (i.e. a factor vector); we will create a new object to avoid
 confusion using the `factor()` function:
 
@@ -370,7 +403,7 @@ As you can imagine, factors are already useful when you want to generate a tally
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Tip: treating objects as categories without changing their mode
+## Tip: treating objects as categories without changing their type
 
 You don't have to make an object a factor to get the benefits of treating
 an object as a factor. See what happens when you use the `as.factor()`
@@ -384,53 +417,75 @@ the `table()` function; though sometimes you may need to combine both (i.e.
 ## Plotting and ordering factors
 
 One of the most common uses for factors will be when you plot categorical
-values. For example, suppose we want to know how many of our variants had each
-possible SNP we could generate a plot:
-
-```{r, purl=FALSE}
+values.
+Let's make a bar plot to count the frequency of each SNP
+```{r}
 plot(factor_snps)
 ```
 
-This isn't a particularly pretty example of a plot but it works. We'll be
-learning much more about creating nice, publication-quality graphics later in
-this lesson.
+What if we want to order the categories by frequency?
+Well, we can use the `factor()` function once more, this time with the "levels" argument.
 
-If you recall, factors are ordered alphabetically. That might make sense, but
-categories (e.g., "red", "blue", "green") often do not have an intrinsic order.
-What if we wanted to order our plot according to the numerical value (i.e.,
-in descending order of SNP frequency)? We can enforce an order on our factors:
-
-```{r, purl=FALSE}
-ordered_factor_snps <- factor(factor_snps, levels = names(sort(table(factor_snps))))
+```{r}
+factor_snps_ord <- factor(factor_snps, levels = c("A", "T", "G", "C"))
 ```
 
-Let's deconstruct this from the inside out (you can try each of these commands
-to see why this works):
+And then make our plot again with our ordered factor.
+The x axis is now nicely ordered in descending order.
 
-1. We create a table of `factor_snps` to get the frequency of each SNP:
-  `table(factor_snps)`
-2. We sort this table: `sort(table(factor_snps))`; use the `decreasing =`
-  parameter for this function if you wanted to change from the default of
-  FALSE
-3. Using the `names` function gives us just the character names of the table
-  sorted by frequencies:`names(sort(table(factor_snps)))`
-4. The `factor` function is what allows us to create a factor. We give it the
-  `factor_snps` object as input, and use the `levels=` parameter to enforce the
-  ordering of the levels.
-
-Now we see our plot has be reordered:
-
-```{r, purl=FALSE}
-plot(ordered_factor_snps)
+```{r}
+plot(factor_snps_ord)
 ```
 
-Factors come in handy in many places when using R. Even using more
-sophisticated plotting packages such as ggplot2 will sometimes require you
-to understand how to manipulate factors.
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise
+
+Let's revisit one of our plots from the ggplot section.
+
+```{r facet-plot-white-bg, purl=FALSE}
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
+  geom_point(alpha = 0.5) +
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score",
+       title = "Read Depth vs. Quality Score") +
+  facet_grid(sample_id ~ .) +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+```
+
+It would be nice to have the facets in the order when the samples were taken.
+First, the sample ending in 44 taken in generation 5,000, then the one ending in 63 in generation 15,000, and finally the one ending in 66 in generation 50,000.
+
+Go ahead and make it possible to change the order!
+
+*Hint: To make an entire column of our data frame a factor, you could write something like `data$column <- factor(data$column, levels = c("element_1st", "element_2nd", "element_3rd"`))*
+
+
+:::::::::::::::  solution
+
+```{r new-facet-plot-white-bg, purl=FALSE}
+
+variants$sample_id <- factor(variants$sample_id, levels = c("SRR2589044", "SRR2584863", "SRR2584866"))
+
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
+  geom_point(alpha = 0.5) +
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score",
+       title = "Read Depth vs. Quality Score") +
+  facet_grid(sample_id ~ .) +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## Subsetting data frames
 
-Next, we are going to talk about how you can get specific values from data frames, and where necessary, change the mode of a column of values.
+Next, we are going to talk about how you can get specific values from data frames, and where necessary, change the type of a column of values.
 
 The first thing to remember is that a data frame is two-dimensional (rows and
 columns). Therefore, to select a specific value we will will once again use
@@ -603,14 +658,14 @@ most of these methods apply to other data structures, such as vectors
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Sometimes, it is possible that R will misinterpret the type of data represented
-in a data frame, or store that data in a mode which prevents you from
+in a data frame, or store that data in a type which prevents you from
 operating on the data the way you wish. For example, a long list of gene names
 isn't usually thought of as a categorical variable, the way that your
 experimental condition (e.g. control, treatment) might be. More importantly,
 some R packages you use to analyze your data may expect characters as input,
 not factors. At other times (such as plotting or some statistical analyses) a
 factor may be more appropriate. Ultimately, you should know how to change the
-mode of an object.
+type of an object.
 
 First, its very important to recognize that coercion happens in R all the time.
 This can be a good thing when R gets it right, or a bad thing when the result
@@ -664,7 +719,7 @@ snp_chromosomes_2
 ```
 
 Trouble can really start when we try to coerce a factor. For example, when we
-try to coerce the `factor_snps` vector into a numeric mode
+try to coerce the `factor_snps` vector into a numeric type
 look at the result:
 
 ```{r, purl=FALSE}

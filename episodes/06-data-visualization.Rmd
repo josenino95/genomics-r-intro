@@ -85,7 +85,7 @@ install.packages("ggplot2")
 
 
 ```{r load-the-dataset, echo=TRUE, eval=FALSE}
-variants <- read.csv("https://tinyurl.com/r-sddrc-data")
+variants <- read.csv("https://www.tinyurl.com/r-sddrc-data")
 ```
 
 ```{r load-the-dataset-real, echo=FALSE, eval=TRUE}
@@ -117,7 +117,7 @@ head(variants)
 We can also see view our data in a nicely formatted window using the `View()` function, which opens a new tab in our Source pane.
 This will have the same result as clicking the name of our dataset in the Environment pane.
 
-```{r view-of-the-data}
+```{r view-of-the-data, echo=TRUE, eval=FALSE}
 View(variants)
 ```
 
