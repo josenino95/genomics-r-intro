@@ -353,7 +353,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Visualization with ggplot2</h1>
-        <p>Last updated on 2025-09-04 |
+        <p>Last updated on 2025-09-05 |
 
         <a href="https://github.com/datacarpentry/genomics-r-intro/edit/main/episodes/06-data-visualization.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -492,7 +492,7 @@ install the <code>ggplot2</code> package.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">variants</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"https://tinyurl.com/r-sddrc-data"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">variants</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"https://www.tinyurl.com/r-sddrc-data"</span><span class="op">)</span></span></code></pre>
 </div>
 <p>One of the first things you should notice is that in the Environment
 window, you have the <code>variants</code> object, listed as 801 obs.
@@ -765,16 +765,6 @@ the Environment pane.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">View</span><span class="op">(</span><span class="va">variants</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="warning" tabindex="0"><code>Warning in View(variants): unable to open display</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in .External2(C_dataviewer, x, title): unable to start data viewer</code></pre>
-</div>
 <p><strong><code>ggplot2</code></strong> functions like data in the
 <strong>long</strong> format, i.e., a column for every dimension
 (variable), and a row for every observation. Well-structured data will
@@ -791,14 +781,14 @@ ADD: Somewhere add explanation on how to create a new column with the number of 
 Vignettes
 ADD: Idea. In dplyr, create a column that identifies if INDEL is addition, substitution
 -->
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code></pre>
 </div>
 <ul><li>use the <code>ggplot()</code> function and bind the plot to a
 specific data frame using the <code>data</code> argument</li>
-</ul><div class="codewrapper sourceCode" id="cb11">
+</ul><div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -808,7 +798,7 @@ specific data frame using the <code>data</code> argument</li>
 by selecting the variables to be plotted and specifying how to present
 them in the graph, e.g. as x and y positions or characteristics such as
 size, shape, color, etc.</li>
-</ul><div class="codewrapper sourceCode" id="cb12">
+</ul><div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -830,7 +820,7 @@ for trend lines, time series, etc.</li>
 </ul><p>To add a geom to the plot use the <code>+</code> operator. Because we
 have two continuous variables, let’s use <a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link"><code>geom_point()</code></a>
 (i.e., a scatter plot) first:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -842,7 +832,7 @@ package is particularly useful because it allows you to modify existing
 <code>ggplot</code> objects. This means you can easily set up plot
 templates and conveniently explore different types of plots, so the
 above plot can also be generated with code like this:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -866,7 +856,7 @@ end of the line containing the <em>previous</em> layer. If, instead, the
 <code>+</code> sign is added at the beginning of the line containing the
 new layer, <strong><code>ggplot2</code></strong> will not add the new
 layer and will return an error message.</li>
-</ul><div class="codewrapper sourceCode" id="cb15">
+</ul><div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -882,7 +872,7 @@ layer and will return an error message.</li>
 <hr class="half-width"><p>Building plots with <strong><code>ggplot2</code></strong> is
 typically an iterative process. We start by defining the dataset we’ll
 use, lay out the axes, and choose a geom:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -892,7 +882,7 @@ use, lay out the axes, and choose a geom:</p>
 <figure><img src="fig/06-data-visualization-rendered-create-ggplot-object-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Then, we start modifying this plot to extract more information from
 it. For instance, we can add transparency (<code>alpha</code>) to avoid
 over-plotting:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -900,7 +890,7 @@ over-plotting:</p>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/06-data-visualization-rendered-adding-transparency-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We can also add colors for all the points:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -912,7 +902,7 @@ vector as an input to the argument <strong>color</strong>.
 <strong><code>ggplot2</code></strong> will provide a different color
 corresponding to different values in the vector. Here is an example
 where we color with <strong><code>sample_id</code></strong>:</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -920,7 +910,7 @@ where we color with <strong><code>sample_id</code></strong>:</p>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/06-data-visualization-rendered-color-by-sample-1-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>To make our plot more readable, we can add axis labels:</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -931,7 +921,7 @@ where we color with <strong><code>sample_id</code></strong>:</p>
 </div>
 <figure><img src="fig/06-data-visualization-rendered-add-axis-labels-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>To add a <em>main</em> title to the plot, we use <a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">the title
 argument for the <code>labs()</code> function</a>:</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -947,7 +937,7 @@ which can write, by default, the most recent generated figure into
 different formats (e.g., <code>jpeg</code>, <code>png</code>,
 <code>pdf</code>) according to the file extension. So, for example, to
 create a pdf version of the above figure with a dimension of <span class="math inline">\(6\times4\)</span> inches:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -978,7 +968,7 @@ labels.</p>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -993,7 +983,7 @@ labels.</p>
 </div>
 <p>To further customize the plot, we can change the default font
 format:</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1010,7 +1000,7 @@ format:</p>
 plots (panels) based on a factor (variable) included in the dataset. We
 will use it to split our mapping quality plot into three panels, one for
 each sample.</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1028,7 +1018,7 @@ you want your plots to be arranged via formula notation
 (<code>rows ~ columns</code>; the dot (<code>.</code>) indicates every
 other variable in the data i.e., no faceting on that side of the
 formula).</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1042,7 +1032,7 @@ formula).</p>
 <figure><img src="fig/06-data-visualization-rendered-second-facet-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Usually plots with white background look more readable when printed.
 We can set the background to white using the function <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link"><code>theme_bw()</code></a>.
 Additionally, you can remove the grid:</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1077,7 +1067,7 @@ relevant axis labels.</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1095,7 +1085,7 @@ relevant axis labels.</p>
 <hr class="half-width"><p>We can create barplots using the <a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link"><code>geom_bar</code></a>
 geom. Let’s make a barplot showing the number of variants for each
 sample that are indels.</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1125,7 +1115,7 @@ want to use to remove the legend from the plot.</li>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1141,7 +1131,7 @@ want to use to remove the legend from the plot.</li>
 <hr class="half-width"><p>We can create density plots using the <a href="https://ggplot2.tidyverse.org/reference/geom_density.html" class="external-link"><code>geom_density</code></a>
 geom that shows the distribution of of a variable in the dataset. Let’s
 plot the distribution of <code>QUAL</code></p>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1171,7 +1161,7 @@ each sample. Use a white background for the plot.</p>
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1317,8 +1307,8 @@ book</a>)</li>
   "url": "https://datacarpentry.github.io/genomics-r-intro/06-data-visualization.html",
   "identifier": "https://datacarpentry.github.io/genomics-r-intro/06-data-visualization.html",
   "dateCreated": "2018-03-12",
-  "dateModified": "2025-09-04",
-  "datePublished": "2025-09-04"
+  "dateModified": "2025-09-05",
+  "datePublished": "2025-09-05"
 }
 
   </script><script>

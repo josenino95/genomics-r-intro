@@ -262,6 +262,11 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#what-is-dplyr">What is dplyr?</a></li>
+<li><a href="#selecting-columns-and-filtering-rows">Selecting columns and filtering rows</a></li>
+<li><a href="#pipes">Pipes</a></li>
+<li><a href="#mutate">Mutate</a></li>
+<li><a href="#group_by-and-summarize-functions">group_by() and summarize() functions</a></li>
+<li><a href="#reshaping-data-frames">Reshaping data frames</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -344,7 +349,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling and Analyses with Tidyverse</h1>
-        <p>Last updated on 2025-09-03 |
+        <p>Last updated on 2025-09-05 |
 
         <a href="https://github.com/datacarpentry/genomics-r-intro/edit/main/episodes/05-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -425,7 +430,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 - Installing ggplot2 ...                        OK [linked from cache]
-Successfully installed 1 package in 5.1 milliseconds.</code></pre>
+Successfully installed 1 package in 5.4 milliseconds.</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -442,7 +447,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 - Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 4.1 milliseconds.</code></pre>
+Successfully installed 1 package in 4.4 milliseconds.</code></pre>
 </div>
 <p>These two packages are among the most popular add on packages used in
 R, and they are part of a large set of very useful packages called the
@@ -611,9 +616,8 @@ names, type of vector in the columns, and the first few entries of each
 column. Although what we see is similar to outputs of
 <code>str()</code>, this method gives a cleaner visual output.</p>
 </div>
-<div class="section level3">
-<h3 id="selecting-columns-and-filtering-rows">Selecting columns and filtering rows<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a></h3>
-<p>To select columns of a data frame, use <code>select()</code>. The
+</section><section><h2 class="section-heading" id="selecting-columns-and-filtering-rows">Selecting columns and filtering rows<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a></h2>
+<hr class="half-width"><p>To select columns of a data frame, use <code>select()</code>. The
 first argument to this function is the data frame
 (<code>variants</code>), and the subsequent arguments are the columns to
 keep.</p>
@@ -719,7 +723,7 @@ Note that contains() is not case sensitive.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -772,7 +776,7 @@ code:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Alternative solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1042,7 +1046,7 @@ FALSE, we can use to negation symbol “!”. (e.g. !TRUE == FALSE).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1075,10 +1079,8 @@ FALSE, we can use to negation symbol “!”. (e.g. !TRUE == FALSE).</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section level3">
-<h3 id="pipes">Pipes<a class="anchor" aria-label="anchor" href="#pipes"></a></h3>
-<p>But what if you wanted to select and filter? We can do this with
+</section><section><h2 class="section-heading" id="pipes">Pipes<a class="anchor" aria-label="anchor" href="#pipes"></a></h2>
+<hr class="half-width"><p>But what if you wanted to select and filter? We can do this with
 pipes. Pipes, are a fairly recent addition to R. Pipes let you take the
 output of one function and send it directly to the next, which is useful
 when you need to many things to the same data set. It was possible to do
@@ -1242,7 +1244,7 @@ where the filtered depth (DP) is at least 10. Showing only 5th through
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1271,10 +1273,8 @@ where the filtered depth (DP) is at least 10. Showing only 5th through
 </div>
 </div>
 </div>
-</div>
-<div class="section level3">
-<h3 id="mutate">Mutate<a class="anchor" aria-label="anchor" href="#mutate"></a></h3>
-<p>Frequently you’ll want to create new columns based on the values in
+</section><section><h2 class="section-heading" id="mutate">Mutate<a class="anchor" aria-label="anchor" href="#mutate"></a></h2>
+<hr class="half-width"><p>Frequently you’ll want to create new columns based on the values in
 existing columns, for example to do unit conversions or find the ratio
 of values in two columns. For this we’ll use the <code>dplyr</code>
 function <code>mutate()</code>.</p>
@@ -1333,7 +1333,7 @@ only show those columns.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1365,17 +1365,35 @@ only show those columns.</p>
 </div>
 </div>
 </div>
+<p>We can combine everything we’ve learned until now to make one very
+useful plot.</p>
+<div class="codewrapper sourceCode" id="cb50">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">variants</span> <span class="op">&lt;-</span> <span class="va">variants</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>len_REF2 <span class="op">=</span> <span class="fu">nchar</span><span class="op">(</span><span class="va">REF</span><span class="op">)</span>,</span>
+<span>         len_ALT2 <span class="op">=</span> <span class="fu">nchar</span><span class="op">(</span><span class="va">ALT</span><span class="op">)</span>,</span>
+<span>         change_str <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="op">(</span><span class="va">len_REF2</span> <span class="op">==</span> <span class="va">len_ALT2</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">len_REF2</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>                              <span class="fu">paste</span><span class="op">(</span><span class="va">REF</span>, <span class="st">"-&gt;"</span>, <span class="va">ALT</span><span class="op">)</span>,</span>
+<span>                              <span class="st">"Other"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">variants</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">change_str</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, vjust <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre>
 </div>
-<div class="section level3">
-<h3 id="group_by-and-summarize-functions">group_by() and summarize() functions<a class="anchor" aria-label="anchor" href="#group_by-and-summarize-functions"></a></h3>
-<p>Many data analysis tasks can be approached using the
+<figure><img src="fig/05-dplyr-rendered-unnamed-chunk-24-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="group_by-and-summarize-functions">group_by() and summarize() functions<a class="anchor" aria-label="anchor" href="#group_by-and-summarize-functions"></a></h2>
+<hr class="half-width"><p>Many data analysis tasks can be approached using the
 “split-apply-combine” paradigm: split the data into groups, apply some
 analysis to each group, and then combine the results. <code>dplyr</code>
 makes this very easy through the use of the <code>group_by()</code>
 function, which splits the data into groups.</p>
 <p>We can use <code>group_by()</code> to tally the number of mutations
 detected in each sample using the function <code>tally()</code>:</p>
-<div class="codewrapper sourceCode" id="cb50">
+<div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1396,7 +1414,7 @@ detected in each sample using the function <code>tally()</code>:</p>
 <p>Since counting or tallying values is a common use case for
 <code>group_by()</code>, an alternative function was created to bypasses
 <code>group_by()</code> using the function <code>count()</code>:</p>
-<div class="codewrapper sourceCode" id="cb52">
+<div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1432,9 +1450,9 @@ indels). <em>Hint: INDELS is TRUE/FALSE column in the data.</em>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb54">
+<div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1477,7 +1495,7 @@ easiest way to ignore <code>NA</code> (the missing data) is to use
 <code>na.rm = TRUE</code> (<code>rm</code> stands for remove).</p>
 <p>So to view the mean, median, maximum, and minimum filtered depth
 (<code>DP</code>) for each sample:</p>
-<div class="codewrapper sourceCode" id="cb56">
+<div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1524,17 +1542,15 @@ documentation on grouping</a>.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section level3">
-<h3 id="reshaping-data-frames">Reshaping data frames<a class="anchor" aria-label="anchor" href="#reshaping-data-frames"></a></h3>
-<p>It can sometimes be useful to transform the “long” tidy format, into
+</section><section><h2 class="section-heading" id="reshaping-data-frames">Reshaping data frames<a class="anchor" aria-label="anchor" href="#reshaping-data-frames"></a></h2>
+<hr class="half-width"><p>It can sometimes be useful to transform the “long” tidy format, into
 the wide format. This transformation can be done with the
 <code>pivot_wider()</code> function provided by the <code>tidyr</code>
 package (also part of the <code>tidyverse</code>).</p>
 <p><code>pivot_wider()</code> takes a data frame as the first argument,
 and two arguments: the column name that will become the columns and the
 column name that will become the cells in the wide data.</p>
-<div class="codewrapper sourceCode" id="cb58">
+<div class="codewrapper sourceCode" id="cb59">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1549,7 +1565,7 @@ column name that will become the cells in the wide data.</p>
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'sample_id'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb60">
+<div class="codewrapper sourceCode" id="cb61">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1567,7 +1583,7 @@ column name that will become the cells in the wide data.</p>
 <code>pivot_longer()</code>. We specify the names of the new columns,
 and here add <code>-CHROM</code> as this column shouldn’t be affected by
 the reshaping:</p>
-<div class="codewrapper sourceCode" id="cb62">
+<div class="codewrapper sourceCode" id="cb63">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1583,7 +1599,6 @@ the reshaping:</p>
 1 CP000819.1 SRR2584863    10.4
 2 CP000819.1 SRR2584866    10.6
 3 CP000819.1 SRR2589044     9.3</code></pre>
-</div>
 </div>
 <div class="section level3">
 <h3 id="resources">Resources<a class="anchor" aria-label="anchor" href="#resources"></a></h3>
@@ -1677,8 +1692,8 @@ Reproducible Scientific Analysis</a><a href="#fnref1" class="footnote-back">↩�
   "url": "https://datacarpentry.github.io/genomics-r-intro/05-dplyr.html",
   "identifier": "https://datacarpentry.github.io/genomics-r-intro/05-dplyr.html",
   "dateCreated": "2018-03-12",
-  "dateModified": "2025-09-03",
-  "datePublished": "2025-09-04"
+  "dateModified": "2025-09-05",
+  "datePublished": "2025-09-05"
 }
 
   </script><script>
