@@ -11,8 +11,8 @@ source: Rmd
 - Be able to load a tabular dataset using base R functions
 - Be able to determine the structure of a data frame including its dimensions and the datatypes of variables
 - Be able to subset/retrieve values from a data frame
-- Understand how R may coerce data into different modes
-- Be able to change the mode of an object
+- Understand how R may coerce data into different types
+- Be able to change the type of an object
 - Understand that R uses factors to store and manipulate categorical data
 - Be able to manipulate a factor, including subsetting and reordering
 - Be able to apply an arithmetic function to a data frame
@@ -139,6 +139,11 @@ have time to cover. Look here to get familiar with functions you use
 frequently, you may be surprised at what you find they can do.
 
 
+::::::::::::::::::
+
+::::::::::::::::::::::::::::::::
+
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Tip: Why does ?read.csv open the documentations to read.table?
@@ -153,10 +158,6 @@ but case you run into an unconventional separator you are now equipped with the 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Now, let's read in the file `combined_tidy_vcf.csv` which will be located in
 `/home/dcuser/r_data/`. Call this data `variants`. The
@@ -300,49 +301,49 @@ Ok, that's a lot up unpack! Some things to notice.
   store whole numbers (i.e. no decimal points ).
 
 
-  :::::::::::::::::::::::::::::::::::::::  challenge
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-  ## Exercise: Revisiting modes and classes
+## Exercise: Revisiting types and classes
 
-  Remember when we said mode and class are sometimes different? If you do, here
-  is a chance to check. What happens when you try the following?
+Remember when we said type and class are sometimes different? If you do, here
+is a chance to check. What happens when you try the following?
 
-  1. `mode(variants)`
-  2. `class(variants)`
+1. `typeof(variants)`
+2. `class(variants)`
 
-  :::::::::::::::  solution
+:::::::::::::::  solution
 
-  ## Solution
-
-
-
-  
-  ``` r
-  mode(variants)
-  ```
-  
-  ``` output
-  [1] "list"
-  ```
+## Solution
 
 
 
-  
-  ``` r
-  class(variants)
-  ```
-  
-  ``` output
-  [1] "data.frame"
-  ```
 
-  This result makes sense because `mode()` (which deals with how an object is stored)
-  tells us that `variants` is treated as a **list** in R. A data frame is in some sense a "fancy" list.
-  However, data frames do have some specific properties beyond that of a basic list, so they have their own
-  class (**data.frame**), which is important for functions (and programmers) to know.
-  :::::::::::::::::::::::::
+``` r
+typeof(variants)
+```
 
-  ::::::::::::::::::::::::::::::::::::::::::::::::::
+``` output
+[1] "list"
+```
+
+
+
+
+``` r
+class(variants)
+```
+
+``` output
+[1] "data.frame"
+```
+
+This result makes sense because `typeof()` (which deals with how an object is stored)
+tells us that `variants` is treated as a **list** in R. A data frame is in some sense a "fancy" list.
+However, data frames do have some specific properties beyond that of a basic list, so they have their own
+class (**data.frame**), which is important for functions (and programmers) to know.
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ## Introducing Factors
@@ -362,7 +363,7 @@ to access or extract a column by its name in data frames (or to extract objects 
 ``` r
 ## extract the "ALT" column to a new object
 
-alt_alleles <- subset$ALT
+alt_alleles <- variants$ALT
 ```
 
 Let's look at the first few items in our factor using `head()`:
@@ -379,153 +380,181 @@ head(alt_alleles)
 There are 801 alleles (one for each row). To simplify, lets look at just the
 single-nucleotide alleles (SNPs). 
 
+
+``` r
+head(alt_alleles)
+```
+
+``` output
+[1] "G"         "T"         "T"         "CTTTTTTTT" "CCGCGC"    "T"        
+```
+
 Let's review some of the vector indexing skills from the last episode that can help:
 
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise: Subsetting our vector of alleles
+
+Use logical subsetting to create a new object, called "snps", which only has single-nucleotide alleles (SNPs) (i.e. with only one letter).
+
+*Hint: Use the `nchar()` function to count the number of letters.*
+*Hint: Remember logical subsetting - object[logical_subset]*
+
+:::::::::::::::  solution
+
+## Solution
+
+Step-by-step. We can get the number of letters in each allele with
+
 
 ``` r
-# This will find all matching alleles with the single nucleotide "A" and provide a TRUE/FASE vector
-alt_alleles == "A"
+nchar(alt_alleles)
 ```
 
 ``` output
-  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
- [13] FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [25] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
- [37]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE
- [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE
- [73] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [85] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [97] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[109] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[121] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[157] FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-[169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[181] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-[193]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[205] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
-[217] FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-[229] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
-[241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[253] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE
-[265] FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[277]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE
-[289] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE
-[301] FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
-[313] FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE
-[325] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE
-[337] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-[349] FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE
-[361] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE
-[373] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE
-[385] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE
-[397]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE
-[409] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE
-[421] FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE
-[433]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE
-[445]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE
-[457]  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
-[469]  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE
-[481] FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[493]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE
-[505]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE
-[517] FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
-[529] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE
-[541]  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
-[553] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE
-[565] FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE
-[577] FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-[589] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE
-[601] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-[613] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE
-[625]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE
-[637] FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE
-[649]  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-[661] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE
-[673]  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[685] FALSE  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE
-[697]  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-[709] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-[721] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
-[733]  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE
-[745] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
-[757] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
-[769] FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE
-[781] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-[793]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [1]  1  1  1  9  6  1  1  1 56  3
 ```
 
+Now we can start our subsetting with a logical operator that identifies the values that are equal to 1
+
+
 ``` r
-# Then, we wrap them into an index to pull all the positions that match this. 
-alt_alleles[alt_alleles == "A"]
+nchar(alt_alleles) == 1
 ```
+
 
 ``` output
-  [1] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
- [19] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
- [37] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
- [55] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
- [73] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
- [91] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
-[109] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
-[127] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
-[145] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
-[163] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
-[181] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
-[199] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
+ [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE
 ```
+
+With this vector of logical values, we can subset the values of `alt_alleles` where the condition is TRUE
+
 
 ``` r
-# If we repeat this for each nucleotide A, T, G, and C, and connect them using `c()`,
-# we can index all the single nucleotide changes.
-snps <- c(alt_alleles[alt_alleles == "A"],
-  alt_alleles[alt_alleles=="T"],
-  alt_alleles[alt_alleles=="G"],
-  alt_alleles[alt_alleles=="C"])
+alt_alleles[nchar(alt_alleles) == 1]
 ```
 
-This leaves us with a vector of the 701 alternative alleles which were single
-nucleotides. Right now, they are being treated a characters, but we could treat
+
+``` output
+  [1] "G"            "T"            "T"            "T"            "A"           
+  [6] "A"            "C"            "C"            "T"            "C"           
+ [11] "A"            "G"            "T"            "G"            "C"           
+ [16] "T"            "G"            "G"            "T"            "G"           
+ [21] "G"            "G"            "A"            "T"            "G"           
+ [26] "G"            "T"            "G"            "C"            "G"           
+ [31] "GTTTTTTTT"    "G"            "G"            "GA"           "T"           
+ [36] "T"            "CTTTTTTTTT"   "G"            "T"            "C"           
+ [41] "T"            "A"            "T"            "T"            "TGGGGGGGGG"  
+ [46] "T"            "T"            "C"            "TGGGGGGG"     "G"           
+ [51] "G"            "A"            "G"            "T"            "T"           
+ [56] "G"            "T"            "G"            "T"            "CAAAAAAAA"   
+ [61] "A"            "CCGCGC"       "T"            "T"            "G"           
+ [66] "T"            "G"            "A"            "T"            "T"           
+ [71] "AGGGGGGG"     "G"            "T"            "T"            "T"           
+ [76] "G"            "G"            "G"            "GTTTTTT"      "C"           
+ [81] "T"            "C"            "T"            "C"            "T"           
+ [86] "T"            "T"            "G"            "T"            "T"           
+ [91] "C"            "T"            "G"            "G"            "C"           
+ [96] "T"            "TGGGGGG"      "G"            "A"            "G"           
+[101] "C"            "T"            "T"            "T"            "TGGGGGGGG"   
+[106] "G"            "AGGGGGGG"     "G"            "ACCCCCCCC"    "T"           
+[111] "T"            "C"            "A"            "T"            "G"           
+[116] "G"            "A"            "G"            "AGGGGGG"      "GTTTTTTTTTT" 
+[121] "T"            "T"            "GCCCCCCCC"    "T"            "C"           
+[126] "G"            "T"            "T"            "T"            "G"           
+[131] "G"            "T"            "C"            "G"            "A"           
+[136] "G"            "T"            "G"            "T"            "G"           
+[141] "TGGGGGGG"     "G"            "T"            "TCCCCCCCCC"   "T"           
+[146] "C"            "G"            "G"            "T"            "TCCCCCC"     
+[151] "G"            "G"            "T"            "T"            "T"           
+[156] "A"            "A"            "G"            "T"            "A"           
+[161] "A"            "G"            "GCCCCCCC"     "C"            "G"           
+[166] "AGGGGGG"      "A"            "ATTTTTTT"     "G"            "T"           
+[171] "T"            "T"            "G"            "A"            "G"           
+[176] "T"            "C"            "T"            "A"            "A"           
+[181] "AT"           "A"            "T"            "C"            "T"           
+[186] "TCCCCCCC"     "T"            "A"            "C"            "CATGATGATGAT"
+[191] "A"            "CGGGGGGG"     "C"            "C"            "A"           
+[196] "A"            "A"            "A"            "A"            "TGGGGGGGG"   
+[201] "A"            "A"            "G"            "ACCCCC"       "T"           
+[206] "A"            "CAAAAAAA"     "GCCCCCC"      "T"            "CAAAAAAA"    
+[211] "A"            "A"            "CTTTTTT"      "C"            "G"           
+[216] "A"            "GCCCCCCC"     "C"            "G"            "A"           
+[221] "A"            "CAAAAAAAA"    "GCCCCCC"      "C"            "G"           
+[226] "A"            "C"            "A"            "A"            "T"           
+[231] "CAAAAAAAA"    "C"            "C"            "A"            "TCCCCCC"     
+[236] "A"            "C"            "A"            "A"            "T"           
+[241] "A"            "T"            "TCCCCCCCCCC"  "TAAA"         "G"           
+[246] "A"            "G"            "GCCCCCC"      "T"            "T"           
+[251] "T"            "A"            "T"            "A"            "C"           
+[256] "CAAAAAAA"     "A"            "C"            "G"            "GTTTTTTT"    
+[261] "A"            "T"            "C"            "G"            "A"           
+[266] "G"            "GCCCCCC"      "A"            "A"            "A"           
+[271] "A"            "A"            "GCCCCC"       "A"            "A"           
+[276] "A"            "C"            "A"            "G"            "A"           
+[281] "A"            "A"            "C"            "T"            "A"           
+[286] "A"            "C"            "AGGGGGGGG"    "T"            "C"           
+[291] "A"            "C"            "C"            "C"            "T"           
+[296] "T"            "A"            "T"            "A"            "A"           
+[301] "T"            "C"            "A"            "A"            "A"           
+[306] "A"            "C"            "A"            "G"            "C"           
+[311] "CAAAAAAAAAA"  "G"            "A"            "T"            "G"           
+[316] "T"            "A"            "G"            "A"            "T"           
+[321] "C"            "G"            "A"            "A"            "A"           
+[326] "C"            "T"            "A"            "A"            "A"           
+[331] "C"            "C"            "C"            "C"            "A"           
+[336] "A"            "G"            "A"            "A"            "A"           
+[341] "G"            "A"            "T"            "A"            "A"           
+[346] "A"            "C"            "G"            "C"            "A"           
+[351] "C"            "C"            "C"            "GCCCCCC"      "G"           
+[356] "GTTTCGCT"     "T"            "A"            "C"            "C"           
+[361] "C"            "C"            "T"            "C"            "A"           
+[366] "C"            "T"            "C"            "G"            "GCCCCCCC"    
+[371] "T"            "A"            "G"            "A"            "A"           
+[376] "A"            "TCCCCCCC"     "T"            "G"            "A"           
+[381] "A"            "T"            "C"            "T"            "A"           
+[386] "A"            "C"            "G"            "C"            "T"           
+[391] "A"            "C"            "G"            "C"            "C"           
+[396] "T"            "G"            "C"            "G"            "A"           
+[401] "A"            "C"            "T"            "C"            "A"           
+[406] "G"            "A"            "C"            "T"            "C"           
+[411] "C"            "A"            "A"            "T"            "A"           
+[416] "A"            "T"            "A"            "A"            "C"           
+[421] "A"            "A"            "C"            "C"            "T"           
+[426] "T"            "T"            "C"            "A"            "T"           
+[431] "T"            "T"            "C"            "G"            "GTTTTTTTTT"  
+[436] "T"            "G"            "A"            "T"            "G"           
+[441] "A"            "G"            "C"            "A"            "A"           
+[446] "T"            "A"            "T"            "C"            "T"           
+[451] "G"            "T"            "G"            "A"            "G"           
+[456] "G"            "T"            "ACCCCC"       "T"            "A"           
+[461] "T"            "G"            "T"            "T"            "T"           
+[466] "C"            "C"            "T"            "T"            "G"           
+[471] "T"            "A"            "C"            "T"            "T"           
+[476] "T"            "A"            "T"            "G"            "AGG"         
+[481] "T"           
+```
+
+Finally, assign it to the desired variable.
+
+
+``` r
+snps <- alt_alleles[nchar(alt_alleles) == 1]
+```
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+This leaves us with a vector of the 481 alternative alleles which were single
+nucleotides. Right now, they are being treated as characters, but we could treat
 them as categories of SNP. Doing this will enable some nice features. For
-example, we can try to generate a plot of this character vector as it is right
-now:
+example, we can try to see a summary of values from our vector.
 
 
-``` r
-plot(snps)
-```
+Whoops! Not very informative, right?
 
-``` warning
-Warning in xy.coords(x, y, xlabel, ylabel, log): NAs introduced by coercion
-```
-
-``` warning
-Warning in min(x): no non-missing arguments to min; returning Inf
-```
-
-``` warning
-Warning in max(x): no non-missing arguments to max; returning -Inf
-```
-
-``` error
-Error in plot.window(...): need finite 'ylim' values
-```
-
-Whoops! Though the `plot()` function will do its best to give us a quick plot,
-it is unable to do so here. Let's use `str()` to see why this might be:
-
-
-``` r
-str(snps)
-```
-
-``` output
- chr [1:707] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" ...
-```
-
-R may not know how to plot a character vector! One way to fix this it to tell R to treat the SNPs
+A better way to represent these values is treat the SNPs
 as categories (i.e. a factor vector); we will create a new object to avoid
 confusion using the `factor()` function:
 
@@ -542,7 +571,7 @@ str(factor_snps)
 ```
 
 ``` output
- Factor w/ 4 levels "A","C","G","T": 1 1 1 1 1 1 1 1 1 1 ...
+ Factor w/ 4 levels "A","C","G","T": 3 4 4 4 1 1 2 2 4 4 ...
 ```
 
 What we get back are the categories ("A","C","G","T") in our factor; these are
@@ -584,7 +613,7 @@ As you can imagine, factors are already useful when you want to generate a tally
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Tip: treating objects as categories without changing their mode
+## Tip: treating objects as categories without changing their type
 
 You don't have to make an object a factor to get the benefits of treating
 an object as a factor. See what happens when you use the `as.factor()`
@@ -598,60 +627,87 @@ the `table()` function; though sometimes you may need to combine both (i.e.
 ## Plotting and ordering factors
 
 One of the most common uses for factors will be when you plot categorical
-values. For example, suppose we want to know how many of our variants had each
-possible SNP we could generate a plot:
-
+values.
+Let's make a bar plot to count the frequency of each SNP
 
 ``` r
 plot(factor_snps)
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
 
-This isn't a particularly pretty example of a plot but it works. We'll be
-learning much more about creating nice, publication-quality graphics later in
-this lesson.
-
-If you recall, factors are ordered alphabetically. That might make sense, but
-categories (e.g., "red", "blue", "green") often do not have an intrinsic order.
-What if we wanted to order our plot according to the numerical value (i.e.,
-in descending order of SNP frequency)? We can enforce an order on our factors:
+What if we want to order the categories by frequency?
+Well, we can use the `factor()` function once more, this time with the "levels" argument.
 
 
 ``` r
-ordered_factor_snps <- factor(factor_snps, levels = names(sort(table(factor_snps))))
+factor_snps_ord <- factor(factor_snps, levels = c("A", "T", "G", "C"))
 ```
 
-Let's deconstruct this from the inside out (you can try each of these commands
-to see why this works):
-
-1. We create a table of `factor_snps` to get the frequency of each SNP:
-  `table(factor_snps)`
-2. We sort this table: `sort(table(factor_snps))`; use the `decreasing =`
-  parameter for this function if you wanted to change from the default of
-  FALSE
-3. Using the `names` function gives us just the character names of the table
-  sorted by frequencies:`names(sort(table(factor_snps)))`
-4. The `factor` function is what allows us to create a factor. We give it the
-  `factor_snps` object as input, and use the `levels=` parameter to enforce the
-  ordering of the levels.
-
-Now we see our plot has be reordered:
+And then make our plot again with our ordered factor.
+The x axis is now nicely ordered in descending order.
 
 
 ``` r
-plot(ordered_factor_snps)
+plot(factor_snps_ord)
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
+<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
 
-Factors come in handy in many places when using R. Even using more
-sophisticated plotting packages such as ggplot2 will sometimes require you
-to understand how to manipulate factors.
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise
+
+Let's revisit one of our plots from the ggplot section.
+
+
+``` r
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
+  geom_point(alpha = 0.5) +
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score",
+       title = "Read Depth vs. Quality Score") +
+  facet_grid(sample_id ~ .) +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+```
+
+<img src="fig/03-basics-factors-dataframes-rendered-facet-plot-white-bg-1.png" style="display: block; margin: auto;" />
+
+It would be nice to have the facets in the order when the samples were taken.
+First, the sample ending in 44 taken in generation 5,000, then the one ending in 63 in generation 15,000, and finally the one ending in 66 in generation 50,000.
+
+Go ahead and make it possible to change the order!
+
+*Hint: To make an entire column of our data frame a factor, you could write something like `data$column <- factor(data$column, levels = c("element_1st", "element_2nd", "element_3rd"`))*
+
+
+:::::::::::::::  solution
+
+
+``` r
+variants$sample_id <- factor(variants$sample_id, levels = c("SRR2589044", "SRR2584863", "SRR2584866"))
+
+ggplot(data = variants, aes(x = DP, y = QUAL)) +
+  geom_point(alpha = 0.5) +
+  labs(x = "Read Depth (DP)",
+       y = "Quality Score",
+       title = "Read Depth vs. Quality Score") +
+  facet_grid(sample_id ~ .) +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+```
+
+<img src="fig/03-basics-factors-dataframes-rendered-new-facet-plot-white-bg-1.png" style="display: block; margin: auto;" />
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## Subsetting data frames
 
-Next, we are going to talk about how you can get specific values from data frames, and where necessary, change the mode of a column of values.
+Next, we are going to talk about how you can get specific values from data frames, and where necessary, change the type of a column of values.
 
 The first thing to remember is that a data frame is two-dimensional (rows and
 columns). Therefore, to select a specific value we will will once again use
@@ -700,7 +756,8 @@ variants[1, 1]
 ```
 
 ``` output
-[1] "SRR2584863"
+[1] SRR2584863
+Levels: SRR2589044 SRR2584863 SRR2584866
 ```
 
 b.
@@ -790,7 +847,8 @@ variants[1:4, 1]
 ```
 
 ``` output
-[1] "SRR2584863" "SRR2584863" "SRR2584863" "SRR2584863"
+[1] SRR2584863 SRR2584863 SRR2584863 SRR2584863
+Levels: SRR2589044 SRR2584863 SRR2584866
 ```
 
 g.
@@ -834,8 +892,8 @@ variants[, c("sample_id")]
 
 
 ``` output
-[1] "SRR2584863" "SRR2584863" "SRR2584863" "SRR2584863" "SRR2584863"
-[6] "SRR2584863"
+[1] SRR2584863 SRR2584863 SRR2584863 SRR2584863 SRR2584863 SRR2584863
+Levels: SRR2589044 SRR2584863 SRR2584866
 ```
 
 i.
@@ -923,8 +981,8 @@ variants$sample_id
 
 
 ``` output
-[1] "SRR2584863" "SRR2584863" "SRR2584863" "SRR2584863" "SRR2584863"
-[6] "SRR2584863"
+[1] SRR2584863 SRR2584863 SRR2584863 SRR2584863 SRR2584863 SRR2584863
+Levels: SRR2589044 SRR2584863 SRR2584866
 ```
 
 l.
@@ -1012,14 +1070,14 @@ summary(SRR2584863_variants)
 ```
 
 ``` output
-  sample_id            CHROM                POS             ID         
- Length:25          Length:25          Min.   :   9972   Mode:logical  
- Class :character   Class :character   1st Qu.:1331794   NA's:25       
- Mode  :character   Mode  :character   Median :2618472                 
-                                       Mean   :2464989                 
-                                       3rd Qu.:3488669                 
-                                       Max.   :4616538                 
-                                                                       
+      sample_id     CHROM                POS             ID         
+ SRR2589044: 0   Length:25          Min.   :   9972   Mode:logical  
+ SRR2584863:25   Class :character   1st Qu.:1331794   NA's:25       
+ SRR2584866: 0   Mode  :character   Median :2618472                 
+                                    Mean   :2464989                 
+                                    3rd Qu.:3488669                 
+                                    Max.   :4616538                 
+                                                                    
      REF                ALT                 QUAL         FILTER       
  Length:25          Length:25          Min.   : 31.89   Mode:logical  
  Class :character   Class :character   1st Qu.:104.00   NA's:25       
@@ -1083,14 +1141,14 @@ most of these methods apply to other data structures, such as vectors
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Sometimes, it is possible that R will misinterpret the type of data represented
-in a data frame, or store that data in a mode which prevents you from
+in a data frame, or store that data in a type which prevents you from
 operating on the data the way you wish. For example, a long list of gene names
 isn't usually thought of as a categorical variable, the way that your
 experimental condition (e.g. control, treatment) might be. More importantly,
 some R packages you use to analyze your data may expect characters as input,
 not factors. At other times (such as plotting or some statistical analyses) a
 factor may be more appropriate. Ultimately, you should know how to change the
-mode of an object.
+type of an object.
 
 First, its very important to recognize that coercion happens in R all the time.
 This can be a good thing when R gets it right, or a bad thing when the result
@@ -1195,7 +1253,7 @@ snp_chromosomes_2
 ```
 
 Trouble can really start when we try to coerce a factor. For example, when we
-try to coerce the `factor_snps` vector into a numeric mode
+try to coerce the `factor_snps` vector into a numeric type
 look at the result:
 
 
@@ -1204,26 +1262,26 @@ as.numeric(factor_snps)
 ```
 
 ``` output
-  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
- [38] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
- [75] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-[112] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-[149] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-[186] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 4 4 4 4 4 4
-[223] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
-[260] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
-[297] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
-[334] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
-[371] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
-[408] 4 4 4 4 4 4 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-[445] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-[482] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-[519] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-[556] 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-[593] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-[630] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-[667] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-[704] 2 2 2 2
+  [1] 3 4 4 4 1 1 2 2 4 4 1 2 1 3 2 4 3 2 4 2 4 3 3 3 1 4 3 3 3 3 3 1 4 3 2 3 3
+ [38] 4 1 1 3 2 3 2 3 3 4 4 4 4 4 3 4 2 4 1 1 2 4 4 1 4 4 4 2 2 3 3 4 4 1 3 4 2
+ [75] 4 4 3 4 4 2 3 4 3 4 1 4 3 4 4 3 4 3 3 3 1 4 4 3 4 3 4 4 4 4 1 4 3 3 3 4 4
+[112] 2 4 3 4 2 4 2 4 3 4 4 4 4 4 3 4 4 2 3 2 4 3 4 3 3 2 4 1 4 3 1 4 2 3 2 4 4
+[149] 4 4 4 4 4 3 3 2 2 4 4 4 3 2 1 4 4 3 3 1 4 3 3 3 4 4 4 3 4 2 3 3 4 4 4 4 1
+[186] 3 3 4 1 3 2 3 1 4 3 3 4 3 4 4 4 3 4 3 3 4 1 4 4 2 3 3 4 3 4 3 3 3 3 4 2 3
+[223] 4 4 1 4 1 1 3 4 4 3 1 1 3 4 4 2 3 1 2 4 3 4 4 1 4 4 3 1 4 3 3 4 2 4 1 4 1
+[260] 1 4 1 4 1 4 2 4 4 1 4 1 2 4 4 1 1 1 2 2 1 2 1 1 1 1 1 1 1 2 4 1 3 1 4 4 1
+[297] 3 3 4 3 1 1 1 1 2 2 3 1 2 2 2 3 1 1 1 1 1 2 3 2 1 2 1 3 3 1 4 1 4 2 2 1 2
+[334] 1 1 2 4 3 1 1 4 1 1 1 4 1 1 3 1 4 3 3 4 1 4 4 1 1 4 1 2 1 1 1 2 1 4 3 1 4
+[371] 4 2 3 2 1 1 3 2 1 1 1 1 2 1 1 1 1 4 1 1 1 2 1 2 1 3 3 1 1 1 1 1 1 2 4 1 1
+[408] 1 1 2 3 1 4 2 1 1 2 2 2 2 2 4 4 1 2 4 1 1 2 2 4 2 1 1 1 1 1 1 4 2 2 1 3 1
+[445] 2 2 3 3 1 1 4 3 2 4 1 3 2 1 4 2 1 2 3 1 1 1 1 2 4 1 3 1 1 1 3 2 2 2 2 2 2
+[482] 1 1 2 3 1 1 1 1 3 1 1 1 4 1 1 2 3 1 2 3 1 1 2 1 2 2 3 2 2 2 3 4 2 3 1 2 2
+[519] 2 1 2 2 4 4 3 2 1 2 3 2 4 2 3 3 2 4 1 1 3 1 1 1 1 4 4 2 3 1 1 4 4 4 2 4 3
+[556] 1 1 1 2 1 3 3 2 4 1 1 1 2 3 2 1 2 2 4 3 3 3 2 3 1 1 1 1 2 4 1 4 2 1 2 1 3
+[593] 1 2 4 2 2 4 3 1 1 4 1 3 1 1 4 3 1 1 1 2 3 1 1 1 2 2 2 2 4 4 3 4 2 1 1 4 4
+[630] 4 4 3 2 2 3 1 4 3 1 4 3 4 3 1 3 1 3 2 1 1 2 1 4 1 3 2 4 2 4 1 4 3 4 3 1 1
+[667] 3 3 4 4 4 4 4 2 1 4 3 3 1 4 4 4 3 1 2 2 4 3 1 4 3 4 4 2 1 2 4 2 4 4 4 1 1
+[704] 4 3 3 4
 ```
 
 Strangely, it works! Almost. Instead of giving an error message, R returns

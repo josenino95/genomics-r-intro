@@ -44,7 +44,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 - Installing ggplot2 ...                        OK [linked from cache]
-Successfully installed 1 package in 5.1 milliseconds.
+Successfully installed 1 package in 5.4 milliseconds.
 ```
 
 ``` r
@@ -58,7 +58,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 - Installing dplyr ...                          OK [linked from cache]
-Successfully installed 1 package in 4.1 milliseconds.
+Successfully installed 1 package in 4.4 milliseconds.
 ```
 
 These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson).
@@ -204,7 +204,7 @@ $ gt_GT_alleles <chr> "G", "T", "T", "CTTTTTTTT", "CCGCGC", "T", "A", "A", "ACâ€
 
 In the above output, we can already gather some information about `variants`, such as the number of rows and columns, column names, type of vector in the columns, and the first few entries of each column. Although what we see is similar to outputs of `str()`, this method gives a cleaner visual output.
 
-### Selecting columns and filtering rows
+## Selecting columns and filtering rows
 
 To select columns of a data frame, use `select()`. The first argument to this function is the data frame (`variants`), and the subsequent arguments are the columns to keep.
 
@@ -599,7 +599,7 @@ filter(variants, POS >= 1e6 & POS <= 2e6, QUAL > 200, !INDEL)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Pipes
+## Pipes
 
 But what if you wanted to select and filter? We can do this with pipes. Pipes, are a fairly recent addition to R. Pipes let you
 take the output of one function and send it directly to the next, which is
@@ -768,7 +768,7 @@ Showing only 5th through 11th rows of columns `REF`, `ALT`, and `POS`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Mutate
+## Mutate
 
 Frequently you'll want to create new columns based on the values in existing
 columns, for example to do unit conversions or find the ratio of values in two
@@ -849,7 +849,30 @@ variants %>%
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### group\_by() and  summarize() functions
+
+We can combine everything we've learned until now to make one very useful plot.
+
+
+
+``` r
+variants <- variants %>%
+  mutate(len_REF2 = nchar(REF),
+         len_ALT2 = nchar(ALT),
+         change_str = if_else((len_REF2 == len_ALT2) & (len_REF2 == 1),
+                              paste(REF, "->", ALT),
+                              "Other")
+  )
+
+ggplot(variants, aes(x = change_str)) +
+  geom_bar() +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.4)
+  )
+```
+
+<img src="fig/05-dplyr-rendered-unnamed-chunk-24-1.png" style="display: block; margin: auto;" />
+
+## group\_by() and  summarize() functions
 
 Many data analysis tasks can be approached using the "split-apply-combine"
 paradigm: split the data into groups, apply some analysis to each group, and
@@ -976,7 +999,7 @@ To remove the grouping structure from a grouped data frame, you can use the `ung
 For more details, refer to the [dplyr documentation on grouping](https://dplyr.tidyverse.org/articles/grouping.html).
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Reshaping data frames
+## Reshaping data frames
 
 It can sometimes be useful to transform the "long" tidy format, into the wide format. This transformation can be done with the `pivot_wider()` function provided by the `tidyr` package (also part of the `tidyverse`).
 

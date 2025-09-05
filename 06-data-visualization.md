@@ -86,7 +86,7 @@ install.packages("ggplot2")
 
 
 ``` r
-variants <- read.csv("https://tinyurl.com/r-sddrc-data")
+variants <- read.csv("https://www.tinyurl.com/r-sddrc-data")
 ```
 
 
@@ -165,14 +165,6 @@ This will have the same result as clicking the name of our dataset in the Enviro
 
 ``` r
 View(variants)
-```
-
-``` warning
-Warning in View(variants): unable to open display
-```
-
-``` error
-Error in .External2(C_dataviewer, x, title): unable to start data viewer
 ```
 
 **`ggplot2`** functions like data in the **long** format, i.e., a column for every dimension (variable), and a row for every observation. Well-structured data will save you time when making figures with **`ggplot2`**
