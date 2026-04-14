@@ -40,25 +40,12 @@ install.packages("ggplot2")
 ``` output
 - Querying repositories for available source packages ... Done!
 The following package(s) will be installed:
-- cpp11       [0.5.4]
-- ggplot2     [4.0.2]
-- isoband     [0.3.0]
-- rlang       [1.1.7]
-- viridisLite [0.4.3]
+- ggplot2 [4.0.2]
 These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
-
-# Downloading packages -------------------------------------------------------
-[?25l  (0/1) Downloading: cpp11                                                                                                                                      [32m✔[0m cpp11 0.5.4                              [301 kB in 0.2s]
-                                                                                Successfully downloaded 1 package in 0.36 seconds.
 
 # Installing packages --------------------------------------------------------
 [32m✔[0m ggplot2 4.0.2                            [linked from cache]
-[32m✔[0m isoband 0.3.0                            [linked from cache]
-[32m✔[0m rlang 1.1.7                              [linked from cache]
-[32m✔[0m viridisLite 0.4.3                        [linked from cache]
-  (0/1) Building: cpp11                                                           (0/1) Building: cpp11                                                                                                                                         [32m✔[0m cpp11 0.5.4                              [built from source]
-Successfully installed 5 packages in 0.34 seconds.
-[?25h
+Successfully installed 1 package in 3.1 milliseconds.
 ```
 
 ``` r
@@ -67,24 +54,16 @@ install.packages("dplyr")
 
 ``` output
 The following package(s) will be installed:
-- dplyr    [1.2.1]
-- magrittr [2.0.5]
-- pillar   [1.11.1]
-- tibble   [3.3.1]
+- dplyr [1.2.1]
 These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
 
 # Downloading packages -------------------------------------------------------
-[?25l  (0/2) Downloading: magrittr, dplyr                                                                                                                            [32m✔[0m magrittr 2.0.5                           [222 kB in 0.25s]
-  (1/2) Downloading: dplyr                                                                                                                                      [32m✔[0m dplyr 1.2.1                              [1.5 MB in 0.26s]
-                                                                                Successfully downloaded 2 packages in 0.42 seconds.
+[32m✔[0m dplyr 1.2.1                              [1.5 MB in 0.5s]
+Successfully downloaded 1 package in 0.67 seconds.
 
 # Installing packages --------------------------------------------------------
-[32m✔[0m pillar 1.11.1                            [linked from cache]
-[32m✔[0m tibble 3.3.1                             [linked from cache]
-  (0/2) Building: magrittr                                                        (0/2) Building: magrittr                                                                                                                                      [32m✔[0m magrittr 2.0.5                           [built from source]
-  (1/2) Building: dplyr                                                           (1/2) Building: dplyr                                                                                                                                         [32m✔[0m dplyr 1.2.1                              [built from source]
-Successfully installed 4 packages in 0.67 seconds.
-[?25h
+[32m✔[0m dplyr 1.2.1                              [built from source]
+Successfully installed 1 package in 0.35 seconds.
 ```
 
 These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson).
