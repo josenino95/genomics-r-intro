@@ -423,28 +423,28 @@ including ones that were both Cit+ and Cit- and hypermutable in later
 generations.</p>
 <p>For the purposes of this workshop we’re going to be working with 3 of
 the sequence reads from this experiment.</p>
-<table class="table"><colgroup><col width="3%"><col width="82%"><col width="2%"><col width="1%"><col width="3%"><col width="2%"><col width="4%"></colgroup><thead><tr class="header"><th>SRA Run Number</th>
+<table class="table"><colgroup><col width="3%"><col width="82%"><col width="2%"><col width="1%"><col width="3%"><col width="2%"><col width="4%"></colgroup><thead><tr><th>SRA Run Number</th>
 <th>Clone</th>
 <th>Generation</th>
 <th>Cit</th>
 <th>Hypermutable</th>
 <th>Read Length</th>
 <th>Sequencing Depth</th>
-</tr></thead><tbody><tr class="odd"><td>SRR2589044</td>
+</tr></thead><tbody><tr><td>SRR2589044</td>
 <td>REL2181A</td>
 <td>5,000</td>
 <td>Unknown</td>
 <td>None</td>
 <td>150</td>
 <td>60.2</td>
-</tr><tr class="even"><td>SRR2584863</td>
+</tr><tr><td>SRR2584863</td>
 <td>REL7179B</td>
 <td>15,000</td>
 <td>Unknown</td>
 <td>None</td>
 <td>150</td>
 <td>88</td>
-</tr><tr class="odd"><td>SRR2584866</td>
+</tr><tr><td>SRR2584866</td>
 <td>REL11365</td>
 <td>50,000</td>
 <td>Cit+</td>
@@ -527,102 +527,102 @@ you can <a href="https://figshare.com/ndownloader/files/14632895" class="externa
 here</a>. It has 801 rows and 29 columns. Each of the rows is a single,
 specific genetic mutation found in the bacteria’s DNA. Next we will
 present what each of the columns represent:</p>
-<table class="table"><colgroup><col width="50%"><col width="50%"></colgroup><thead><tr class="header"><th align="left">Variable</th>
+<table class="table"><colgroup><col width="50%"><col width="50%"></colgroup><thead><tr><th align="left">Variable</th>
 <th align="left">Description</th>
-</tr></thead><tbody><tr class="odd"><td align="left"><strong>sample_id</strong></td>
+</tr></thead><tbody><tr><td align="left"><strong>sample_id</strong></td>
 <td align="left">The identifier for the specific bacterial sample.</td>
-</tr><tr class="even"><td align="left"><strong>CHROM</strong></td>
+</tr><tr><td align="left"><strong>CHROM</strong></td>
 <td align="left">contig location where the mutation/variation is
 located.</td>
-</tr><tr class="odd"><td align="left"><strong>POS</strong></td>
+</tr><tr><td align="left"><strong>POS</strong></td>
 <td align="left">The exact position within the contig where the
 mutation/variation occurs.</td>
-</tr><tr class="even"><td align="left"><strong>ID</strong></td>
+</tr><tr><td align="left"><strong>ID</strong></td>
 <td align="left">A unique identifier for the mutation if it is known
 (e.g., from a database).</td>
-</tr><tr class="odd"><td align="left"><strong>REF</strong></td>
+</tr><tr><td align="left"><strong>REF</strong></td>
 <td align="left">The original, <strong>REF</strong>erence DNA letter(s)
 at that position (forward strand).</td>
-</tr><tr class="even"><td align="left"><strong>ALT</strong></td>
+</tr><tr><td align="left"><strong>ALT</strong></td>
 <td align="left">The new, <strong>ALT</strong>ernate (mutated) DNA
 letter(s) (forward strand).</td>
-</tr><tr class="odd"><td align="left"><strong>QUAL</strong></td>
+</tr><tr><td align="left"><strong>QUAL</strong></td>
 <td align="left">The main <strong>QUAL</strong>ity score indicating
 confidence in the mutation call. In detail, Phred-scaled probability
 that the observed variant exists at this site (higher is better)</td>
-</tr><tr class="even"><td align="left"><strong>FILTER</strong></td>
+</tr><tr><td align="left"><strong>FILTER</strong></td>
 <td align="left">The status of quality-control filters (e.g.,
 <code>PASS</code>).</td>
-</tr><tr class="odd"><td align="left"><strong>INDEL</strong></td>
+</tr><tr><td align="left"><strong>INDEL</strong></td>
 <td align="left">A flag indicating if the mutation is an
 <strong>IN</strong>sertion or <strong>DEL</strong>etion
 (<code>TRUE</code>/<code>FALSE</code>).</td>
-</tr><tr class="even"><td align="left"><strong>IDV</strong></td>
+</tr><tr><td align="left"><strong>IDV</strong></td>
 <td align="left">Maximum number of reads supporting an
 <strong>I</strong>n<strong>d</strong>el <strong>V</strong>ariant.</td>
-</tr><tr class="odd"><td align="left"><strong>IMF</strong></td>
+</tr><tr><td align="left"><strong>IMF</strong></td>
 <td align="left">Maximum <strong>f</strong>raction of reads supporting
 an <strong>i</strong>ndel.</td>
-</tr><tr class="even"><td align="left"><strong>DP</strong></td>
+</tr><tr><td align="left"><strong>DP</strong></td>
 <td align="left">Total read <strong>D</strong>e<strong>p</strong>th; the
 total number of times the position was sequenced.</td>
-</tr><tr class="odd"><td align="left"><strong>VDB</strong></td>
+</tr><tr><td align="left"><strong>VDB</strong></td>
 <td align="left">A statistical score testing for
 <strong>V</strong>ariant <strong>D</strong>istance
 <strong>B</strong>ias.</td>
-</tr><tr class="even"><td align="left"><strong>RPB</strong></td>
+</tr><tr><td align="left"><strong>RPB</strong></td>
 <td align="left">A statistical score testing for <strong>R</strong>ead
 <strong>P</strong>osition <strong>B</strong>ias.</td>
-</tr><tr class="odd"><td align="left"><strong>MQB</strong></td>
+</tr><tr><td align="left"><strong>MQB</strong></td>
 <td align="left">A statistical score testing for
 <strong>M</strong>apping <strong>Q</strong>uality
 <strong>B</strong>ias.</td>
-</tr><tr class="even"><td align="left"><strong>BQB</strong></td>
+</tr><tr><td align="left"><strong>BQB</strong></td>
 <td align="left">A statistical score testing for <strong>B</strong>ase
 <strong>Q</strong>uality <strong>B</strong>ias.</td>
-</tr><tr class="odd"><td align="left"><strong>MQSB</strong></td>
+</tr><tr><td align="left"><strong>MQSB</strong></td>
 <td align="left">A statistical score testing for
 <strong>M</strong>apping <strong>Q</strong>uality
 vs. <strong>S</strong>trand <strong>B</strong>ias.</td>
-</tr><tr class="even"><td align="left"><strong>SGB</strong></td>
+</tr><tr><td align="left"><strong>SGB</strong></td>
 <td align="left">A <strong>S</strong>egregation-<strong>B</strong>ased
 metric used for variant quality.</td>
-</tr><tr class="odd"><td align="left"><strong>MQ0F</strong></td>
+</tr><tr><td align="left"><strong>MQ0F</strong></td>
 <td align="left">The <strong>f</strong>raction of reads with a
 <strong>M</strong>apping <strong>Q</strong>uality of <strong>0</strong>
 (i.e., aligned poorly).</td>
-</tr><tr class="even"><td align="left"><strong>ICB</strong></td>
+</tr><tr><td align="left"><strong>ICB</strong></td>
 <td align="left">A statistical score for <strong>I</strong>nbreeding
 <strong>C</strong>oefficient <strong>B</strong>ias.</td>
-</tr><tr class="odd"><td align="left"><strong>HOB</strong></td>
+</tr><tr><td align="left"><strong>HOB</strong></td>
 <td align="left">A statistical score for <strong>B</strong>ias in the
 number of <strong>HO</strong>mozygotes.</td>
-</tr><tr class="even"><td align="left"><strong>AC</strong></td>
+</tr><tr><td align="left"><strong>AC</strong></td>
 <td align="left">
 <strong>A</strong>llele <strong>C</strong>ount; the
 number of reads showing the mutated allele.</td>
-</tr><tr class="odd"><td align="left"><strong>AN</strong></td>
+</tr><tr><td align="left"><strong>AN</strong></td>
 <td align="left">
 <strong>A</strong>llele <strong>N</strong>umber; the
 total number of alleles considered.</td>
-</tr><tr class="even"><td align="left"><strong>DP4</strong></td>
+</tr><tr><td align="left"><strong>DP4</strong></td>
 <td align="left">A four-part breakdown of read depth for reference and
 alternate alleles.</td>
-</tr><tr class="odd"><td align="left"><strong>MQ</strong></td>
+</tr><tr><td align="left"><strong>MQ</strong></td>
 <td align="left">The average <strong>M</strong>apping
 <strong>Q</strong>uality across all reads at the site.</td>
-</tr><tr class="even"><td align="left"><strong>Indiv</strong></td>
+</tr><tr><td align="left"><strong>Indiv</strong></td>
 <td align="left">An identifier for the <strong>indiv</strong>idual
 sample (often the same as <code>sample_id</code>).</td>
-</tr><tr class="odd"><td align="left"><strong>gt_PL</strong></td>
+</tr><tr><td align="left"><strong>gt_PL</strong></td>
 <td align="left">
 <strong>P</strong>hred-scaled
 <strong>L</strong>ikelihoods for the possible genotypes.</td>
-</tr><tr class="even"><td align="left"><strong>gt_GT</strong></td>
+</tr><tr><td align="left"><strong>gt_GT</strong></td>
 <td align="left">The final <strong>G</strong>eno<strong>t</strong>ype
 call for the sample (e.g., <code>0</code> for original, <code>1</code>
 for mutated).</td>
-</tr><tr class="odd"><td align="left"><strong>gt_GT_alleles</strong></td>
+</tr><tr><td align="left"><strong>gt_GT_alleles</strong></td>
 <td align="left">The human-readable genotype, showing the actual DNA
 <strong>alleles</strong>.</td>
 </tr></tbody></table><p>For more information on VCF files visit The Broad Institute’s <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035531692-VCF-Variant-Call-Format" class="external-link">VCF
@@ -716,7 +716,7 @@ from FASTQ files.</li>
   "identifier": "https://datacarpentry.github.io/genomics-r-intro/instructor/02-data-prelude.html",
   "dateCreated": "2018-03-12",
   "dateModified": "2026-04-14",
-  "datePublished": "2026-04-28"
+  "datePublished": "2026-05-05"
 }
 
   </script><script>

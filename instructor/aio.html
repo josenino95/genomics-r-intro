@@ -787,7 +787,7 @@ in the Console pane?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>You will get the same output you did as when you ran
 <code>getwd()</code> from the source. You can run any command in the
@@ -885,7 +885,7 @@ about your assumed purpose.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ul>
 <li>
@@ -1039,7 +1039,7 @@ helpful to include “R” in your search query.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>While your search results may return several tests, we list a few you
 might find:</p>
@@ -1180,7 +1180,7 @@ the sequence reads from this experiment.</p>
 <col width="2%">
 <col width="4%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>SRA Run Number</th>
 <th>Clone</th>
 <th>Generation</th>
@@ -1190,7 +1190,7 @@ the sequence reads from this experiment.</p>
 <th>Sequencing Depth</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>SRR2589044</td>
 <td>REL2181A</td>
 <td>5,000</td>
@@ -1199,7 +1199,7 @@ the sequence reads from this experiment.</p>
 <td>150</td>
 <td>60.2</td>
 </tr>
-<tr class="even">
+<tr>
 <td>SRR2584863</td>
 <td>REL7179B</td>
 <td>15,000</td>
@@ -1208,7 +1208,7 @@ the sequence reads from this experiment.</p>
 <td>150</td>
 <td>88</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>SRR2584866</td>
 <td>REL11365</td>
 <td>50,000</td>
@@ -1306,161 +1306,161 @@ present what each of the columns represent:</p>
 <col width="50%">
 <col width="50%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th align="left">Variable</th>
 <th align="left">Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left"><strong>sample_id</strong></td>
 <td align="left">The identifier for the specific bacterial sample.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>CHROM</strong></td>
 <td align="left">contig location where the mutation/variation is
 located.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>POS</strong></td>
 <td align="left">The exact position within the contig where the
 mutation/variation occurs.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>ID</strong></td>
 <td align="left">A unique identifier for the mutation if it is known
 (e.g., from a database).</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>REF</strong></td>
 <td align="left">The original, <strong>REF</strong>erence DNA letter(s)
 at that position (forward strand).</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>ALT</strong></td>
 <td align="left">The new, <strong>ALT</strong>ernate (mutated) DNA
 letter(s) (forward strand).</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>QUAL</strong></td>
 <td align="left">The main <strong>QUAL</strong>ity score indicating
 confidence in the mutation call. In detail, Phred-scaled probability
 that the observed variant exists at this site (higher is better)</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>FILTER</strong></td>
 <td align="left">The status of quality-control filters (e.g.,
 <code>PASS</code>).</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>INDEL</strong></td>
 <td align="left">A flag indicating if the mutation is an
 <strong>IN</strong>sertion or <strong>DEL</strong>etion
 (<code>TRUE</code>/<code>FALSE</code>).</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>IDV</strong></td>
 <td align="left">Maximum number of reads supporting an
 <strong>I</strong>n<strong>d</strong>el <strong>V</strong>ariant.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>IMF</strong></td>
 <td align="left">Maximum <strong>f</strong>raction of reads supporting
 an <strong>i</strong>ndel.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>DP</strong></td>
 <td align="left">Total read <strong>D</strong>e<strong>p</strong>th; the
 total number of times the position was sequenced.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>VDB</strong></td>
 <td align="left">A statistical score testing for
 <strong>V</strong>ariant <strong>D</strong>istance
 <strong>B</strong>ias.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>RPB</strong></td>
 <td align="left">A statistical score testing for <strong>R</strong>ead
 <strong>P</strong>osition <strong>B</strong>ias.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>MQB</strong></td>
 <td align="left">A statistical score testing for
 <strong>M</strong>apping <strong>Q</strong>uality
 <strong>B</strong>ias.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>BQB</strong></td>
 <td align="left">A statistical score testing for <strong>B</strong>ase
 <strong>Q</strong>uality <strong>B</strong>ias.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>MQSB</strong></td>
 <td align="left">A statistical score testing for
 <strong>M</strong>apping <strong>Q</strong>uality
 vs. <strong>S</strong>trand <strong>B</strong>ias.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>SGB</strong></td>
 <td align="left">A <strong>S</strong>egregation-<strong>B</strong>ased
 metric used for variant quality.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>MQ0F</strong></td>
 <td align="left">The <strong>f</strong>raction of reads with a
 <strong>M</strong>apping <strong>Q</strong>uality of <strong>0</strong>
 (i.e., aligned poorly).</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>ICB</strong></td>
 <td align="left">A statistical score for <strong>I</strong>nbreeding
 <strong>C</strong>oefficient <strong>B</strong>ias.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>HOB</strong></td>
 <td align="left">A statistical score for <strong>B</strong>ias in the
 number of <strong>HO</strong>mozygotes.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>AC</strong></td>
 <td align="left">
 <strong>A</strong>llele <strong>C</strong>ount; the
 number of reads showing the mutated allele.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>AN</strong></td>
 <td align="left">
 <strong>A</strong>llele <strong>N</strong>umber; the
 total number of alleles considered.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>DP4</strong></td>
 <td align="left">A four-part breakdown of read depth for reference and
 alternate alleles.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>MQ</strong></td>
 <td align="left">The average <strong>M</strong>apping
 <strong>Q</strong>uality across all reads at the site.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>Indiv</strong></td>
 <td align="left">An identifier for the <strong>indiv</strong>idual
 sample (often the same as <code>sample_id</code>).</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>gt_PL</strong></td>
 <td align="left">
 <strong>P</strong>hred-scaled
 <strong>L</strong>ikelihoods for the possible genotypes.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>gt_GT</strong></td>
 <td align="left">The final <strong>G</strong>eno<strong>t</strong>ype
 call for the sample (e.g., <code>0</code> for original, <code>1</code>
 for mutated).</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>gt_GT_alleles</strong></td>
 <td align="left">The human-readable genotype, showing the actual DNA
 <strong>alleles</strong>.</td>
@@ -1743,7 +1743,7 @@ the table using <a href="https://www.geeksforgeeks.org/get-the-first-parts-of-a-
 <col width="2%">
 <col width="5%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th align="left">sample_id</th>
 <th align="left">CHROM</th>
 <th align="right">POS</th>
@@ -1775,7 +1775,7 @@ the table using <a href="https://www.geeksforgeeks.org/get-the-first-parts-of-a-
 <th align="left">gt_GT_alleles</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left">SRR2584863</td>
 <td align="left">CP000819.1</td>
 <td align="right">9972</td>
@@ -1806,7 +1806,7 @@ the table using <a href="https://www.geeksforgeeks.org/get-the-first-parts-of-a-
 <td align="right">1</td>
 <td align="left">G</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">SRR2584863</td>
 <td align="left">CP000819.1</td>
 <td align="right">263235</td>
@@ -1837,7 +1837,7 @@ the table using <a href="https://www.geeksforgeeks.org/get-the-first-parts-of-a-
 <td align="right">1</td>
 <td align="left">T</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">SRR2584863</td>
 <td align="left">CP000819.1</td>
 <td align="right">281923</td>
@@ -1868,7 +1868,7 @@ the table using <a href="https://www.geeksforgeeks.org/get-the-first-parts-of-a-
 <td align="right">1</td>
 <td align="left">T</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">SRR2584863</td>
 <td align="left">CP000819.1</td>
 <td align="right">433359</td>
@@ -1899,7 +1899,7 @@ the table using <a href="https://www.geeksforgeeks.org/get-the-first-parts-of-a-
 <td align="right">1</td>
 <td align="left">CTTTTTTTT</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">SRR2584863</td>
 <td align="left">CP000819.1</td>
 <td align="right">473901</td>
@@ -1930,7 +1930,7 @@ the table using <a href="https://www.geeksforgeeks.org/get-the-first-parts-of-a-
 <td align="right">1</td>
 <td align="left">CCGCGC</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">SRR2584863</td>
 <td align="left">CP000819.1</td>
 <td align="right">648692</td>
@@ -2572,11 +2572,11 @@ outputs or status/warning/error messages (usually in red).</p>
 <col width="7%">
 <col width="92%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Values</th>
 <th></th>
 </tr></thead>
-<tbody><tr class="odd">
+<tbody><tr>
 <td>first_value</td>
 <td>1</td>
 </tr></tbody>
@@ -2630,7 +2630,7 @@ a diploid human cell</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Here as some possible answers to the challenge:</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -2796,23 +2796,23 @@ a difference.</p>
 <col width="7%">
 <col width="92%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Type (abbreviation)</th>
 <th>Type of data</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Numeric (num)</td>
 <td>Numbers such floating point/decimals (1.0, 0.5, 3.14), there are
 also more specific numeric types (dbl - Double, int - Integer). These
 differences are not relevant for most beginners and pertain to how these
 values are stored in memory</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Character (chr)</td>
 <td>A sequence of letters/numbers in single ’’ or double ” ” quotes</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Logical</td>
 <td>Boolean values - TRUE or FALSE</td>
 </tr>
@@ -2858,7 +2858,7 @@ before you look at the solution</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2938,7 +2938,7 @@ using “class”</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3036,36 +3036,36 @@ mathematical (arithmetic) operators including:</p>
 <col width="7%">
 <col width="92%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Operator</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>+</td>
 <td>addition</td>
 </tr>
-<tr class="even">
+<tr>
 <td>-</td>
 <td>subtraction</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>*</td>
 <td>multiplication</td>
 </tr>
-<tr class="even">
+<tr>
 <td>/</td>
 <td>division</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>^ or **</td>
 <td>exponentiation</td>
 </tr>
-<tr class="even">
+<tr>
 <td>a%/%b</td>
 <td>integer division (division where the remainder is discarded)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>a%%b</td>
 <td>modulus (returns the remainder after division)</td>
 </tr>
@@ -3122,7 +3122,7 @@ the <code>sqrt()</code> and <code>round()</code> functions. Hint: the
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3385,7 +3385,7 @@ vector</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <ol style="list-style-type: upper-alpha">
 <li>False - Vectors have both of these properties<br>
@@ -3433,44 +3433,44 @@ most common logical operators you will use in R are:</p>
 <col width="7%">
 <col width="92%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Operator</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>&lt;</td>
 <td>less than</td>
 </tr>
-<tr class="even">
+<tr>
 <td>&lt;=</td>
 <td>less than or equal to</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>&gt;</td>
 <td>greater than</td>
 </tr>
-<tr class="even">
+<tr>
 <td>&gt;=</td>
 <td>greater than or equal to</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>==</td>
 <td>exactly equal to</td>
 </tr>
-<tr class="even">
+<tr>
 <td>!=</td>
 <td>not equal to</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>!x</td>
 <td>not x</td>
 </tr>
-<tr class="even">
+<tr>
 <td>a | b</td>
 <td>a or b</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>a &amp; b</td>
 <td>a and b</td>
 </tr>
@@ -3661,7 +3661,7 @@ vectors are of different lengths.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3724,7 +3724,7 @@ vectors are of different lengths.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3794,7 +3794,7 @@ CYP1A1 and then<br>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb86">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3841,7 +3841,7 @@ contains:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
   <h4 class="accordion-header" id="headingSolution9"> Show me the solution </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb88">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3876,7 +3876,7 @@ contains:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution10" aria-expanded="false" aria-controls="collapseSolution10">
   <h4 class="accordion-header" id="headingSolution10"> Show me the solution </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb90">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4134,7 +4134,7 @@ numbers used commas for decimal separation (i.e. 1,00)?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: upper-alpha">
 <li><p>The <code>read.csv()</code> function has the argument ‘header’
@@ -4355,7 +4355,7 @@ following?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4463,7 +4463,7 @@ object[logical_subset]</em></p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Step-by-step. We can get the number of letters in each allele
 with</p>
@@ -4764,7 +4764,7 @@ could write something like
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4829,7 +4829,7 @@ what they return</strong></p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <ol style="list-style-type: lower-alpha"><li>
 </li></ol>
@@ -5543,7 +5543,7 @@ filtered depth (“DP”).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb89">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5697,7 +5697,7 @@ genome_size multiplied by 1,000,000</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb96">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6179,7 +6179,7 @@ Note that contains() is not case sensitive.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6232,7 +6232,7 @@ code:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Alternative solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6502,7 +6502,7 @@ FALSE, we can use to negation symbol “!”. (e.g. !TRUE == FALSE).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6702,7 +6702,7 @@ where the filtered depth (DP) is at least 10. Showing only 5th through
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6793,7 +6793,7 @@ only show those columns.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6914,7 +6914,7 @@ indels). <em>Hint: INDELS is TRUE/FALSE column in the data.</em>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7615,8 +7615,8 @@ analysis before writing code yourself.</li>
   "url": "https://datacarpentry.github.io/genomics-r-intro/instructor/aio.html",
   "identifier": "https://datacarpentry.github.io/genomics-r-intro/instructor/aio.html",
   "dateCreated": "2018-03-12",
-  "dateModified": "2026-04-28",
-  "datePublished": "2026-04-28"
+  "dateModified": "2026-05-05",
+  "datePublished": "2026-05-05"
 }
 
   </script><script>
