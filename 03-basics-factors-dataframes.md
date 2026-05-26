@@ -192,30 +192,30 @@ summary(variants)
 ```
 
 ``` output
-  sample_id            CHROM                POS             ID         
- Length:801         Length:801         Min.   :   1521   Mode:logical  
- Class :character   Class :character   1st Qu.:1115970   NA's:801      
- Mode  :character   Mode  :character   Median :2290361                 
-                                       Mean   :2243682                 
-                                       3rd Qu.:3317082                 
-                                       Max.   :4629225                 
-                                                                       
-     REF                ALT                 QUAL          FILTER       
- Length:801         Length:801         Min.   :  4.385   Mode:logical  
- Class :character   Class :character   1st Qu.:139.000   NA's:801      
- Mode  :character   Mode  :character   Median :195.000                 
-                                       Mean   :172.276                 
-                                       3rd Qu.:225.000                 
-                                       Max.   :228.000                 
-                                                                       
+     sample_id         CHROM          POS             ID         
+ Length   :801   Length   :801   Min.   :   1521   Mode:logical  
+ N.unique :  3   N.unique :  1   1st Qu.:1115970   NAs :801      
+ N.blank  :  0   N.blank  :  0   Median :2290361                 
+ Min.nchar: 10   Min.nchar: 10   Mean   :2243682                 
+ Max.nchar: 10   Max.nchar: 10   3rd Qu.:3317082                 
+                                 Max.   :4629225                 
+                                                                 
+        REF             ALT           QUAL          FILTER       
+ Length   :801   Length   :801   Min.   :  4.385   Mode:logical  
+ N.unique : 59   N.unique : 57   1st Qu.:139.000   NAs :801      
+ N.blank  :  0   N.blank  :  0   Median :195.000                 
+ Min.nchar:  1   Min.nchar:  1   Mean   :172.276                 
+ Max.nchar: 32   Max.nchar: 56   3rd Qu.:225.000                 
+                                 Max.   :228.000                 
+                                                                 
    INDEL              IDV              IMF               DP       
  Mode :logical   Min.   : 2.000   Min.   :0.5714   Min.   : 2.00  
- FALSE:700       1st Qu.: 7.000   1st Qu.:0.8823   1st Qu.: 7.00  
+ FALSE:700       1st Qu.: 7.000   1st Qu.:0.8824   1st Qu.: 7.00  
  TRUE :101       Median : 9.000   Median :1.0000   Median :10.00  
                  Mean   : 9.396   Mean   :0.9219   Mean   :10.57  
                  3rd Qu.:11.000   3rd Qu.:1.0000   3rd Qu.:13.00  
                  Max.   :20.000   Max.   :1.0000   Max.   :79.00  
-                 NA's   :700      NA's   :700                     
+                 NAs    :700      NAs    :700                     
       VDB                 RPB              MQB              BQB        
  Min.   :0.0005387   Min.   :0.0000   Min.   :0.0000   Min.   :0.1153  
  1st Qu.:0.2180410   1st Qu.:0.3776   1st Qu.:0.1070   1st Qu.:0.6963  
@@ -223,31 +223,31 @@ summary(variants)
  Mean   :0.4926291   Mean   :0.6970   Mean   :0.5330   Mean   :0.7784  
  3rd Qu.:0.7598940   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000  
  Max.   :0.9997130   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
-                     NA's   :773      NA's   :773      NA's   :773     
+                     NAs    :773      NAs    :773      NAs    :773     
       MQSB              SGB               MQ0F           ICB         
  Min.   :0.01348   Min.   :-0.6931   Min.   :0.00000   Mode:logical  
- 1st Qu.:0.95494   1st Qu.:-0.6762   1st Qu.:0.00000   NA's:801      
+ 1st Qu.:0.95494   1st Qu.:-0.6762   1st Qu.:0.00000   NAs :801      
  Median :1.00000   Median :-0.6620   Median :0.00000                 
  Mean   :0.96428   Mean   :-0.6444   Mean   :0.01127                 
  3rd Qu.:1.00000   3rd Qu.:-0.6364   3rd Qu.:0.00000                 
  Max.   :1.01283   Max.   :-0.4536   Max.   :0.66667                 
- NA's   :48                                                          
-   HOB                AC          AN        DP4                  MQ       
- Mode:logical   Min.   :1   Min.   :1   Length:801         Min.   :10.00  
- NA's:801       1st Qu.:1   1st Qu.:1   Class :character   1st Qu.:60.00  
-                Median :1   Median :1   Mode  :character   Median :60.00  
-                Mean   :1   Mean   :1                      Mean   :58.19  
-                3rd Qu.:1   3rd Qu.:1                      3rd Qu.:60.00  
-                Max.   :1   Max.   :1                      Max.   :60.00  
-                                                                          
-    Indiv              gt_PL               gt_GT   gt_GT_alleles     
- Length:801         Length:801         Min.   :1   Length:801        
- Class :character   Class :character   1st Qu.:1   Class :character  
- Mode  :character   Mode  :character   Median :1   Mode  :character  
-                                       Mean   :1                     
-                                       3rd Qu.:1                     
-                                       Max.   :1                     
-                                                                     
+ NAs    :48                                                          
+   HOB                AC          AN           DP4            MQ       
+ Mode:logical   Min.   :1   Min.   :1   Length   :801   Min.   :10.00  
+ NAs :801       1st Qu.:1   1st Qu.:1   N.unique :217   1st Qu.:60.00  
+                Median :1   Median :1   N.blank  :  0   Median :60.00  
+                Mean   :1   Mean   :1   Min.nchar:  7   Mean   :58.19  
+                3rd Qu.:1   3rd Qu.:1   Max.nchar:  9   3rd Qu.:60.00  
+                Max.   :1   Max.   :1                   Max.   :60.00  
+                                                                       
+       Indiv           gt_PL         gt_GT     gt_GT_alleles
+ Length   :801   Length   :801   Min.   :1   Length   :801  
+ N.unique :  3   N.unique :206   1st Qu.:1   N.unique : 57  
+ N.blank  :  0   N.blank  :  0   Median :1   N.blank  :  0  
+ Min.nchar: 66   Min.nchar:  4   Mean   :1   Min.nchar:  1  
+ Max.nchar: 66   Max.nchar:  7   3rd Qu.:1   Max.nchar: 56  
+                                 Max.   :1                  
+                                                            
 ```
 
 Our data frame had 29 variables, so we get 29 fields that summarize the data.
@@ -605,8 +605,8 @@ summary(snps)
 ```
 
 ``` output
-   Length     Class      Mode 
-      707 character character 
+   Length  N.unique   N.blank Min.nchar Max.nchar 
+      707         4         0         1         1 
 ```
 
 As you can imagine, factors are already useful when you want to generate a tally.
@@ -634,7 +634,7 @@ Let's make a bar plot to count the frequency of each SNP
 plot(factor_snps)
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
+<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-21-1.png" alt="" style="display: block; margin: auto;" />
 
 What if we want to order the categories by frequency?
 Well, we can use the `factor()` function once more, this time with the "levels" argument.
@@ -652,7 +652,7 @@ The x axis is now nicely ordered in descending order.
 plot(factor_snps_ord)
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
+<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-23-1.png" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -672,7 +672,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL)) +
   theme(panel.grid = element_blank())
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-facet-plot-white-bg-1.png" style="display: block; margin: auto;" />
+<img src="fig/03-basics-factors-dataframes-rendered-facet-plot-white-bg-1.png" alt="" style="display: block; margin: auto;" />
 
 It would be nice to have the facets in the order when the samples were taken.
 First, the sample ending in 44 taken in generation 5,000, then the one ending in 63 in generation 15,000, and finally the one ending in 66 in generation 50,000.
@@ -698,7 +698,7 @@ ggplot(data = variants, aes(x = DP, y = QUAL)) +
   theme(panel.grid = element_blank())
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-new-facet-plot-white-bg-1.png" style="display: block; margin: auto;" />
+<img src="fig/03-basics-factors-dataframes-rendered-new-facet-plot-white-bg-1.png" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
@@ -1070,62 +1070,62 @@ summary(SRR2584863_variants)
 ```
 
 ``` output
-      sample_id     CHROM                POS             ID         
- SRR2589044: 0   Length:25          Min.   :   9972   Mode:logical  
- SRR2584863:25   Class :character   1st Qu.:1331794   NA's:25       
- SRR2584866: 0   Mode  :character   Median :2618472                 
-                                    Mean   :2464989                 
-                                    3rd Qu.:3488669                 
-                                    Max.   :4616538                 
-                                                                    
-     REF                ALT                 QUAL         FILTER       
- Length:25          Length:25          Min.   : 31.89   Mode:logical  
- Class :character   Class :character   1st Qu.:104.00   NA's:25       
- Mode  :character   Mode  :character   Median :211.00                 
-                                       Mean   :172.97                 
-                                       3rd Qu.:225.00                 
-                                       Max.   :228.00                 
-                                                                      
-   INDEL              IDV             IMF               DP      
- Mode :logical   Min.   : 2.00   Min.   :0.6667   Min.   : 2.0  
- FALSE:19        1st Qu.: 3.25   1st Qu.:0.9250   1st Qu.: 9.0  
- TRUE :6         Median : 8.00   Median :1.0000   Median :10.0  
-                 Mean   : 7.00   Mean   :0.9278   Mean   :10.4  
-                 3rd Qu.: 9.75   3rd Qu.:1.0000   3rd Qu.:12.0  
-                 Max.   :12.00   Max.   :1.0000   Max.   :20.0  
-                 NA's   :19      NA's   :19                     
-      VDB               RPB              MQB               BQB        
- Min.   :0.01627   Min.   :0.9008   Min.   :0.04979   Min.   :0.7507  
- 1st Qu.:0.07140   1st Qu.:0.9275   1st Qu.:0.09996   1st Qu.:0.7627  
- Median :0.37674   Median :0.9542   Median :0.15013   Median :0.7748  
- Mean   :0.40429   Mean   :0.9517   Mean   :0.39997   Mean   :0.8418  
- 3rd Qu.:0.65951   3rd Qu.:0.9771   3rd Qu.:0.57507   3rd Qu.:0.8874  
- Max.   :0.99604   Max.   :1.0000   Max.   :1.00000   Max.   :1.0000  
-                   NA's   :22       NA's   :22        NA's   :22      
-      MQSB             SGB               MQ0F           ICB         
- Min.   :0.5000   Min.   :-0.6904   Min.   :0.00000   Mode:logical  
- 1st Qu.:0.9599   1st Qu.:-0.6762   1st Qu.:0.00000   NA's:25       
- Median :0.9962   Median :-0.6620   Median :0.00000                 
- Mean   :0.9442   Mean   :-0.6341   Mean   :0.04667                 
- 3rd Qu.:1.0000   3rd Qu.:-0.6168   3rd Qu.:0.00000                 
- Max.   :1.0128   Max.   :-0.4536   Max.   :0.66667                 
- NA's   :3                                                          
-   HOB                AC          AN        DP4                  MQ       
- Mode:logical   Min.   :1   Min.   :1   Length:25          Min.   :10.00  
- NA's:25        1st Qu.:1   1st Qu.:1   Class :character   1st Qu.:60.00  
-                Median :1   Median :1   Mode  :character   Median :60.00  
-                Mean   :1   Mean   :1                      Mean   :55.52  
-                3rd Qu.:1   3rd Qu.:1                      3rd Qu.:60.00  
-                Max.   :1   Max.   :1                      Max.   :60.00  
-                                                                          
-    Indiv              gt_PL               gt_GT   gt_GT_alleles     
- Length:25          Length:25          Min.   :1   Length:25         
- Class :character   Class :character   1st Qu.:1   Class :character  
- Mode  :character   Mode  :character   Median :1   Mode  :character  
-                                       Mean   :1                     
-                                       3rd Qu.:1                     
-                                       Max.   :1                     
-                                                                     
+      sample_id        CHROM         POS             ID                 REF    
+ SRR2589044: 0   Length   :25   Min.   :   9972   Mode:logical   Length   :25  
+ SRR2584863:25   N.unique : 1   1st Qu.:1331794   NAs :25        N.unique : 9  
+ SRR2584866: 0   N.blank  : 0   Median :2618472                  N.blank  : 0  
+                 Min.nchar:10   Mean   :2464989                  Min.nchar: 1  
+                 Max.nchar:10   3rd Qu.:3488669                  Max.nchar:32  
+                                Max.   :4616538                                
+                                                                               
+        ALT          QUAL         FILTER          INDEL              IDV       
+ Length   :25   Min.   : 31.89   Mode:logical   Mode :logical   Min.   : 2.00  
+ N.unique : 9   1st Qu.:104.00   NAs :25        FALSE:19        1st Qu.: 3.25  
+ N.blank  : 0   Median :211.00                  TRUE :6         Median : 8.00  
+ Min.nchar: 1   Mean   :172.97                                  Mean   : 7.00  
+ Max.nchar:56   3rd Qu.:225.00                                  3rd Qu.: 9.75  
+                Max.   :228.00                                  Max.   :12.00  
+                                                                NAs    :19     
+      IMF               DP            VDB               RPB        
+ Min.   :0.6667   Min.   : 2.0   Min.   :0.01627   Min.   :0.9008  
+ 1st Qu.:0.9250   1st Qu.: 9.0   1st Qu.:0.07140   1st Qu.:0.9275  
+ Median :1.0000   Median :10.0   Median :0.37674   Median :0.9542  
+ Mean   :0.9278   Mean   :10.4   Mean   :0.40429   Mean   :0.9517  
+ 3rd Qu.:1.0000   3rd Qu.:12.0   3rd Qu.:0.65951   3rd Qu.:0.9771  
+ Max.   :1.0000   Max.   :20.0   Max.   :0.99604   Max.   :1.0000  
+ NAs    :19                                        NAs    :22      
+      MQB               BQB              MQSB             SGB         
+ Min.   :0.04979   Min.   :0.7507   Min.   :0.5000   Min.   :-0.6904  
+ 1st Qu.:0.09996   1st Qu.:0.7627   1st Qu.:0.9599   1st Qu.:-0.6762  
+ Median :0.15013   Median :0.7748   Median :0.9962   Median :-0.6620  
+ Mean   :0.39997   Mean   :0.8418   Mean   :0.9442   Mean   :-0.6341  
+ 3rd Qu.:0.57507   3rd Qu.:0.8874   3rd Qu.:1.0000   3rd Qu.:-0.6168  
+ Max.   :1.00000   Max.   :1.0000   Max.   :1.0128   Max.   :-0.4536  
+ NAs    :22        NAs    :22       NAs    :3                         
+      MQ0F           ICB            HOB                AC          AN   
+ Min.   :0.00000   Mode:logical   Mode:logical   Min.   :1   Min.   :1  
+ 1st Qu.:0.00000   NAs :25        NAs :25        1st Qu.:1   1st Qu.:1  
+ Median :0.00000                                 Median :1   Median :1  
+ Mean   :0.04667                                 Mean   :1   Mean   :1  
+ 3rd Qu.:0.00000                                 3rd Qu.:1   3rd Qu.:1  
+ Max.   :0.66667                                 Max.   :1   Max.   :1  
+                                                                        
+        DP4           MQ              Indiv          gt_PL        gt_GT  
+ Length   :25   Min.   :10.00   Length   :25   Length   :25   Min.   :1  
+ N.unique :22   1st Qu.:60.00   N.unique : 1   N.unique :15   1st Qu.:1  
+ N.blank  : 0   Median :60.00   N.blank  : 0   N.blank  : 0   Median :1  
+ Min.nchar: 7   Mean   :55.52   Min.nchar:66   Min.nchar: 4   Mean   :1  
+ Max.nchar: 8   3rd Qu.:60.00   Max.nchar:66   Max.nchar: 6   3rd Qu.:1  
+                Max.   :60.00                                 Max.   :1  
+                                                                         
+   gt_GT_alleles
+ Length   :25   
+ N.unique : 9   
+ N.blank  : 0   
+ Min.nchar: 1   
+ Max.nchar:56   
+                
+                
 ```
 
 ## Coercing values in data frames

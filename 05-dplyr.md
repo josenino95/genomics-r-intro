@@ -40,12 +40,12 @@ install.packages("ggplot2")
 ``` output
 - Querying repositories for available source packages ... Done!
 The following package(s) will be installed:
-- ggplot2 [4.0.2]
-These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
+- ggplot2 [4.0.3]
+These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.6/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
-[32m✔[0m ggplot2 4.0.2                            [linked from cache]
-Successfully installed 1 package in 3.1 milliseconds.
+[32m✔[0m ggplot2 4.0.3                            [linked from cache]
+Successfully installed 1 package in 2.4 milliseconds.
 ```
 
 ``` r
@@ -55,15 +55,11 @@ install.packages("dplyr")
 ``` output
 The following package(s) will be installed:
 - dplyr [1.2.1]
-These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
-
-# Downloading packages -------------------------------------------------------
-[32m✔[0m dplyr 1.2.1                              [1.5 MB in 0.5s]
-Successfully downloaded 1 package in 0.67 seconds.
+These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.6/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
-[32m✔[0m dplyr 1.2.1                              [built from source]
-Successfully installed 1 package in 0.35 seconds.
+[32m✔[0m dplyr 1.2.1                              [linked from cache]
+Successfully installed 1 package in 1.9 milliseconds.
 ```
 
 These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson).
@@ -875,7 +871,7 @@ ggplot(variants, aes(x = change_str)) +
   )
 ```
 
-<img src="fig/05-dplyr-rendered-unnamed-chunk-24-1.png" style="display: block; margin: auto;" />
+<img src="fig/05-dplyr-rendered-unnamed-chunk-24-1.png" alt="" style="display: block; margin: auto;" />
 
 ## group\_by() and  summarize() functions
 
