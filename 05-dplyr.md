@@ -45,7 +45,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 [32m✔[0m ggplot2 4.0.3                            [linked from cache]
-Successfully installed 1 package in 2.4 milliseconds.
+Successfully installed 1 package in 2.9 milliseconds.
 ```
 
 ``` r
@@ -59,7 +59,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 [32m✔[0m dplyr 1.2.1                              [linked from cache]
-Successfully installed 1 package in 1.9 milliseconds.
+Successfully installed 1 package in 2.5 milliseconds.
 ```
 
 These two packages are among the most popular add on packages used in R, and they are part of a large set of very useful packages called the [tidyverse](https://www.tidyverse.org). Packages in the tidyverse are designed to work well together and are made to work with tidy data (which we described earlier in this lesson).
