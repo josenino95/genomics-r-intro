@@ -45,7 +45,7 @@ These packages will be installed into "~/work/genomics-r-intro/genomics-r-intro/
 
 # Installing packages --------------------------------------------------------
 [32m✔[0m ggplot2 4.0.3                            [linked from cache]
-Successfully installed 1 package in 2.9 milliseconds.
+Successfully installed 1 package in 3.1 milliseconds.
 ```
 
 ``` r
